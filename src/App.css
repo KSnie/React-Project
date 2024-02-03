@@ -1,11 +1,13 @@
 body {
+  padding-top: 24px; /* Adjust this value based on the height of your fixed navigation bar */
   background-color: #F9F9F9;
 }
 
-.Main{
+.Main {
+  margin-top: 60px; /* Adjust this value based on the height of your fixed navigation bar */
   display: flex;
 }
 
 .content {
-  padding: 20px;
+  padding-left: 340px;
 }

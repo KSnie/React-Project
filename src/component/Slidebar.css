@@ -9,11 +9,22 @@
 .slidebar {
     background-color: var(--main-background-color);
     width: 320px;
+    height: 100vh;
+    position: fixed;
+}
+
+.slidebar p {
+    font-weight: bold;
+    font-size: 15px;
+    padding-left: 50px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    color: #A5A5A5;
 }
 
 .page {
     display: flex;
-    padding: 10px 10px 10px 90px;
+    padding: 15px 10px 15px 90px;
 }
 
 .page button {
@@ -31,11 +42,19 @@
     border-radius: 3px;
 }
 
-.page .active {
-    font-weight: bold;
+.active button{
     color: #D42222;
+    font-weight: bold;
 }
 
+.home-page.active svg path {
+    stroke: #D42222;
+  }
+  
+.dashboard-page.active svg path {
+    fill: #D42222;
+}
+  
 .slidebar {
     transition: transform 0.3s ease-out;
 }
