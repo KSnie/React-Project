@@ -1,8 +1,11 @@
 body {
   background-color: #F9F9F9;
 }
-/* 
-.app {
 
-} */
+.Main{
+  display: flex;
+}
 
+.content {
+  padding: 20px;
+}
