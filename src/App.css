@@ -10,7 +10,7 @@ body {
 
 .Box-content {
   transition: transform 0.2s ease-out; /* Add a transition for smooth movement */
-  width: 1550px;
+  width: 1560px;
   padding-top: 10px;
 }
 
@@ -24,5 +24,5 @@ body {
 
 .content.hide-content .Box-content {
   transform: translateX(-17%);
-  width: 1850px;
+  width: 1880px;
 }

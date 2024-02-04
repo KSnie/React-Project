@@ -4,6 +4,9 @@ import adimage2 from "../image/adimage2.svg";
 import adimage3 from "../image/adimage3.svg";
 import adimage4 from "../image/adimage4.svg";
 import "../css-pages/Home.css";
+import Post from "../pages/cp-post"
+
+
 
 const Home = () => {
   const images = [
@@ -40,6 +43,12 @@ const Home = () => {
             ))}
           </div>
         </div>
+        
+        <div className="Post">
+          <Post />
+        </div>
+
+
       </div>
     </div>
   );

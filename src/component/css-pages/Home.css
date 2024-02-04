@@ -7,12 +7,17 @@
 }
 
 .containter {
-    display: flex;
     justify-content: center;
     align-items: center;
     background-color: #FFFFFF;
     border-radius: 31px;
     overflow: hidden; /* Ensure that the image doesn't overflow the container */
+}
+
+.post-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .Text-join {
@@ -37,6 +42,7 @@
     padding-top: 25px;
     position: relative;
     text-align: center;
+    padding-bottom: 15px;
 }
 
 .text button{
@@ -46,4 +52,11 @@
    font-weight: bold;
    color: #FFFFFF; 
    cursor: pointer;
+}
+
+.Post {
+    padding: 60px;
+    padding-top: 0px;
+    padding-bottom: 30px;
+
 }
