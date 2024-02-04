@@ -8,6 +8,22 @@ body {
   display: flex;
 }
 
+.Box-content {
+  transition: transform 0.2s ease-out; /* Add a transition for smooth movement */
+  border: 1px solid red;
+  width: 1550px;
+  padding-top: 10px;
+}
+
 .content {
   padding-left: 340px;
+}
+
+.content.show-content .Box-content {
+  transform: translateX(0);
+}
+
+.content.hide-content .Box-content {
+  transform: translateX(-17%);
+  width: 1850px;
 }

@@ -25,18 +25,23 @@ function App() {
 
   return (
     <div className="app">
-      <Header userRole={userRole} statusSlide={handleSlideToggle} />
+      <div className="container">
+        <Header userRole={userRole} statusSlide={handleSlideToggle} />
 
-      <div className="Main">
-        <Slidebar
-          userRole={userRole}
-          currentPage={currentPage}
-          onPageChange={handlePageChange}
-          currentSlide={currentSlide}
-        />
-        <div className="content">
-          {pageComponents[currentPage] &&
-            React.createElement(pageComponents[currentPage])}
+        <div className="Main">
+          <Slidebar
+            userRole={userRole}
+            currentPage={currentPage}
+            onPageChange={handlePageChange}
+            currentSlide={currentSlide}
+          />
+
+          <div className={`content ${currentSlide ? 'show-content' : 'hide-content'}`}>
+            <div className="Box-content">
+              {pageComponents[currentPage] && React.createElement(pageComponents[currentPage])}
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
