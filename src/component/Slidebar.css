@@ -54,7 +54,19 @@
 .dashboard-page.active svg path {
     fill: #D42222;
 }
-  
+
+.Myapplications-page.active svg path {
+    stroke: #D42222; 
+}
+
+.Calendar-page.active svg path{
+    stroke: #D42222;
+}
+
+.Script-page.active svg path{
+    stroke: #D42222;
+}
+
 .slidebar {
     transition: transform 0.3s ease-out;
 }
@@ -65,4 +77,8 @@
 
 .hide {
     transform: translateX(-100%);
+}
+
+.page:hover {
+    background-color: rgba(242, 242, 242, 0.193);
 }

@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Cairo', sans-serif;
+}
+
+.containter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFFFFF;
+    border-radius: 31px;
+    overflow: hidden; /* Ensure that the image doesn't overflow the container */
+}
+
+.Text-join {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+    color: #FFFFFF;
+    width: 1100px;
+}
+
+.Header img {
+    width: 95%; /* 1800  * 410 support */  
+    border-radius: 63px;
+}
+
+.Header {
+    padding-top: 25px;
+    position: relative;
+    text-align: center;
+}
+
+.text button{
+   background: none;
+   border: none;
+   font-size: 20px;
+   font-weight: bold;
+   color: #FFFFFF; 
+   cursor: pointer;
+}

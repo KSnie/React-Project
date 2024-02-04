@@ -2,18 +2,24 @@ import React, { useState } from "react";
 import "./App.css";
 import Header from "./component/Header";
 import Home from "./component/pages/Home";
+import Myapplications from "./component/pages/Myapplications";
+import Calendar from "./component/pages/Calendar";
+import Script from "./component/pages/Script";
 import Dashboard from "./component/pages/Dashboard";
 import Slidebar from "./component/Slidebar";
 
 const pageComponents = {
   Home: Home,
+  Myapplications: Myapplications,
+  Calendar: Calendar,
+  Script: Script,
   Dashboard: Dashboard,
 };
 
 function App() {
   const [currentPage, setCurrentPage] = useState("Home");
   const [currentSlide, setCurrtenSlide] = useState(false);
-  const userRole = "admin";
+  const userRole = "user";
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
