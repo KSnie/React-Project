@@ -5,7 +5,6 @@ body {
 
 .Main {
   margin-top: 60px; /* Adjust this value based on the height of your fixed navigation bar */
-  display: flex;
 }
 
 .Box-content {
@@ -15,7 +14,7 @@ body {
 }
 
 .content {
-  padding-left: 340px;
+  padding-left: 335px;
 }
 
 .content.show-content .Box-content {

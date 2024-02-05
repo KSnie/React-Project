@@ -7,6 +7,7 @@ import Calendar from "./component/pages/Calendar";
 import Script from "./component/pages/Script";
 import Dashboard from "./component/pages/Dashboard";
 import Slidebar from "./component/Slidebar";
+import PostDetail from "./component/pages/PostDetail";
 
 const pageComponents = {
   Home: Home,
@@ -14,6 +15,8 @@ const pageComponents = {
   Calendar: Calendar,
   Script: Script,
   Dashboard: Dashboard,
+  PostDetail: PostDetail,
+  
 };
 
 function App() {

@@ -1,5 +1,6 @@
 import React from "react";
 import profile from "../image/profile.svg";
+import profile2 from "../image/profile2.svg";
 import "../css-pages/cp-post.css";
 import optionIcon from "../image/optionIcon.svg"
 
@@ -9,7 +10,7 @@ const Post = () => {
       Post_id: 1,
       Studio_name: "Marvel Studios",
       Catagory: "Horror",
-      userProfile_id: 1,
+      userProfile_id: profile,
       Post_Movie_name: "Infinity War",
       Post_Detail:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.  Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
@@ -21,7 +22,7 @@ const Post = () => {
       Post_id: 2,
       Studio_name: "DC Studios",
       Catagory: "LoveStory",
-      userProfile_id: 2,
+      userProfile_id: profile2,
       Post_Movie_name: "Last Love",
       Post_Detail:"TEST SHORT TEXT",
       Date_casting: "27/12/2023",
@@ -38,7 +39,7 @@ const Post = () => {
             
             <div className="post-top">
               <div className="user-info-post">
-                  <img src={profile} alt="profile"/>
+                  <img src={post.userProfile_id} alt="profile"/>
                   <div className="Name-post">
                     <h1>{post.Studio_name}</h1>
                     <p>Category {post.Catagory}</p>
