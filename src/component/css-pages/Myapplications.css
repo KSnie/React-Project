@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Cairo', sans-serif;
+}
+
+.progress-header {
+    font-size: 15px;
+    padding: 20px;
+}
+
+.progress-header p{
+    margin-top: -10px;
+    color: #A5A5A5;
+}
+
+.progress-container{
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 34px;
+    height: 650px;
+}
+
+.container-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: top;
+    border-bottom: 1px solid #DFE0EB;
+    height: 50px;
+}
+
+.container-bar h3{
+    padding-left: 36px;
+    font-weight: 600;
+}
+
+.container-bar h4{
+    padding-right: 310px;
+    font-weight: 500;
+}
+
+.progress-content { 
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #DFE0EB;
+}
+
+ .progress-content img {
+    border-radius: 100%;
+}
+
+.studio-info {
+    padding-left: 20px;
+    width: 600px;
+}
+
+
+.studio-info p {
+    margin-top: -6px;
+}
+
+.view-button {
+    background: none;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: 1px solid #280559;
+    border-radius: 100px;
+}
+
+.status {
+    padding-left: 830px;
+    padding-right: 200px;
+    
+}
+
+.status h4{
+    font-weight: 300;
+}
+
+.status {
+    font-weight: 300;
+}
+
+.status.Pending h4{
+    color: #F5B100;
+}
+
+.status.Declined h4{
+    color: #FF0000;
+}
+
+.status.Accepted h4{
+    color: #25B800;
+}

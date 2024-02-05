@@ -29,6 +29,16 @@ const Post = () => {
       Time_casting: "09.00 - 14.00",
     },
 
+    {
+      Post_id: 3,
+      Studio_name: "Nine Studios",
+      Catagory: "LoveStory",
+      userProfile_id: profile2,
+      Post_Movie_name: "Last Love",
+      Post_Detail:"TEST SHORT TEXT",
+      Date_casting: "27/12/2023",
+      Time_casting: "09.00 - 14.00",
+    },
   ];
 
   return (

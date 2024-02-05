@@ -37,7 +37,7 @@ function Header({ userRole , statusSlide } ) {
           <img className="app-profile-img" src={profile} alt="Profile" />
           <div className="app-profile-info">
             <h3>Kasidis C.</h3>
-            <p>Super Admin</p>
+            <p>{userRole}</p>
           </div>
 
           <button type="setting">
