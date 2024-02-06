@@ -13,10 +13,9 @@ const AuthPage = ({ onAuthentication, data }) => {
 
   const handleAuthenticationLocal = (username, password) => {
     const foundUser = data.find(
-      (user) => user.username === username && user.password === password,
-      console.log(password)
+      (user) => user.username === username && user.password === password
     );
-  
+
     if (foundUser) {
       onAuthentication(true, username, password);
     } else {
@@ -26,21 +25,15 @@ const AuthPage = ({ onAuthentication, data }) => {
 
   return (
     <div className="auth-page">
-      <h2>{isLogin ? "Login" : "Register"}</h2>
       {isLogin ? (
-        <LoginForm onAuthentication={handleAuthenticationLocal} />
+        <LoginForm
+          onAuthentication={handleAuthenticationLocal}
+          handleToggleForm={handleToggleForm}
+          errorMessage={errorMessage}
+        />
       ) : (
         <RegisterForm onAuthentication={onAuthentication} />
       )}
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
-      <p>
-        {isLogin
-          ? "Don't have an account? "
-          : "Already have an account? "}
-        <span onClick={handleToggleForm} className="toggle-link">
-          {isLogin ? "Register here" : "Login here"}
-        </span>
-      </p>
     </div>
   );
 };
