@@ -1,39 +1,33 @@
 import React, { useState } from "react";
 
-const RegisterForm = ({ onAuthentication }) => {
+const RegisterForm = ({ onAuthentication , isRegisterpc ,isRegister}) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  // const [Secondpassword, setSecondPassword] = useState();
+
+
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
 
     try {
-      onAuthentication(true, username, password);
+      onAuthentication("register", username, password);
     } catch (error) {
       console.error("Registration failed:", error);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Username:
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-      </label>
-      <label>
-        Password:
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </label>
-      <button type="submit">Register</button>
-    </form>
+    <div>
+      <input type="text" onChange={(e) => setUsername(e.target.value)} placeholder="username"/>
+      <input type="text" onChange={(e) => setPassword(e.target.value)} placeholder="password"/>
+      {/* <input type="number" onChange={(e) => setSecondPassword(e.target.value)} placeholder="password agin"/> */}
+
+      <button onClick={() => { isRegister(); handleSubmit(); }}>Register next page</button>
+      <button onClick={() => { isRegisterpc(); handleSubmit(); }}>Register PC</button>
+
+    </div>
+    
   );
 };
 

@@ -23,6 +23,7 @@ function App() {
   const [currentSlide, setCurrentSlide] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false); // Track authentication status
   const [userRole, setUserRole] = useState(null);
+  const [userName, setUserName] = useState(null);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -32,19 +33,29 @@ function App() {
     setCurrentSlide(option);
   };
 
-  const handleAuthentication = (status, username, password) => {
+  const handleAuthentication = (status, username, password , fullname,dateofbirth,phonenumber,county,detaillink) => {
+
+    console.log("Username:", username);
+    console.log("Password:", password);
+    console.log("Fullname:", fullname);
+    console.log("Date of Birth:", dateofbirth);
+    console.log("Phone Number:", phonenumber);
+    console.log("County:", county);
+    console.log("Detail Link:", detaillink);
+
     setIsAuthenticated(status);
     
     if (status) {
-      // Check the username and password against the array of users
       const foundUser = data.find(
         (user) => user.username === username && user.password === password
       );
   
       if (foundUser) {
         setUserRole(foundUser.role);
+        setUserName(foundUser.username);
+
       } else {
-        // Default to 'user' role if no matching user is found
+        setUserName(username);
         setUserRole('user');
       }
     }
@@ -57,7 +68,7 @@ function App() {
           <AuthPage onAuthentication={handleAuthentication} data={data} />
         ) : (
           <div>
-            <Header userRole={userRole} statusSlide={handleSlideToggle} />
+            <Header userRole={userRole} userName={userName} statusSlide={handleSlideToggle} />
             <div className="Main">
               <Slidebar
                 userRole={userRole}

@@ -6,9 +6,10 @@
     font-family: 'Cairo', sans-serif;
 }
 
-body {
-    padding-top: 0px;
+.main-content {
+    margin-top: -24px;
     background-color: #ffffff;
+    height: 100vh;
 }
 
 .Login-header {
@@ -141,6 +142,7 @@ body {
     height: 45px;
     border: none;
     background-color: #DD1212;
+    filter: drop-shadow(0 2px 8px rgba(254, 39, 39, 0.323));
     color: #ffffff;
     font-size: 15px;
     font-weight: bold;

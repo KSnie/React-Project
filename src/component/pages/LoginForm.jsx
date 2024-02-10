@@ -11,11 +11,11 @@ const LoginForm = ({ onAuthentication, handleToggleForm, errorMessage }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAuthentication(username, password);
+    onAuthentication("login",username, password);
   };
 
   return (
-    <div>
+    <div className="main-content">
       <div className="login-container">
         <div className="Login-header">
           <img src={Logo} alt="Logo" />

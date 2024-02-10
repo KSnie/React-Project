@@ -7,7 +7,7 @@ import sortIcon from "./image/sortIcon.svg";
 import settingIcon from "./image/settingIcon.svg";
 import sidebarIcon from "./image/sidebarIcon.svg";
 
-function Header({ userRole , statusSlide } ) {
+function Header({ userRole , userName, statusSlide } ) {
   const [isSidebarVisible, setIsSidebarVisible] = useState(true);
 
   const toggleSidebar = () => {
@@ -36,7 +36,7 @@ function Header({ userRole , statusSlide } ) {
         <div className="app-profile">
           <img className="app-profile-img" src={profile} alt="Profile" />
           <div className="app-profile-info">
-            <h3>Kasidis C.</h3>
+            <h3>{userName}</h3>
             <p>{userRole}</p>
           </div>
 
