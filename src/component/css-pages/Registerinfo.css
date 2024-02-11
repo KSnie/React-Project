@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Cairo', sans-serif;
+}
+
+.Registerinfo-container {
+    margin-top: -24px;
+    background-color: #ffffff;
+    height: 100vh;
+}
+
+.Login-header {
+    width: 100%px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.Login-header img {
+    width: 250px;
+    padding-left: 30px;
+    padding-top: 10px;
+}
+
+.Registerinfo-content-container {
+    border: 1px solid #999999;
+    border-radius: 30px;
+    margin-top: 50px;
+    width: 1000px;
+    transform: translate(50%, 0%);
+}
+
+.Registerinfo-content-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
+    padding-bottom: 80px;
+    font-size: 30px;
+}
+
+.Registerinfo-content-header h2 {
+    font-weight: 500;
+    
+}
+
+.Registerinfo-main-content {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.Registerinfo-Right-content {
+    position: relative;
+    text-align: center;
+    color: white;
+    padding-left: 40px;
+    padding-bottom: 100px;
+    padding-left: 100px;
+}
+
+.Registerinfo-Right-content img{
+    width: 300px;
+    border-radius: 100%;
+    /* padding-bottom: 40px; */
+    cursor: pointer;
+}
+
+.Registerinfo-Right-content h4{
+    position: absolute;
+    top: 40%;
+    left: 55%;
+    transform: translate(-10%, -100%);
+    color: white;
+}
+
+.Registerinfo-left-content {
+    justify-content: left;
+    margin-left: 120px;
+    /* border: 1px solid red; */
+    width: 400px;
+    margin-bottom: 150px;
+}
+
+.Registerinfo-dateAndPhone-form-register{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.Registerinfo-date-form-register {
+    padding-right: 10px;
+}
+
+.Registerinfo-Phone-form-register {
+   margin-left: 30px;
+   margin-top: 2px;
+   border-bottom: 1px solid #999999;
+   padding-bottom: 5px;
+   margin-bottom: 20px;
+   width: 100%;
+}
+
+.Registerinfo-fullname-form-register , .Registerinfo-date-form-register,.Registerinfo-mapIcon-form-register {
+    border-bottom: 1px solid #999999;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+.Registerinfo-fullname-input-register, .Registerinfo-mapIcon-input-register , .Registerinfo-phone-input-register , .Registerinfo-dateofbirth-input-register {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-top: 3px;
+}
+
+.Registerinfo-fullname-input-register input, .Registerinfo-mapIcon-input-register select , .Registerinfo-phone-input-register input, .Registerinfo-dateofbirth-input-register input{
+    margin-left: 10px;
+    width: 100%;
+    background: none;
+    border: none;
+    font-size: 13px;
+}
+
+.Registerinfo-fullname-input-register input:focus, .Registerinfo-mapIcon-input-register select:focus ,.Registerinfo-phone-input-register input:focus, .Registerinfo-dateofbirth-input-register input:focus{
+    outline: none;
+}
+
+.Registerinfo-fullname-form-register h4, .Registerinfo-mapIcon-form-register h4 ,.Registerinfo-date-form-register h4 ,.Registerinfo-Phone-form-register h4{
+    font-size: 15px;
+    color: #999999;
+    font-weight: 400;
+}
+
+.Registerinfo-nextpage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 35px;
+}
+
+.Registerinfo-nextpage button {
+    width: 100%;
+    height: 45px;
+    border: none;
+    background-color: #DD1212;
+    filter: drop-shadow(0 2px 8px rgba(254, 39, 39, 0.323));
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+}

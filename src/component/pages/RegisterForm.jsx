@@ -102,20 +102,7 @@ const RegisterForm = ({ onAuthentication , isLogin, isRegisterpc ,isRegister}) =
         </div>
       </div>
 
-
-      {/* <input type="text" onChange={(e) => setUsername(e.target.value)} placeholder="username"/>
-      <input type="text" onChange={(e) => setPassword(e.target.value)} placeholder="password"/>
-
-      <input type="checkbox" onChange={(e) => setGender(e.target.value)} name="gender" value="male" />
-      <input type="checkbox" onChange={(e) => setGender(e.target.value)} name="gender" value="Female" /> */}
-
-      {/* <input type="number" onChange={(e) => setSecondPassword(e.target.value)} placeholder="password agin"/> */}
-
-      {/* <button onClick={() => { isRegister(); handleSubmit(); }}>Register next page</button>
-      <button onClick={() => { isRegisterpc(); handleSubmit(); }}>Register PC</button> */}
-
     </div>
-    
   );
 };
 
