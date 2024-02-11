@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Logo from "../image/logo.svg";
 import "../css-pages/LoginForm.css";
-import mailIcon from "../image/mailIcon.svg";
+import userIcon from "../image/userIcon.svg";
 import passwordIcon from "../image/passwordIcon.svg";
 import hidepassIcon from "../image/hidepassIcon.svg";
 
@@ -26,15 +26,15 @@ const LoginForm = ({ onAuthentication, handleToggleForm, errorMessage }) => {
               <h3>Sign In</h3>
             </div>
 
-            <div className="Email-form">
-              <h4>Email</h4>
-              <form className="Email-input">
-                <img src={mailIcon} alt="mail-icon" />
+            <div className="Username-form">
+              <h4>Username</h4>
+              <form className="Username-input">
+                <img src={userIcon} alt="mail-icon" />
                 <input
                   type="text"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  placeholder="Enter your email address"
+                  placeholder="Enter your Username"
                 />
               </form>
             </div>

@@ -14,6 +14,7 @@ const AuthPage = ({ onAuthentication, data }) => {
 
   const [isusername, setUsername] = useState("");
   const [ispassword, setPassword] = useState("");
+  const [isgender, setGender] = useState("");
 
   const handleToggleForm = () => {
     setIsLogin((prevIsLogin) => !prevIsLogin);
@@ -32,7 +33,7 @@ const AuthPage = ({ onAuthentication, data }) => {
     setPcRequest((prevIsRegisterRequest) => !prevIsRegisterRequest);
   };
 
-  const handleAuthenticationLocal = (option,username, password , fullname,dateofbirth,phonenumber,county,detaillink) => {
+  const handleAuthenticationLocal = (option,username, password ,gender , fullname,dateofbirth,phonenumber,county,detaillink) => {
     if (option === "login") {
       const foundUser = data.find(
         (user) => user.username === username && user.password === password
@@ -46,11 +47,12 @@ const AuthPage = ({ onAuthentication, data }) => {
     } else if (option === "register") {
       setUsername(username)
       setPassword(password)
+      setGender(gender)
 
     } else if (option === "registerinfo") {
-      onAuthentication(true, isusername, ispassword , fullname, dateofbirth, phonenumber, county, detaillink);
+      onAuthentication(true, isusername, ispassword , isgender, fullname, dateofbirth, phonenumber, county, detaillink);
     } else if (option === "registerPc") {
-      onAuthentication(false, isusername, ispassword, fullname, dateofbirth, phonenumber, county,detaillink);
+      onAuthentication(false, isusername, ispassword, isgender, fullname, dateofbirth, phonenumber, county,detaillink);
     }
   };
 
@@ -65,7 +67,7 @@ const AuthPage = ({ onAuthentication, data }) => {
       ) : (
         isRegisterpc ? (
           isRegister ? (
-            <RegisterForm onAuthentication={handleAuthenticationLocal} isRegisterpc={handleToggleFormRegisterPC} isRegister={handleToggleFormRegister}/>
+            <RegisterForm onAuthentication={handleAuthenticationLocal} isLogin={handleToggleForm} isRegisterpc={handleToggleFormRegisterPC} isRegister={handleToggleFormRegister}/>
           ) : (
             <Registerinfo onAuthentication={handleAuthenticationLocal} />
           )

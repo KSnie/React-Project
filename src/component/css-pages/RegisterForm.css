@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Cairo', sans-serif;
+}
+
+.RegisterF-container {
+    margin-top: -24px;
+    background-color: #ffffff;
+    height: 100vh;
+}
+
+.RegisterF-main-content {
+    border: 1px solid #D6D6D6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    width: 1000px;
+    height: 600px;
+    transform: translate(45%, 5%);
+}
+
+.RegisterF-container-left {
+    /* padding-left: 50px; */
+    /* border: 1px solid red; */
+    width: 350px;
+}
+
+.content-text-top {
+    padding-bottom: 15px;
+}
+
+.content-text-top h3{
+    font-size: 33px;
+}
+
+.content-text-top p {
+    margin-top: -5px;
+    font-size: 17px;
+}
+
+.content-text-top h4 {
+    cursor: pointer;
+    margin-top: -5px;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.Username-form-register, .Password-form-register , .Second-Password-form-register{
+    border-bottom: 1px solid #999999;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+.Username-input-register, .Password-input-register , .Second-Password-input-register {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-top: 3px;
+}
+
+.Username-input-register input, .Password-input-register input , .Second-Password-input-register input {
+    margin-left: 10px;
+    width: 100%;
+    background: none;
+    border: none;
+    font-size: 13px;
+}
+
+.Username-input-register input:focus , .Password-input-register input:focus , .Second-Password-input-register input:focus {
+    outline: none;
+}
+
+.Username-form-register h4 , .Password-form-register h4 , .Second-Password-form-register h4 {
+    font-size: 15px;
+    color: #999999;
+    font-weight: 400;
+}
+
+.RegisterF-container-Right {
+  position: relative;
+  text-align: center;
+  color: white;
+  padding-left: 40px;
+}
+
+.RegisterF-container-Right img{
+    width: 550px;
+    border-radius: 15px;
+}
+
+.RegisterF-container-Right h4{
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.RegisterF-container-Right p{
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px;
+}
+
+.Gender-form-register {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  padding-top: 15px;
+}
+
+.Gender-form-register label{
+  user-select: none;
+}
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"] + label {
+  z-index: 10;
+  margin: 0 10px 10px 0;
+  position: relative;
+  color: #ced4da;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
+  font-weight: bold;
+  background-color: #ffffff;
+  border: 2px solid #ced4da;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+input[type="radio"]:checked + label {
+  color: #ffffff;
+  background-color: #D42222;
+  border: 2px solid #D42222;
+}
+
+input[type="radio"] + label {
+  padding: 2px 15px;
+  border-radius: 10px;
+}
+
+.Gender-form-register h4 {
+    font-size: 18px;
+    font-weight: 500;
+    padding-bottom: 15px;
+    padding-right: 15px;
+}
+
+.Register-nextpage{
+    padding-top: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Register-nextpage button {
+    width: 100%;
+    height: 45px;
+    border: none;
+    background-color: #DD1212;
+    filter: drop-shadow(0 2px 8px rgba(254, 39, 39, 0.323));
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.Register-Pc {
+    padding-bottom: 30px;
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Register-Pc button {
+    width: 100%;
+    height: 45px;
+    border: none;
+    background-color: #C5A963;
+    filter: drop-shadow(0 2px 8px rgba(232, 255, 116, 0.148));
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+}

@@ -33,10 +33,11 @@ function App() {
     setCurrentSlide(option);
   };
 
-  const handleAuthentication = (status, username, password , fullname,dateofbirth,phonenumber,county,detaillink) => {
+  const handleAuthentication = (status, username, password ,gender, fullname,dateofbirth,phonenumber,county,detaillink) => {
 
     console.log("Username:", username);
     console.log("Password:", password);
+    console.log("Gender:", gender);
     console.log("Fullname:", fullname);
     console.log("Date of Birth:", dateofbirth);
     console.log("Phone Number:", phonenumber);

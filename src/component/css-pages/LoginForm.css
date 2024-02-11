@@ -57,7 +57,7 @@
     font-weight: 500;
 }
 
-.Email-form {
+.Username-form {
     /* border: 1px solid red; */
     margin-top: 20px;
     height: 70px;
@@ -65,27 +65,27 @@
 }
 
 
-.Email-form h4{
+.Username-form h4{
     font-size: 15px;
     color: #999999;
     font-weight: 400;
 }
 
-.Email-input {
+.Username-input {
     display: flex;
     justify-content: left;
     align-items: center;
     padding-top: 10px;
 }
 
-.Email-input input{
+.Username-input input{
     margin-left: 10px;
     width: 100%;
     background: none;
     border: none;
 }
 
-.Email-input input:focus{
+.Username-input input:focus{
     outline: none;
 }
 
