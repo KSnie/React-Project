@@ -82,14 +82,6 @@ const Registerinfo = ({ onAuthentication, isRegisterpc }) => {
                 <form className="Registerinfo-mapIcon-input-register">
                   <img src={mapIcon} alt="user-icon" />
 
-
-                  {/* <input
-                    type="text"
-                    value={iscountry}
-                    onChange={(e) => setCountry(e.target.value)}
-                    placeholder="Country"
-                  /> */}
-
                     <select id="country" onChange={(e) => setCountry(e.target.value)} name="country">
                       <option value="Canada">Canada</option>
                       <option value="France">France</option>
@@ -97,7 +89,6 @@ const Registerinfo = ({ onAuthentication, isRegisterpc }) => {
                       <option selected="selected"value="Thailand">Thailand</option>
                       <option value="United States">United States</option>
                   </select>
-
                 </form>
               </div>
 

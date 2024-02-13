@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Cairo', sans-serif;
+}
+
+.Project-main-content {
+    margin-top: -24px;
+    background-color: #ffffff;
+    height: 100vh;
+}
+
+.Project-content-container {
+    position: absolute;
+    top: 35%;
+    left: 38%;
+    border: 1px solid #999999;
+    /* filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.228)); */
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    width: 500px;
+    height: 150px;
+    border-radius: 20px;
+}
+
+.Project-content-container h2 {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.Project-content-container button {
+    width: 90%;
+    margin-left: 25px;
+    margin-top: 10px;
+    height: 35px;
+    border: none;
+    background-color: #DD1212;
+    filter: drop-shadow(0 2px 8px rgba(196, 0, 0, 0.561));
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+}

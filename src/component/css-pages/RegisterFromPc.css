@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Cairo', sans-serif;
+}
+
+.RegisterFormPc-container {
+    margin-top: -24px;
+    background-color: #ffffff;
+    height: 100vh;
+}
+
+.RegisterFormPc-content-container {
+    border: 1px solid #999999;
+    border-radius: 30px;
+    margin-top: 50px;
+    width: 1000px;
+    transform: translate(50%, -5%);
+}
+
+.RegisterFormPc-content-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.RegisterFormPc-content-header-text h2{
+    padding-top: 30px;
+    font-size: 30px;
+}
+
+.RegisterFormPc-content-header-text h4{
+    padding-bottom: 60px;
+    font-size: 30px;
+    color: #B4A03C;
+    font-size: 20px;
+    padding-left: 100px;
+}
+
+.RegisterFormPc-main-content {
+    display: flex;
+    align-items: center;
+}
+
+.RegisterFormPc-Right-content {
+    position: relative;
+    padding-left: 40px;
+    padding-bottom: 70px;
+    padding-left: 100px;
+    padding-right: 50px;
+}
+
+.RegisterFormPc-Right-content h4{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-10%, -100%);
+    color: white;
+}
+
+.RegisterFormPc-profile img{
+    width: 300px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+
+.RegisterFormPc-file-select {
+    padding-top: 20px;
+}
+
+.RegisterFormPc-profile-add {
+    width: 100%;
+    height: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    cursor: pointer;
+}
+
+.RegisterFormPc-file-select h6{
+    padding-left: 40%;
+    margin-top: -30px;
+    padding-bottom: 15px;
+    color: #999999;
+}
+
+.RegisterFormPc-imagefillter {
+    height: 30px;
+}
+
+.RegisterFormPc-ul-text {
+    list-style-position: inside;
+}
+
+.RegisterFormPc-Phone-form-register {
+    margin-left: 30px;
+    margin-top: 2px;
+    border-bottom: 1px solid #999999;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+    width: 100%;
+ }
+
+.RegisterFormPc-fullname-form-register , .RegisterFormPc-date-form-register,.RegisterFormPc-mapIcon-form-register {
+    border-bottom: 1px solid #999999;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+.RegisterFormPc-fullname-input-register, .RegisterFormPc-mapIcon-input-register , .RegisterFormPc-phone-input-register , .RegisterFormPc-dateofbirth-input-register {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-top: 3px;
+}
+
+.RegisterFormPc-fullname-input-register input, .RegisterFormPc-mapIcon-input-register select , .RegisterFormPc-phone-input-register input, .RegisterFormPc-dateofbirth-input-register input{
+    margin-left: 10px;
+    width: 100%;
+    background: none;
+    border: none;
+    font-size: 13px;
+}
+
+.RegisterFormPc-fullname-input-register input:focus, .RegisterFormPc-mapIcon-input-register select:focus ,.RegisterFormPc-phone-input-register input:focus, .RegisterFormPc-dateofbirth-input-register input:focus{
+    outline: none;
+}
+
+.RegisterFormPc-fullname-form-register h4, .RegisterFormPc-mapIcon-form-register h4 ,.RegisterFormPc-date-form-register h4 ,.RegisterFormPc-Phone-form-register h4{
+    font-size: 15px;
+    color: #999999;
+    font-weight: 400;
+}
+
+.RegisterFormPc-dateAndPhone-form-register{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+
+.RegisterFormPc-left-content {
+    justify-content: left;
+    margin-left: 120px;
+    width: 400px;
+    margin-top: -100px;
+}
+
+.RegisterFormPc-bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -50px;
+    padding-bottom: 20px;
+}
+
+.RegisterFormPc-bottom button {
+    width: 80%;
+    height: 45px;
+    border: none;
+    background-color: #C5A963;
+    filter: drop-shadow(0 2px 8px rgba(180, 180, 0, 0.228));
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+}
