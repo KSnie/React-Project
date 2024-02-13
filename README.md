@@ -1,11 +1,12 @@
 # First React-Web
 
-มาดูทำไมแค่ลองทำเฉยๆ
+Deploy Link : https://react-project-nine-opal.vercel.app/
 
-### `npm start`
+Test user : UserName : user Password : user  // role : user
+Test admin : UserName : admin Password : admin  // role : admin
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### `โหลด React มาก่อน แล้ว ก็`
+npm start
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### `Project React node PostgreSQL`
+
