@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Cairo', sans-serif;
+}
+
+.Post-header {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 30px;
+}
+
+.Post-header img {
+    height: 80px;
+    border-radius: 100%;
+}
+
+.Post-header-name {
+    padding-left: 30px;
+}
+
+.Post-header-name h3 {
+    font-size: 30px;
+}
+
+.Post-header-name p {
+    color: #C5C7CD;
+    margin-top: -10px;
+}
+
+.Post-content-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 710px;
+}
+
+.Post-left-content {
+    /* border: 1px solid red; */
+    height: 95%;
+    width: 700px;
+    margin-left: 50px;
+}
+
+.Post-right-content {
+    /* border: 1px solid red; */
+    height: 95%;
+    width: 700px;
+    margin-right: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.Post-right-main-content {
+    width: 400px;
+    background-color: #FBFBFB;
+    border-radius: 40px;
+    margin-bottom: 30px;
+}
+
+.Post-right-moviename {
+    padding-left: 40px;
+    padding-top: 20px;
+}
+
+.Post-right-moviename h4 {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.Post-character {
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 20px;
+}
+
+.Post-character select {
+    width: 100%;
+    margin-top: 10px;
+    height: 40px;
+    border-radius: 40px;
+    background-color: #F4F4F4;
+    border: none;
+    padding-left: 20px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+
+}
+
+.Post-character option {
+    background-color: #F4F4F4;
+}
+
+.Post-character select:focus {
+    outline: none;
+}
+
+.Post-Attach-container {
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 20px;
+}
+
+.Post-Attach-container h4 {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.Post-Attach-container button {
+    width: 100%;
+    height: 50px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F4F4F4;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    
+}
+
+.Post-Attach-container h5 {
+    color: #646464;
+}
+
+.Post-right-date-time {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 70px;
+    padding-top: 20px;
+    padding-right: 70px;
+}
+
+.Post-submit-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 200px;
+}
+
+.Post-submit-button button {
+    width: 80%;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 20px;
+    border: none;
+    background-color: #DD1212;
+    color: #ffffff;
+    font-size: 15px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}

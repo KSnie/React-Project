@@ -56,6 +56,7 @@
     padding-top: 30px;
     margin-top: -50px;
     padding-bottom: 0px;
+    height: 120px;
     background-color: #e7e7e739;
     /* border-radius: 0px 0px 43px 43px; */
 }
@@ -65,6 +66,8 @@
     padding-left: 30px;
     font-size: 20px;
     font-weight: 300;
+    max-height: 80px;
+    overflow: hidden;
 }
 
 .bottom-post {

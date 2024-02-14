@@ -1,37 +1,79 @@
-import React from "react";
+import React, { useState } from "react";
+import attachIcon from "../image/attachIcon.svg";
+import "../css-pages/PostPopup.css";
 
-const PostPopup = ({ dataPost }) => {
+const PostPopup = ({ onPageChange , dataPost }) => {
+
+  const [currentCharacter, setCurrentCharacter] = useState("");
+
+  const onRegister = (data) => {
+    console.log(data.Post_id)
+    console.log(currentCharacter)
+  }
+  
   return (
     <div>
-      <h2>PostPopup Page</h2>
-      <div>
-        <strong>Category:</strong> {dataPost.Category}
+      <div className="containter">
+        <div className="Post-header">
+          <img src={dataPost.userProfile_id} alt="profile" />
+          <div className="Post-header-name">
+            <h3>{dataPost.Studio_name}</h3>
+            <p>Category {dataPost.Category}</p>
+          </div>
+        </div>
+
+        <div className="Post-content-container">
+          <div className="Post-left-content">
+            {dataPost.Post_Detail}
+          </div>
+
+          <div className="Post-right-content">
+            <div className="Post-right-main-content">
+              <div className="Post-right-top-content">
+                <div className="Post-right-moviename">
+                  <h4>{dataPost.Post_Movie_name}</h4>
+                </div>
+
+                <div className="Post-character">
+                  <h4>Character</h4>
+                  <select id="postCharacter" name="postCharacter" onChange={(e) => setCurrentCharacter(e.target.value)}>
+                    {dataPost.Post_character.map((character, index) => (
+                      <option key={index} value={character}>
+                        {character}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="Post-Attach-container">
+                  <h4>Portfolio (PDF file)</h4>
+                  <button className="Post-right-Attach">
+                    <img src={attachIcon} alt="Attach Icon"></img>
+                    <h5>Attach File</h5>
+                  </button>
+                </div>
+              </div>
+
+              <div className="Post-right-date-time">
+                <div className="Post-right-date">
+                  <h4>Date Casting</h4>
+                  <p>{dataPost.Date_casting}</p>
+                </div>
+
+                <div className="Post-right-date">
+                  <h4>Time Casting</h4>
+                  <p>{dataPost.Time_casting}</p>
+                </div>
+
+              </div>
+              <div className="Post-submit-button">
+                  <button onClick={() => { onPageChange("Home"); onRegister(dataPost);}} >Register</button>
+              </div>
+            </div>
+            
+          </div>
+        </div>
       </div>
-      <div>
-        <strong>Date Casting:</strong> {dataPost.Date_casting}
-      </div>
-      <div>
-        <strong>Post Detail:</strong> {dataPost.Post_Detail}
-      </div>
-      <div>
-        <strong>Post Movie Name:</strong> {dataPost.Post_Movie_name}
-      </div>
-      <div>
-        <strong>Post ID:</strong> {dataPost.Post_id}
-      </div>
-      <div>
-        <strong>Studio Name:</strong> {dataPost.Studio_name}
-      </div>
-      <div>
-        <strong>Time Casting:</strong> {dataPost.Time_casting}
-      </div>
-      <div>
-        <strong>User Profile ID:</strong> {dataPost.userProfile_id}
-      </div>
-      <p>
-        This is the content of the PostPopup Pagex
-        {console.log(dataPost.Studio_name)}.
-      </p>
     </div>
   );
 };

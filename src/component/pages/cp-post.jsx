@@ -14,9 +14,21 @@ const Post = ({ onPageChange, onChangePost}) => {
       userProfile_id: profile,
       Post_Movie_name: "Infinity War",
       Post_Detail:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.  Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+        <div>
+          <h2>Requirement</h2>
+          <ul>
+            <p>- XXXXX</p>
+            <p>- XXXXX</p>
+            <p>- XXXXX</p>
+          </ul>
+
+          <h2>Detail</h2>
+          <p>Text Test</p>
+        </div>,
       Date_casting: "27/12/2023",
       Time_casting: "09.00 - 14.00",
+
+      Post_character : ["First","Second","Third"]
     },
 
     {
@@ -28,6 +40,8 @@ const Post = ({ onPageChange, onChangePost}) => {
       Post_Detail:"TEST SHORT TEXT",
       Date_casting: "27/12/2023",
       Time_casting: "09.00 - 14.00",
+
+      Post_character : ["First","Second","Third"]
     },
 
     {
@@ -39,6 +53,8 @@ const Post = ({ onPageChange, onChangePost}) => {
       Post_Detail:"TEST SHORT TEXT",
       Date_casting: "27/12/2023",
       Time_casting: "09.00 - 14.00",
+
+      Post_character : ["First","Second","Third"]
     },
 
     {
@@ -50,6 +66,8 @@ const Post = ({ onPageChange, onChangePost}) => {
       Post_Detail:"TEST SHORT TEXT",
       Date_casting: "27/12/2023",
       Time_casting: "09.00 - 14.00",
+
+      Post_character : ["First","Second","Third"]
     },
 
     {
@@ -61,6 +79,8 @@ const Post = ({ onPageChange, onChangePost}) => {
       Post_Detail:"TEST SHORT TEXT",
       Date_casting: "27/12/2023",
       Time_casting: "09.00 - 14.00",
+
+      Post_character : ["First","Second","Third"]
     },
   ];
 
