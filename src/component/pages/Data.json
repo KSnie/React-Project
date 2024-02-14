@@ -2,6 +2,7 @@
     { "username": "admin", "password": "admin", "role": "admin" },
     { "username": "admin1", "password": "admin1", "role": "admin" },
     { "username": "Isusbiw", "password": "1234", "role": "admin" },
-    { "username": "user", "password": "user", "role": "user" }
+    { "username": "user", "password": "user", "role": "user" },
+    { "username": "x", "password": "x", "role": "user" }
 ]
   

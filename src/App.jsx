@@ -9,6 +9,7 @@ import Dashboard from "./component/pages/Dashboard";
 import Slidebar from "./component/Slidebar";
 import AuthPage from "./component/pages/AuthPage"; // Import the AuthPage component
 import data from "./component/pages/Data.json";
+import PostPopup from "./component/pages/PostPopup";
 
 const pageComponents = {
   Home: Home,
@@ -16,6 +17,7 @@ const pageComponents = {
   Calendar: Calendar,
   Script: Script,
   Dashboard: Dashboard,
+  PostPopup : PostPopup
 };
 
 function App() {
@@ -25,8 +27,16 @@ function App() {
   const [userRole, setUserRole] = useState(null);
   const [userName, setUserName] = useState(null);
 
+  const [selectedPost, setSelectedPost] = useState(null);
+
+
   const handlePageChange = (page) => {
     setCurrentPage(page);
+  };
+
+  const PostChange = (post) => {
+    setSelectedPost(post);
+    // console.log(post)
   };
 
   const handleSlideToggle = (option) => {
@@ -84,8 +94,12 @@ function App() {
                 }`}
               >
                 <div className="Box-content">
-                  {pageComponents[currentPage] &&
-                    React.createElement(pageComponents[currentPage])}
+                {pageComponents[currentPage] &&
+                  React.createElement(pageComponents[currentPage], {
+                    onPageChange: handlePageChange,
+                    dataPost: selectedPost,
+                    onChangePost: PostChange, 
+                  })}
                 </div>
               </div>
             </div>

@@ -8,7 +8,7 @@ import Post from "../pages/cp-post"
 
 
 
-const Home = () => {
+const Home = ({onPageChange, dataPost, onChangePost}) => {
   const images = [
     { id: 1123, src: adimage1 },
     { id: 2123, src: adimage2 },
@@ -45,7 +45,7 @@ const Home = () => {
         </div>
         
         <div className="Post">
-          <Post />
+          <Post onPageChange={onPageChange} dataPost={dataPost} onChangePost={onChangePost}/>
         </div>
 
 

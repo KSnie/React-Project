@@ -3,18 +3,14 @@ import profile from "../image/profile.svg";
 import profile2 from "../image/profile2.svg";
 import "../css-pages/cp-post.css";
 import optionIcon from "../image/optionIcon.svg"
-import PostPopup from "./PostPopup";
 
-const Post = () => {
-
-  const [selectedPost, setSelectedPost] = useState(null);
-
+const Post = ({ onPageChange, onChangePost}) => {
 
   const PostDetail = [
     {
       Post_id: 1,
       Studio_name: "Marvel Studios",
-      Catagory: "Horror",
+      Category: "Horror",
       userProfile_id: profile,
       Post_Movie_name: "Infinity War",
       Post_Detail:
@@ -26,7 +22,7 @@ const Post = () => {
     {
       Post_id: 2,
       Studio_name: "DC Studios",
-      Catagory: "LoveStory",
+      Category: "LoveStory",
       userProfile_id: profile2,
       Post_Movie_name: "Last Love",
       Post_Detail:"TEST SHORT TEXT",
@@ -37,7 +33,7 @@ const Post = () => {
     {
       Post_id: 3,
       Studio_name: "Nine Studios",
-      Catagory: "LoveStory",
+      Category: "LoveStory",
       userProfile_id: profile2,
       Post_Movie_name: "Last Love",
       Post_Detail:"TEST SHORT TEXT",
@@ -48,7 +44,7 @@ const Post = () => {
     {
       Post_id: 4,
       Studio_name: "Nine Studios",
-      Catagory: "LoveStory",
+      Category: "LoveStory",
       userProfile_id: profile2,
       Post_Movie_name: "Last Love",
       Post_Detail:"TEST SHORT TEXT",
@@ -59,7 +55,7 @@ const Post = () => {
     {
       Post_id: 5,
       Studio_name: "Nine Studios",
-      Catagory: "LoveStory",
+      Category: "LoveStory",
       userProfile_id: profile2,
       Post_Movie_name: "Last Love",
       Post_Detail:"TEST SHORT TEXT",
@@ -67,14 +63,6 @@ const Post = () => {
       Time_casting: "09.00 - 14.00",
     },
   ];
-  
-  const openPostPopup = (post) => {
-    setSelectedPost(post);
-  };
-
-  const closePostPopup = () => {
-    setSelectedPost(null);
-  };
 
   return (
     <div>
@@ -87,7 +75,7 @@ const Post = () => {
                   <img src={post.userProfile_id} alt="profile"/>
                   <div className="Name-post">
                     <h1>{post.Studio_name}</h1>
-                    <p>Category {post.Catagory}</p>
+                    <p>Category {post.Category}</p>
                   </div>
               </div>
               
@@ -104,16 +92,14 @@ const Post = () => {
               </div>
             </div>
             <div className="bottom-post">
-              <button onClick={() => openPostPopup(post)}>See more detail</button>
+            <button onClick={() => { onPageChange("PostPopup"); onChangePost(post)}}>
+              See more detail
+            </button>
             </div>
 
         </div>
         
       ))}
-
-        {selectedPost && (
-          <PostPopup selectedPost={selectedPost} onClose={closePostPopup} />
-        )}
     </div>
   );
 };

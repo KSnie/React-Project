@@ -1,17 +1,37 @@
 import React from "react";
-import '../css-pages/PostPopup.css';
 
-const PostPopup = ({ selectedPost, onClose }) => {
+const PostPopup = ({ dataPost }) => {
   return (
-    <div className="post-popup">
-      <h2>PostDetail Page</h2>
+    <div>
+      <h2>PostPopup Page</h2>
       <div>
-        <h1>{selectedPost.Studio_name}</h1>
-        <p>Category: {selectedPost.Catagory}</p>
-        <p>{selectedPost.Post_Detail}</p>
-        {/* Add other details here */}
+        <strong>Category:</strong> {dataPost.Category}
       </div>
-      <button onClick={onClose}>Close</button>
+      <div>
+        <strong>Date Casting:</strong> {dataPost.Date_casting}
+      </div>
+      <div>
+        <strong>Post Detail:</strong> {dataPost.Post_Detail}
+      </div>
+      <div>
+        <strong>Post Movie Name:</strong> {dataPost.Post_Movie_name}
+      </div>
+      <div>
+        <strong>Post ID:</strong> {dataPost.Post_id}
+      </div>
+      <div>
+        <strong>Studio Name:</strong> {dataPost.Studio_name}
+      </div>
+      <div>
+        <strong>Time Casting:</strong> {dataPost.Time_casting}
+      </div>
+      <div>
+        <strong>User Profile ID:</strong> {dataPost.userProfile_id}
+      </div>
+      <p>
+        This is the content of the PostPopup Page
+        {console.log(dataPost.Studio_name)}.
+      </p>
     </div>
   );
 };
