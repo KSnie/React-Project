@@ -29,7 +29,7 @@ const PostPopup = ({ dataPost }) => {
         <strong>User Profile ID:</strong> {dataPost.userProfile_id}
       </div>
       <p>
-        This is the content of the PostPopup Page
+        This is the content of the PostPopup Pagex
         {console.log(dataPost.Studio_name)}.
       </p>
     </div>
