@@ -17,7 +17,7 @@ const pageComponents = {
   Calendar: Calendar,
   Script: Script,
   Dashboard: Dashboard,
-  PostPopup : PostPopup
+  PostPopup: PostPopup,
 };
 
 function App() {
@@ -28,7 +28,6 @@ function App() {
   const [userName, setUserName] = useState(null);
 
   const [selectedPost, setSelectedPost] = useState(null);
-
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -43,8 +42,17 @@ function App() {
     setCurrentSlide(option);
   };
 
-  const handleAuthentication = (status, username, password ,gender, fullname,dateofbirth,phonenumber,county,detaillink) => {
-
+  const handleAuthentication = (
+    status,
+    username,
+    password,
+    gender,
+    fullname,
+    dateofbirth,
+    phonenumber,
+    county,
+    detaillink
+  ) => {
     console.log("Username:", username);
     console.log("Password:", password);
     console.log("Gender:", gender);
@@ -55,19 +63,18 @@ function App() {
     console.log("Detail Link:", detaillink);
 
     setIsAuthenticated(status);
-    
+
     if (status) {
       const foundUser = data.find(
         (user) => user.username === username && user.password === password
       );
-  
+
       if (foundUser) {
         setUserRole(foundUser.role);
         setUserName(foundUser.username);
-
       } else {
         setUserName(username);
-        setUserRole('user');
+        setUserRole("user");
       }
     }
   };
@@ -79,7 +86,11 @@ function App() {
           <AuthPage onAuthentication={handleAuthentication} data={data} />
         ) : (
           <div>
-            <Header userRole={userRole} userName={userName} statusSlide={handleSlideToggle} />
+            <Header
+              userRole={userRole}
+              userName={userName}
+              statusSlide={handleSlideToggle}
+            />
             <div className="Main">
               <Slidebar
                 userRole={userRole}
@@ -94,12 +105,12 @@ function App() {
                 }`}
               >
                 <div className="Box-content">
-                {pageComponents[currentPage] &&
-                  React.createElement(pageComponents[currentPage], {
-                    onPageChange: handlePageChange,
-                    dataPost: selectedPost,
-                    onChangePost: PostChange, 
-                  })}
+                  {pageComponents[currentPage] &&
+                    React.createElement(pageComponents[currentPage], {
+                      onPageChange: handlePageChange,
+                      dataPost: selectedPost,
+                      onChangePost: PostChange,
+                    })}
                 </div>
               </div>
             </div>
