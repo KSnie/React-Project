@@ -15,6 +15,10 @@ import ScriptDetail from "./component/pages/ScriptDetail";
 import Requests from "./component/pages/Requests";
 import User from "./component/pages/User";
 
+import Dashboardpc from "./component/pages/Dashboardpc";
+import Myproject from "./component/pages/Myproject";
+import Postpc from "./component/pages/Postpc";
+
 const pageComponents = {
   Home: Home,
   Myapplications: Myapplications,
@@ -25,6 +29,10 @@ const pageComponents = {
   ScriptDetail: ScriptDetail,
   Requests: Requests,
   User: User,
+
+  Dashboardpc: Dashboardpc,
+  Myproject: Myproject,
+  Postpc: Postpc,
 };
 
 function App() {
