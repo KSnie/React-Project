@@ -3,6 +3,7 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
+import "../css-pages/Calendar.css";
 
 const Calendar = () => {
   return (
@@ -19,6 +20,7 @@ const Calendar = () => {
           { title: "กินข้าว", date: "2024-02-14" },
           { title: "กินน้ำ", date: "2024-02-14" },
         ]}
+        aspectRatio={2.5}
       />
     </div>
   );
