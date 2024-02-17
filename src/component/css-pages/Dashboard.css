@@ -1,0 +1,116 @@
+.Dashboard-container{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 30px;
+}
+
+.Dashboard-main-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #DFE0EB;
+    padding-bottom: 15px;
+}
+
+.Dashboard-main-container img {
+    height: 50px;
+    border-radius: 100%;
+    margin-left: 25px;
+}
+
+.Dashboard-text {
+    padding-left: 20px;
+    padding-top: 10px;
+    border-bottom: 1px solid #DFE0EB;
+    margin-left: 30px;
+    margin-right: 30px;
+    padding-bottom: 5px;
+    font-size: 15px;
+}
+
+.Dashboard-summary-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dashboard-user ,.dashboard-Viewer , .dashboard-Register  {
+    width: 32%;
+    height: 160px;
+    margin-bottom: 20px;
+    text-align: center;
+    padding-top: 60px;
+    background-color: #ffffff;
+    border-radius: 34px;
+}
+
+.dashboard-user h4 ,.dashboard-Viewer h4, .dashboard-Register h4 {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.dashboard-user h2 ,.dashboard-Viewer h2, .dashboard-Register h2 {
+    font-size: 35px;
+    font-weight: 700;
+    margin-top: -10px;
+    color: #A5A5A5;
+}
+
+.Dashboard-content-name {
+    margin-left: -9%;
+}
+
+.Dashboard-button-View {
+    margin-left: 15%;
+}
+
+.Dashboard-content-Register {
+    margin-left: 10%;
+}
+
+.Dashboard-content-Viewer {
+    margin-left: 10%;
+
+}
+
+.Dashboard-button-Delete {
+    margin-right: 2%;
+    margin-left: -9%;
+}
+
+.Dashboard-content-name p{
+    font-size: 12px;
+    color: #A5A5A5;
+    margin-top: -2px;
+}
+
+.Dashboard-content-Viewer p , .Dashboard-content-Register p{
+    font-size: 12px;
+    color: #A5A5A5;
+    margin-top: -2px;
+    text-align: center;
+}
+
+.Dashboard-button-View {
+    padding-left: 18px;
+    padding-right: 18px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 40px;
+    border: 1px solid #280559;
+    background: none;
+}
+
+.Dashboard-button-Delete {
+    padding-left: 18px;
+    padding-right: 18px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 40px;
+    border: 1px solid #9c0000;
+    background: none;
+}

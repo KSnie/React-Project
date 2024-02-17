@@ -50,7 +50,12 @@
 .home-page.active svg path {
     stroke: #D42222;
   }
-  
+
+
+.Requests-page.active svg path {
+    stroke: #D42222;
+} 
+
 .dashboard-page.active svg path {
     fill: #D42222;
 }

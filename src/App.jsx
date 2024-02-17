@@ -12,6 +12,8 @@ import data from "./component/pages/Data.json";
 import PostPopup from "./component/pages/PostPopup";
 import ScriptDetail from "./component/pages/ScriptDetail";
 
+import Requests from "./component/pages/Requests";
+import User from "./component/pages/User";
 
 const pageComponents = {
   Home: Home,
@@ -21,6 +23,8 @@ const pageComponents = {
   Dashboard: Dashboard,
   PostPopup: PostPopup,
   ScriptDetail: ScriptDetail,
+  Requests: Requests,
+  User: User,
 };
 
 function App() {
