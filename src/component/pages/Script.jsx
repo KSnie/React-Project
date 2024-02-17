@@ -2,7 +2,7 @@ import React from "react";
 import ProfileIcon from "../image/profile.svg";
 import "../css-pages/Script.css";
 
-const Script = () => {
+const Script = ({onPageChange, onChangeScript}) => {
   const scriptDetail = [
     {
       name: "Snow White Part #1",
@@ -17,7 +17,7 @@ const Script = () => {
       Casting_Date: "2024-2-16"
     },
     {
-      name: "Snow White Part #2",
+      name: "Snow White Part #3",
       sent_from: "Sent from Wichita, Kansas.",
       character: "Wicked Queen",
       Casting_Date: "2024-2-20"
@@ -74,7 +74,7 @@ const Script = () => {
                   <div className="not-close"></div>
                 )}
 
-                <button className="Script-button">View</button>
+                <button className="Script-button" onClick={() => {onPageChange("ScriptDetail"); onChangeScript(script);}}>View</button>
 
               </div>
             ))}

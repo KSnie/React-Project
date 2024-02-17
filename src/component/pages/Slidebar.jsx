@@ -1,5 +1,5 @@
 import React from "react";
-import "./Slidebar.css";
+import "../css-pages/Slidebar.css";
 
 const Slidebar = ({ userRole, currentPage, onPageChange,currentSlide}) => {
   return (

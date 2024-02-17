@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import "./Header.css";
-import logo from "./image/logo.svg";
-import profile from "./image/profile.svg";
-import searchIcon from "./image/searchIcon.svg";
-import sortIcon from "./image/sortIcon.svg";
-import settingIcon from "./image/settingIcon.svg";
-import sidebarIcon from "./image/sidebarIcon.svg";
+import "../css-pages/Header.css";
+import logo from "../image/logo.svg";
+import profile from "../image/profile.svg";
+import searchIcon from "../image/searchIcon.svg";
+import sortIcon from "../image/sortIcon.svg";
+import settingIcon from "../image/settingIcon.svg";
+import sidebarIcon from "../image/sidebarIcon.svg";
 
 function Header({ userRole , userName, statusSlide } ) {
   const [isSidebarVisible, setIsSidebarVisible] = useState(true);

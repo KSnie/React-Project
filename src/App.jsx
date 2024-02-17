@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import "./App.css";
-import Header from "./component/Header";
+import Header from "./component/pages/Header";
 import Home from "./component/pages/Home";
 import Myapplications from "./component/pages/Myapplications";
 import Calendar from "./component/pages/Calendar";
 import Script from "./component/pages/Script";
 import Dashboard from "./component/pages/Dashboard";
-import Slidebar from "./component/Slidebar";
+import Slidebar from "./component/pages/Slidebar";
 import AuthPage from "./component/pages/AuthPage"; // Import the AuthPage component
 import data from "./component/pages/Data.json";
 import PostPopup from "./component/pages/PostPopup";
+import ScriptDetail from "./component/pages/ScriptDetail";
+
 
 const pageComponents = {
   Home: Home,
@@ -18,6 +20,7 @@ const pageComponents = {
   Script: Script,
   Dashboard: Dashboard,
   PostPopup: PostPopup,
+  ScriptDetail: ScriptDetail,
 };
 
 function App() {
@@ -28,6 +31,7 @@ function App() {
   const [userName, setUserName] = useState(null);
 
   const [selectedPost, setSelectedPost] = useState(null);
+  const [selectScript, setScript] = useState(null);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -40,6 +44,10 @@ function App() {
 
   const handleSlideToggle = (option) => {
     setCurrentSlide(option);
+  };
+
+  const ScriptChange = (script) => {
+    setScript(script);
   };
 
   const handleAuthentication = (
@@ -110,6 +118,8 @@ function App() {
                       onPageChange: handlePageChange,
                       dataPost: selectedPost,
                       onChangePost: PostChange,
+                      onChangeScript: ScriptChange,
+                      scriptDetails: selectScript,
                     })}
                 </div>
               </div>
