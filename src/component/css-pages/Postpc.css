@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Cairo", sans-serif;
+}
+
+.post-main {
+  padding: 20px;
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.post-header h2 {
+  font-size: 30px;
+}
+
+.post-header button {
+  margin-right: 30px;
+  padding: 10px;
+  background-color: #d42222;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  transition: 0.3s;
+  font-weight: bold;
+}
+
+.post-header button:hover {
+  background-color: #af0303;
+}
+
+.post {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 40px 50px;
+  border-radius: 25px;
+  margin-right: 10px;
+  margin-bottom: 15px;
+}
+
+.post .detail-name {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.post .detail-category {
+  color: rgb(173, 173, 173);
+  font-size: 17px;
+}
+
+.views {
+  text-align: center;
+}
+
+.views p {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.views .views-count {
+  font-size: 20px;
+  color: rgb(173, 173, 173);
+}
+
+.applications {
+  text-align: center;
+}
+.applications p {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.applications .applications-count {
+  font-size: 20px;
+  color: rgb(173, 173, 173);
+}
+
+.posts-container {
+  padding: 25px 25px 0 0;
+}
+
+.btn-view {
+  padding: 7px 20px 7px 20px;
+  background-color: white;
+  color: #3a3a3a;
+  border: 2px solid #3a3a3a;
+  border-radius: 30px;
+  transition: 0.3s;
+  font-weight: bold;
+  margin-left: 500px;
+  margin-right: 30px;
+}
+
+.btn-view:hover {
+  background-color: #5c5c5c;
+  color: white;
+}
+
+.btn-edit {
+  padding: 7px 20px 7px 20px;
+  border: none;
+  color: #252525;
+  border-radius: 10px;
+  transition: 0.3s;
+  font-weight: bold;
+}
+
+.btn-edit:hover {
+  background-color: #d3d3d3;
+}
+
+button:hover {
+  cursor: pointer;
+}
