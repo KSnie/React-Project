@@ -110,6 +110,7 @@ function App() {
               userRole={userRole}
               userName={userName}
               statusSlide={handleSlideToggle}
+              currentPage={currentPage}
             />
             <div className="Main">
               <Slidebar

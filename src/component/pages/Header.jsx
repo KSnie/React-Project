@@ -7,7 +7,7 @@ import sortIcon from "../image/sortIcon.svg";
 import settingIcon from "../image/settingIcon.svg";
 import sidebarIcon from "../image/sidebarIcon.svg";
 
-function Header({ userRole , userName, statusSlide } ) {
+function Header({ userRole , userName, statusSlide , currentPage} ) {
   const [isSidebarVisible, setIsSidebarVisible] = useState(true);
 
   const toggleSidebar = () => {
@@ -25,13 +25,18 @@ function Header({ userRole , userName, statusSlide } ) {
           </button>
         </div>
 
-        <div className="app-search">
-          <img src={searchIcon} alt="searchIcon" />
-          <input type="text" placeholder="Search here" name="search" />
-          <button type="select">
-            <img src={sortIcon} alt="sortIcon" />
-          </button>
-        </div>
+        {currentPage == "Home" ? (
+          <div className="app-search">
+            <img src={searchIcon} alt="searchIcon" />
+            <input type="text" placeholder="Search here" name="search" />
+            <button type="select">
+              <img src={sortIcon} alt="sortIcon" />
+            </button>
+          </div>
+        ) : (
+          <div></div>
+        )}
+
 
         <div className="app-profile">
           <img className="app-profile-img" src={profile} alt="Profile" />
