@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import searchIcon from "../image/searchIcon.svg";
 import sortIcon from "../image/sortIcon.svg";
 import Data from "./Data.json";
 import "../css-pages/Usermanager.css";
 import newContactIcon from "../image/newContactIcon.svg";
+import { createPortal } from "react-dom";
 
 const User = () => {
+  const [editProfileWindow, setEditProfileWindow] = useState(false);
 
   return (
     <div>
@@ -69,9 +71,28 @@ const User = () => {
             </div>
           ))}
         </div>
+        <EditProfile isOpened={editProfileWindow} onClose={() => setEditProfileWindow(false)}/>
       </div>
     </div>
   );
 };
+
+const EditProfile = ({isOpened}) => {
+
+  if (!isOpened) {
+    return null;
+  }
+
+  return createPortal(
+    <div>
+      <div className="overlay">
+        <div className="modal">
+
+        </div>
+      </div>
+    </div>,
+    document.getElementById("modal")
+  )
+}
 
 export default User;

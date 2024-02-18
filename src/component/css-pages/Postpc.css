@@ -36,18 +36,25 @@
 
 .post {
   display: flex;
-  justify-content: space-between;
+  justify-content: left;
   align-items: center;
   background-color: white;
-  padding: 40px 50px;
+  padding: 15px 20px;
   border-radius: 25px;
   margin-right: 10px;
   margin-bottom: 15px;
 }
 
+
+.detail {
+  width: 25%;
+  padding-left: 2.5%;
+}
+
 .post .detail-name {
   font-weight: bold;
-  font-size: 25px;
+  font-size: 20px;
+  margin-bottom: -10px;
 }
 
 .post .detail-category {
@@ -57,11 +64,14 @@
 
 .views {
   text-align: center;
+  width: 30%;
+  margin-top: 3px;
 }
 
 .views p {
   font-weight: bold;
-  font-size: 20px;
+  font-size: 15px;
+  margin-bottom: -10px;
 }
 
 .views .views-count {
@@ -71,10 +81,13 @@
 
 .applications {
   text-align: center;
+  width: 30%;
+  margin-top: 3px;
 }
 .applications p {
   font-weight: bold;
-  font-size: 20px;
+  font-size: 15px;
+  margin-bottom: -10px;
 }
 
 .applications .applications-count {
@@ -94,8 +107,8 @@
   border-radius: 30px;
   transition: 0.3s;
   font-weight: bold;
-  margin-left: 500px;
-  margin-right: 30px;
+  /* margin-left: 650px; */
+  margin-right: 10px;
 }
 
 .btn-view:hover {
