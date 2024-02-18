@@ -19,6 +19,9 @@ import Dashboardpc from "./component/pages/Dashboardpc";
 import Myproject from "./component/pages/Myproject";
 import Postpc from "./component/pages/Postpc";
 
+import Myproject_PM from "./component/pages/Myproject_PM";
+import ScriptManager from "./component/pages/ScriptManager";
+
 const pageComponents = {
   Home: Home,
   Myapplications: Myapplications,
@@ -33,6 +36,9 @@ const pageComponents = {
   Dashboardpc: Dashboardpc,
   Myproject: Myproject,
   Postpc: Postpc,
+
+  Myproject_PM: Myproject_PM,
+  ScriptManager: ScriptManager,
 };
 
 function App() {

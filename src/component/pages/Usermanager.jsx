@@ -46,14 +46,16 @@ const User = () => {
             </div>
             <h4 className="text-Remove">Remove:</h4>
           </div>
-          {Data.map((data , index) =>(
+          {Data.map((data, index) => (
             <div key={index} className="UM-container-content">
               <div className="User-id">
                 <h5>#{data.User_id}</h5>
               </div>
 
               <div className="User-Name">
-                <h5>{data.Fname} {data.Lname}</h5>
+                <h5>
+                  {data.Fname} {data.Lname}
+                </h5>
               </div>
 
               <div className="User-Username">
@@ -65,7 +67,14 @@ const User = () => {
               </div>
 
               <div className="User-view-button">
-                <button onClick={() => {{setEditProfileWindow(true); setDataSelect(data);}}} >View</button>
+                <button
+                  onClick={() => {
+                    setEditProfileWindow(true);
+                    setDataSelect(data);
+                  }}
+                >
+                  View
+                </button>
               </div>
 
               <div className="User-Remove-button">
@@ -74,13 +83,17 @@ const User = () => {
             </div>
           ))}
         </div>
-        <EditProfile data={dataSelect} isOpened={editProfileWindow} onClose={() => setEditProfileWindow(false)}/>
+        <EditProfile
+          data={dataSelect}
+          isOpened={editProfileWindow}
+          onClose={() => setEditProfileWindow(false)}
+        />
       </div>
     </div>
   );
 };
 
-const EditProfile = ({data, isOpened, onClose}) => {
+const EditProfile = ({ data, isOpened, onClose }) => {
   if (!isOpened) {
     return null;
   }
@@ -89,32 +102,36 @@ const EditProfile = ({data, isOpened, onClose}) => {
     <div>
       <div className="overlay">
         <div className="Usermanager-container">
-            <div className="Usermanager-header">
-              <img src={profile} alt={profile}></img>
+          <div className="Usermanager-header">
+            <img src={profile} alt={profile}></img>
 
-              <div className="Usermanager-Fname-Lname">
-                <h3>First Name</h3>
-                <input type="text" placeholder={data.Fname} value={data.Fname}/>
-                <h3>Last Name</h3>
-                <input type="text" placeholder={data.Lname} value={data.Lname}/>
-              </div>
+            <div className="Usermanager-Fname-Lname">
+              <h3>First Name</h3>
+              <input type="text" placeholder={data.Fname} value={data.Fname} />
+              <h3>Last Name</h3>
+              <input type="text" placeholder={data.Lname} value={data.Lname} />
             </div>
+          </div>
 
-            <div className="UserManager-content">
-              <h3>Date of birth</h3>
-              <input type="text" placeholder={data.Dob} value={data.Dob}/>
-              <h3>Username</h3>
-              <input type="text" placeholder={data.username} value={data.username}/>
-              <h3>Role</h3>
-              <input type="text" placeholder={data.role} value={data.role}/>
-            </div>
+          <div className="UserManager-content">
+            <h3>Date of birth</h3>
+            <input type="text" placeholder={data.Dob} value={data.Dob} />
+            <h3>Username</h3>
+            <input
+              type="text"
+              placeholder={data.username}
+              value={data.username}
+            />
+            <h3>Role</h3>
+            <input type="text" placeholder={data.role} value={data.role} />
+          </div>
 
-            <button onClick={() => onClose()}>Save</button>
+          <button onClick={() => onClose()}>Save</button>
         </div>
       </div>
     </div>,
     document.getElementById("modal")
-  )
-}
+  );
+};
 
 export default User;
