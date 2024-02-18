@@ -6,8 +6,11 @@ import "../css-pages/Usermanager.css";
 import newContactIcon from "../image/newContactIcon.svg";
 import { createPortal } from "react-dom";
 
+import profile from "../image/profile.svg";
+
 const User = () => {
   const [editProfileWindow, setEditProfileWindow] = useState(false);
+  const [dataSelect, setDataSelect] = useState(null);
 
   return (
     <div>
@@ -62,7 +65,7 @@ const User = () => {
               </div>
 
               <div className="User-view-button">
-                <button>View</button>
+                <button onClick={() => {{setEditProfileWindow(true); setDataSelect(data);}}} >View</button>
               </div>
 
               <div className="User-Remove-button">
@@ -71,14 +74,13 @@ const User = () => {
             </div>
           ))}
         </div>
-        <EditProfile isOpened={editProfileWindow} onClose={() => setEditProfileWindow(false)}/>
+        <EditProfile data={dataSelect} isOpened={editProfileWindow} onClose={() => setEditProfileWindow(false)}/>
       </div>
     </div>
   );
 };
 
-const EditProfile = ({isOpened}) => {
-
+const EditProfile = ({data, isOpened, onClose}) => {
   if (!isOpened) {
     return null;
   }
@@ -86,8 +88,28 @@ const EditProfile = ({isOpened}) => {
   return createPortal(
     <div>
       <div className="overlay">
-        <div className="modal">
+        <div className="Usermanager-container">
+            <div className="Usermanager-header">
+              <img src={profile} alt={profile}></img>
 
+              <div className="Usermanager-Fname-Lname">
+                <h3>First Name</h3>
+                <input type="text" placeholder={data.Fname} value={data.Fname}/>
+                <h3>Last Name</h3>
+                <input type="text" placeholder={data.Lname} value={data.Lname}/>
+              </div>
+            </div>
+
+            <div className="UserManager-content">
+              <h3>Date of birth</h3>
+              <input type="text" placeholder={data.Dob} value={data.Dob}/>
+              <h3>Username</h3>
+              <input type="text" placeholder={data.username} value={data.username}/>
+              <h3>Role</h3>
+              <input type="text" placeholder={data.role} value={data.role}/>
+            </div>
+
+            <button onClick={() => onClose()}>Save</button>
         </div>
       </div>
     </div>,

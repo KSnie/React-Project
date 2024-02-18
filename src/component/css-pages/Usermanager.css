@@ -76,7 +76,8 @@
 .UM-container-content {
     display: flex;
     align-items: center;
-    margin-bottom: 13px;
+    margin-bottom: 30px;
+    font-size: 20px;
 }
 
 .text-id {
@@ -156,4 +157,82 @@
     border: 1px solid #590505;
     border-radius: 20px;
     cursor: pointer;
+}
+
+
+.Usermanager-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 550px;
+    height: 600px;
+    z-index: 3;
+    border-radius: 50px;
+    background-color: white;
+}
+
+.Usermanager-header {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-left: 50px;
+    padding-top: 50px;
+    width: 100%;
+}
+
+.Usermanager-header  img{
+
+    width: 150px;
+    border-radius: 100%;
+}
+
+.Usermanager-Fname-Lname{
+    padding-left: 30px;
+    width: 50%;
+}
+
+.Usermanager-Fname-Lname h3 {
+    color: #92929D;
+    margin-bottom: -5px;
+}
+
+.Usermanager-Fname-Lname input {
+    width: 100%;
+    padding: 6px 0px 6px 15px;
+    border-radius: 20px;
+    border: none;
+    background-color: #FAFAFA;
+    margin-bottom: 5px;
+}
+
+.UserManager-content {
+    padding-left: 50px;
+    padding-top: 30px;
+}
+
+.UserManager-content h3 {
+    color: #92929D;
+    margin-bottom: -5px;
+}
+
+.UserManager-content input {
+    width: 90%;
+    padding: 6px 0px 6px 15px;
+    border-radius: 20px;
+    border: none;
+    background-color: #FAFAFA;
+    margin-bottom: 10px;
+}
+
+.Usermanager-container button{
+    margin-left: 25%;
+    margin-top: 12%;
+    width: 300px;
+    height: 50px;
+    font-size: 20px;
+    color: #11D119;
+    background: none;
+    border: 1px solid #11D119;
+    border-radius: 50px;
 }

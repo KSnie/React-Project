@@ -1,0 +1,78 @@
+.Request-container{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 30px;
+}
+
+.Request-main-content{
+    margin-bottom: 15px;
+}
+
+.Request-content {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.Request-content img {
+    width: 60px;
+    border-radius: 100%;
+    margin-left: 10px;
+    
+    padding: 13px;
+}
+
+.Request-content h3 {
+    width: 30%;
+    text-align: left;
+    /* border: 1px solid red; */
+}
+
+.Request-date h3{
+    width: 100%;
+    font-size: 15px;
+    padding: 2px;
+    margin-bottom: -10px;
+}
+
+.Request-date {
+    margin-left: 10%;
+}
+
+.Request-date h4{
+    width: 100%;
+    font-size: 15px;
+    padding: 2px;
+    text-align: center;
+    color: #C5C7CD;
+}
+
+.btn-request {
+    margin-left: 7%;
+    width: 40%;
+    text-align: right;
+}
+
+.btn-request button{
+    width: 80px;
+    height: 30px;
+    margin-right: 10px;
+
+    background: none;
+    border-radius: 20px;
+}
+
+.btn-request-view {
+    border: 1px solid #280559;
+    color: #280559;
+}
+
+.btn-request-Accept {
+    border: 1px solid #00c52b;
+    color: #00c52b;
+}
+
+.btn-request-Reject {
+    border: 1px solid #8b0303;
+    color: #8b0303;
+}
