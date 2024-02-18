@@ -70,6 +70,11 @@
 
 .project-description p {
   font-size: 25px;
+  margin-bottom: -8px;
+}
+
+.project-description span{
+  color: #A5A5A5;
 }
 
 .modal {
