@@ -13,7 +13,7 @@ import PostPopup from "./component/pages/PostPopup";
 import ScriptDetail from "./component/pages/ScriptDetail";
 
 import Requests from "./component/pages/Requests";
-import User from "./component/pages/User";
+import User from "./component/pages/Usermanager";
 
 import Dashboardpc from "./component/pages/Dashboardpc";
 import Myproject from "./component/pages/Myproject";

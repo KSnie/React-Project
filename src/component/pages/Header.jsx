@@ -25,7 +25,7 @@ function Header({ userRole , userName, statusSlide , currentPage} ) {
           </button>
         </div>
 
-        {currentPage == "Home" ? (
+        {currentPage === "Home" ? (
           <div className="app-search">
             <img src={searchIcon} alt="searchIcon" />
             <input type="text" placeholder="Search here" name="search" />

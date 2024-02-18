@@ -1,9 +1,6 @@
 [
-  { "username": "admin", "password": "admin", "role": "admin" },
-  { "username": "admin1", "password": "admin1", "role": "admin" },
-  { "username": "Isusbiw", "password": "1234", "role": "admin" },
-  { "username": "user", "password": "user", "role": "user" },
-  { "username": "x", "password": "x", "role": "user" },
-  { "username": "z", "password": "z", "role": "admin" },
-  { "username": "c", "password": "c", "role": "ProjectCreator" }
+  { "User_id": 1, "Fname":"x", "Lname":"xx", "Dob": "2024-02-20", "username": "x", "password": "x", "role": "user" },
+  { "User_id": 2, "Fname":"z", "Lname":"zz", "Dob": "2024-02-20", "username": "z", "password": "z", "role": "admin" },
+  { "User_id": 3, "Fname":"c", "Lname":"cc", "Dob": "2024-02-20", "username": "c", "password": "c", "role": "ProjectCreator" },
+  { "User_id": 4, "Fname":"Kasidis", "Lname":"Chuayprasert", "Dob": "2024-02-20", "username": "Nine", "password": "n", "role": "Admin" }
 ]
