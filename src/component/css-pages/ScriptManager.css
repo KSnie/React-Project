@@ -229,3 +229,60 @@
 .viewproject-detail .category {
   font-size: 20px;
 }
+
+.sendscript-container {
+  width: 100px;
+  height: 100px;
+  background-color: #f3f3f3;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 200px;
+  z-index: 3;
+  border-radius: 25px;
+  padding: 30px;
+}
+
+.sendscript-content p {
+  margin-left: 5px;
+}
+
+.sendscript-content p {
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.script-topic p {
+  font-size: 15px;
+}
+
+.script-topic input {
+  font-size: 12px;
+  border-radius: 20px;
+  width: 350px;
+  border: 1px solid rgb(121, 121, 121);
+  padding: 5px 10px;
+}
+
+.script-send {
+  padding: 5px 50px;
+  border-radius: 20px;
+  font-weight: bold;
+  margin: 0 auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  border: 3px solid rgb(121, 121, 121);
+}
+
+.script-attach {
+  background-color: #d42222;
+  border: none;
+  color: #fafafa;
+  padding: 5px 15px;
+  border-radius: 15px;
+  margin-top: 10px;
+}

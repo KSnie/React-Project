@@ -47,13 +47,13 @@ const ScriptManager = () => {
 };
 
 const Project = ({ data }) => {
-  const [viewProjectWindow, setviewProjectWindow] = useState(false);
+  const [viewProjectWindow, setViewProjectWindow] = useState(false);
   return (
     <>
       <div
         className="project"
         onClick={() => {
-          setviewProjectWindow(true);
+          setViewProjectWindow(true);
         }}
       >
         <img src={data.img} alt="img-banner"></img>
@@ -67,13 +67,15 @@ const Project = ({ data }) => {
       <ViewProject
         data={data}
         isOpened={viewProjectWindow}
-        onClose={() => setviewProjectWindow(false)}
+        onClose={() => setViewProjectWindow(false)}
       />
     </>
   );
 };
 
 const ViewProject = ({ data, isOpened, onClose }) => {
+  const [sendScriptWindow, setSendScriptWindow] = useState(false);
+
   const requestData = [
     {
       Fname: "Nanthanat",
@@ -86,52 +88,89 @@ const ViewProject = ({ data, isOpened, onClose }) => {
       project: "John Wick",
     },
   ];
+
   if (!isOpened) {
     return null;
   }
 
   return createPortal(
-    <div>
-      <div className="overlay">
-        <div className="modal">
-          <div className="viewproject-Header">
-            <img src={data.img} alt="Project Banner"></img>
+    <>
+      <div>
+        <div className="overlay">
+          <div className="modal">
+            <div className="viewproject-Header">
+              <img src={data.img} alt="Project Banner"></img>
 
-            <div className="viewproject-detail">
-              <p className="name">{data.name}</p>
-              <p className="category">{data.category}</p>
-            </div>
-          </div>
-
-          <div className="viewproject-request">
-            <div className="request-header">
-              <p>Request List</p>
+              <div className="viewproject-detail">
+                <p className="name">{data.name}</p>
+                <p className="category">{data.category}</p>
+              </div>
             </div>
 
-            <div className="request-content">
-              {requestData.map((request, index) => (
-                <div key={index} className="request-main-content">
-                  <img src={humanIcon} alt=""></img>
-                  <h3>
-                    {request.Fname} {request.Lname}
-                  </h3>
-                  <h3>{request.project}</h3>
-                  <button className="btn">Send Script</button>
-                </div>
-              ))}
-            </div>
+            <div className="viewproject-request">
+              <div className="request-header">
+                <p>Request List</p>
+              </div>
 
-            <button
-              className="btn-viewproject"
-              onClick={() => {
-                onClose();
-              }}
-            >
-              SAVE
-            </button>
+              <div className="request-content">
+                {requestData.map((request, index) => (
+                  <div key={index} className="request-main-content">
+                    <img src={humanIcon} alt=""></img>
+                    <h3>
+                      {request.Fname} {request.Lname}
+                    </h3>
+                    <h3>{request.project}</h3>
+                    <button
+                      className="btn"
+                      onClick={() => {
+                        setSendScriptWindow(true);
+                      }}
+                    >
+                      Send Script
+                    </button>
+                  </div>
+                ))}
+              </div>
+
+              <button
+                className="btn-viewproject"
+                onClick={() => {
+                  onClose();
+                }}
+              >
+                SAVE
+              </button>
+            </div>
           </div>
         </div>
       </div>
+      <SendScript
+        data={data}
+        isOpened={sendScriptWindow}
+        onClose={() => setSendScriptWindow(false)}
+      />
+    </>,
+    document.getElementById("modal")
+  );
+};
+
+const SendScript = ({ isOpened, onClose, requestData }) => {
+  if (!isOpened) {
+    return null;
+  }
+  return createPortal(
+    <div className="sendscript-container">
+      <div className="sendscript-content">
+        <p>Send Script</p>
+        <div className="script-topic">
+          <p>Topic</p>
+          <input type="text" placeholder="Enter topic..." />
+        </div>
+        <button className="script-attach">Attach File</button>
+      </div>
+      <button onClick={onClose} className="script-send">
+        Send
+      </button>
     </div>,
     document.getElementById("modal")
   );
