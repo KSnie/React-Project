@@ -132,7 +132,7 @@
   border-radius: 50px;
 }
 
-.director-header {
+.manager-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -142,7 +142,7 @@
   margin-bottom: 2%;
 }
 
-.director-header button {
+.manager-header button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -155,14 +155,14 @@
   font-weight: 800;
 }
 
-.director-main-content {
+.manager-main-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
 }
 
-.director-content {
+.manager-content {
   height: 250px;
   background-color: #fafafa;
   margin: 20px;
@@ -171,14 +171,14 @@
   border-radius: 50px;
 }
 
-.director-content h3 {
+.manager-content h3 {
   font-weight: 400;
   font-size: 15px;
   width: 300px;
   text-align: center;
 }
 
-.director-main-content button {
+.manager-main-content button {
   background: none;
   color: #d42222;
   width: 100px;
