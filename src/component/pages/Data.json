@@ -27,13 +27,40 @@
     "role": "ProjectCreator"
   },
   {
-    "User_id": 4,
-    "Fname": "Kasidis",
-    "Lname": "Chuayprasert",
+    "User_id": 7,
+    "Fname": "KASIDIS",
+    "Lname": "CHUAYPRASERT",
     "Dob": "2024-02-20",
-    "username": "Nine",
-    "password": "n",
+    "username": "Kasidis",
+    "password": "x",
     "role": "admin"
+  },
+  {
+    "User_id": 8,
+    "Fname": "NUEACHAI",
+    "Lname": "WIJITSOPON",
+    "Dob": "2024-02-20",
+    "username": "Nueachai",
+    "password": "x",
+    "role": "user"
+  },
+  {
+    "User_id": 9,
+    "Fname": "NANTHANAT",
+    "Lname": "OUNMA",
+    "Dob": "2024-02-20",
+    "username": "Nanthanat",
+    "password": "x",
+    "role": "ProjectManager"
+  },
+  {
+    "User_id": 10,
+    "Fname": "BHURICHAYA",
+    "Lname": "THURAPHAN",
+    "Dob": "2024-02-20",
+    "username": "Nanthanat",
+    "password": "x",
+    "role": "ProjectCreator"
   },
   {
     "User_id": 5,
