@@ -132,3 +132,109 @@
 button:hover {
   cursor: pointer;
 }
+
+.New-Edit-conatainer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px;
+  height: 600px;
+  z-index: 3;
+  background-color: white;
+  border-radius: 25px;
+}
+
+.New-edit-main-contant {
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 30px;
+
+}
+.New-edit-1 {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.New-edit-2 {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.New-Edit-conatainer button {
+  width: 230px;
+  height: 50px;
+  margin-left: 35%;
+  margin-top: 10px;
+  cursor: pointer;
+  border: none;
+  background-color: #af0303;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 800;
+  border-radius: 20px;
+}
+
+.New-edit-main-contant h3 {
+  color: #92929D;
+}
+
+.New-edit-1-1 {
+  width: 97%;
+}
+.New-edit-1-1 input{
+  width: 100%;
+  height: 40px;
+  background-color: #FAFAFA;
+  border: none;
+  border-radius: 20px;
+  padding-left: 20px;
+  font-size: 15px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.New-edit-2-1 {
+  width: 50%;
+}
+.New-edit-2-1 input{
+  width: 80%;
+  height: 40px;
+  background-color: #FAFAFA;
+  border: none;
+  border-radius: 20px;
+  padding-left: 20px;
+  font-size: 15px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.New-edit-2-2 input{
+  width: 197%;
+  height: 40px;
+  background-color: #FAFAFA;
+  border: none;
+  border-radius: 20px;
+  padding-left: 20px;
+  font-size: 15px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.New-edit-3 {
+  width: 97%;
+}
+
+.New-edit-3 input{
+  width: 100%;
+  height: 180px;
+  background-color: #FAFAFA;
+  border: none;
+  border-radius: 20px;
+  padding-left: 20px;
+  font-size: 15px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
