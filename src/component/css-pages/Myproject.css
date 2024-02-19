@@ -106,10 +106,23 @@
   background-color: rgb(0, 0, 0, 0.5);
 }
 
+.Newproject-Header {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
 .Editproject-Header {
   display: flex;
   justify-content: left;
   align-items: center;
+}
+
+.Newproject-Header img {
+  width: 230px;
+  margin-left: 30px;
+  margin-top: px;
+  border-radius: 50px;
 }
 
 .Editproject-Header img {
@@ -119,7 +132,7 @@
   border-radius: 50px;
 }
 
-.manager-header {
+.director-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -129,7 +142,7 @@
   margin-bottom: 2%;
 }
 
-.manager-header button {
+.director-header button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -142,14 +155,14 @@
   font-weight: 800;
 }
 
-.manager-main-content {
+.director-main-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
 }
 
-.manager-content {
+.director-content {
   height: 250px;
   background-color: #fafafa;
   margin: 20px;
@@ -158,14 +171,14 @@
   border-radius: 50px;
 }
 
-.manager-content h3 {
+.director-content h3 {
   font-weight: 400;
   font-size: 15px;
   width: 300px;
   text-align: center;
 }
 
-.manager-main-content button {
+.director-main-content button {
   background: none;
   color: #d42222;
   width: 100px;
