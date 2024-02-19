@@ -151,7 +151,7 @@ const NewContact = ({ isOpened, onClose, data }) => {
   return createPortal(
     <div>
       <div className="overlay">
-        <div className="Usermanager-container">
+        <div className="Usermanager-containerx">
           <div className="Usermanager-header">
             <img src={profile} alt={profile}></img>
 
@@ -182,7 +182,7 @@ const NewContact = ({ isOpened, onClose, data }) => {
             <input type="text" placeholder={data.role} value={data.role} />
           </div>
 
-          <button onClick={() => onClose()}>Save</button>
+          <button onClick={() => onClose()}>Create</button>
         </div>
       </div>
     </div>,

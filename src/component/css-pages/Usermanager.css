@@ -240,3 +240,33 @@
   border: 1px solid #11d119;
   border-radius: 50px;
 }
+
+.Usermanager-containerx {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 30px;
+}
+
+.Usermanager-containerx {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 550px;
+  height: 675px;
+  z-index: 3;
+  border-radius: 50px;
+  background-color: white;
+}
+
+.Usermanager-containerx button{
+  margin-left: 25%;
+  margin-top: 12%;
+  width: 300px;
+  height: 50px;
+  font-size: 20px;
+  color: #0a378b;
+  background: none;
+  border: 1px solid #2811a8;
+  border-radius: 50px;
+}
