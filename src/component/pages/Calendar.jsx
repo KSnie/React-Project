@@ -16,10 +16,7 @@ const Calendar = () => {
           center: "title",
           right: "dayGridMonth,timeGridWeek,timeGridDay",
         }}
-        events={[
-          { title: "กินข้าว", date: "2024-02-14" },
-          { title: "กินน้ำ", date: "2024-02-14" },
-        ]}
+        events={[{ title: "Avengers", date: "2024-02-25" }]}
         aspectRatio={2.5}
       />
     </div>

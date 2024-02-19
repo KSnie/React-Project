@@ -16,7 +16,8 @@
 }
 
 .fc-event {
-  background-color: rgb(255, 72, 0);
+  background-color: #d42222;
+  border: none !important;
 }
 
 .fc-day-today {
