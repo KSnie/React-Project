@@ -1,238 +1,242 @@
-.UserManager-container{
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 30px;
+.UserManager-container {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 30px;
 }
 
 .UserManager-Header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .UM-app-search {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 30%;
-    background-color: #FFFFFF;
-    padding: 5px;
-    border-radius: 40px;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 30%;
+  background-color: #ffffff;
+  padding: 5px;
+  border-radius: 40px;
+  margin-bottom: 20px;
 }
 
 .UM-app-search img {
-    margin-left: 10px;
-    margin-right: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .UM-app-search button {
-    border: none;
-    background: none;
-    cursor: pointer;
-    padding-top: 10px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding-top: 10px;
 }
 
 .UM-app-search input {
-    width: 100%;
-    height: 30px;
-    font-size: 15px;
-    background: none;
-    border: none;
+  width: 100%;
+  height: 30px;
+  font-size: 15px;
+  background: none;
+  border: none;
 }
 
 .UM-app-search input:focus {
-    outline: none;
+  outline: none;
 }
 .UM-new-contact {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .UM-new-contact {
-    padding: 15px;
-    width: 8%;
-    border-radius: 15px;
-    margin-bottom: 20px;
-    background-color: #D42222;
+  padding: 15px;
+  width: 8%;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  background-color: #d42222;
+  transition: 0.3s;
 }
 
-.UM-new-contact h4{
-    font-size: 14px;
-    margin-left: 10px;
-    color: #FFFFFF;
+.UM-new-contact:hover {
+  cursor: pointer;
+  background-color: #c02323;
+}
+
+.UM-new-contact h4 {
+  font-size: 14px;
+  margin-left: 10px;
+  color: #ffffff;
 }
 
 .UM-container-header {
-    display: flex;
-    align-items: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    font-size: 15px;
-    color: #92929D;
+  display: flex;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 15px;
+  color: #92929d;
 }
 
 .UM-container-content {
-    display: flex;
-    align-items: center;
-    margin-bottom: 30px;
-    font-size: 20px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  font-size: 20px;
 }
 
 .text-id {
-    width: 8%;
-    text-align: center;
+  width: 8%;
+  text-align: center;
 }
 
 .text-name {
-    width: 18.5%;
-    text-align: center;
+  width: 18.5%;
+  text-align: center;
 }
 
 .text-username {
-    width: 18%;
-    text-align: center;
+  width: 18%;
+  text-align: center;
 }
 
-.text-role{
-    width: 18.5%;
-    text-align: center;
+.text-role {
+  width: 18.5%;
+  text-align: center;
 }
 
 .text-action {
-    width: 18.5%;
+  width: 18.5%;
 }
 
 .text-action h4 {
-    margin-left: 76%;
+  margin-left: 76%;
 }
 .text-Remove {
-    width: 18.5%;
-    text-align: center;
+  width: 18.5%;
+  text-align: center;
 }
 
 .User-id {
-    width: 150px;
-    text-align: center;
+  width: 150px;
+  text-align: center;
 }
 
 .User-Name {
-    width: 340px;
-    text-align: center;
+  width: 340px;
+  text-align: center;
 }
 
-.User-Username{
-    width: 340px;
-    text-align: center;
+.User-Username {
+  width: 340px;
+  text-align: center;
 }
 
 .User-role {
-    width: 340px;
-    text-align: center;
+  width: 340px;
+  text-align: center;
 }
 
 .User-view-button {
-    width: 340px;
-    text-align: right;
-    padding-right: 10px;
+  width: 340px;
+  text-align: right;
+  padding-right: 10px;
 }
 
 .User-Remove-button {
-    width: 340px;
-    text-align: center;
+  width: 340px;
+  text-align: center;
 }
 
 .User-view-button button {
-    width: 80px;
-    background: none;
-    border: 1px solid #280559;
-    border-radius: 20px;
-    cursor: pointer;
+  width: 80px;
+  background: none;
+  border: 1px solid #280559;
+  border-radius: 20px;
+  cursor: pointer;
 }
 
 .User-Remove-button button {
-    width: 80px;
-    background: none;
-    border: 1px solid #590505;
-    border-radius: 20px;
-    cursor: pointer;
+  width: 80px;
+  background: none;
+  border: 1px solid #590505;
+  border-radius: 20px;
+  cursor: pointer;
 }
 
-
 .Usermanager-container {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 550px;
-    height: 600px;
-    z-index: 3;
-    border-radius: 50px;
-    background-color: white;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 550px;
+  height: 675px;
+  z-index: 3;
+  border-radius: 50px;
+  background-color: white;
 }
 
 .Usermanager-header {
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    padding-left: 50px;
-    padding-top: 50px;
-    width: 100%;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding-left: 50px;
+  padding-top: 50px;
+  width: 100%;
 }
 
-.Usermanager-header  img{
-
-    width: 150px;
-    border-radius: 100%;
+.Usermanager-header img {
+  width: 150px;
+  border-radius: 100%;
 }
 
-.Usermanager-Fname-Lname{
-    padding-left: 30px;
-    width: 50%;
+.Usermanager-Fname-Lname {
+  padding-left: 30px;
+  width: 50%;
 }
 
 .Usermanager-Fname-Lname h3 {
-    color: #92929D;
-    margin-bottom: -5px;
+  color: #92929d;
+  margin-bottom: -5px;
 }
 
 .Usermanager-Fname-Lname input {
-    width: 100%;
-    padding: 6px 0px 6px 15px;
-    border-radius: 20px;
-    border: none;
-    background-color: #FAFAFA;
-    margin-bottom: 5px;
+  width: 100%;
+  padding: 6px 0px 6px 15px;
+  border-radius: 20px;
+  border: none;
+  background-color: #fafafa;
+  margin-bottom: 5px;
 }
 
 .UserManager-content {
-    padding-left: 50px;
-    padding-top: 30px;
+  padding-left: 50px;
+  padding-top: 30px;
 }
 
 .UserManager-content h3 {
-    color: #92929D;
-    margin-bottom: -5px;
+  color: #92929d;
+  margin-bottom: -5px;
 }
 
 .UserManager-content input {
-    width: 90%;
-    padding: 6px 0px 6px 15px;
-    border-radius: 20px;
-    border: none;
-    background-color: #FAFAFA;
-    margin-bottom: 10px;
+  width: 90%;
+  padding: 6px 0px 6px 15px;
+  border-radius: 20px;
+  border: none;
+  background-color: #fafafa;
+  margin-bottom: 10px;
 }
 
-.Usermanager-container button{
-    margin-left: 25%;
-    margin-top: 12%;
-    width: 300px;
-    height: 50px;
-    font-size: 20px;
-    color: #11D119;
-    background: none;
-    border: 1px solid #11D119;
-    border-radius: 50px;
+.Usermanager-container button {
+  margin-left: 25%;
+  margin-top: 12%;
+  width: 300px;
+  height: 50px;
+  font-size: 20px;
+  color: #11d119;
+  background: none;
+  border: 1px solid #11d119;
+  border-radius: 50px;
 }

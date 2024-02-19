@@ -113,7 +113,7 @@ const EditProject = ({
   handleName,
   handleCategory,
 }) => {
-  const DirectorData = [
+  const managerData = [
     {
       Fname: "Nueachai",
       Lname: "Wijitsopon",
@@ -159,22 +159,22 @@ const EditProject = ({
             </div>
           </div>
 
-          <div className="Editproject-director">
-            <div className="director-header">
-              <p>Project Director</p>
+          <div className="Editproject-manager">
+            <div className="manager-header">
+              <p>Project Manager</p>
               <button>
                 <img src={newContactIcon} alt="newContactIcon"></img>Add
               </button>
             </div>
 
-            <div className="director-content">
-              {DirectorData.map((director, index) => (
-                <div key={index} className="director-main-content">
+            <div className="manager-content">
+              {managerData.map((manager, index) => (
+                <div key={index} className="manager-main-content">
                   <img src={humanIcon} alt=""></img>
                   <h3>
-                    {director.Fname} {director.Lname}
+                    {manager.Fname} {manager.Lname}
                   </h3>
-                  <h3>{director.Username}</h3>
+                  <h3>{manager.Username}</h3>
 
                   <button>Remove</button>
                 </div>

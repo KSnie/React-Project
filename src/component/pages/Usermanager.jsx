@@ -11,6 +11,7 @@ import profile from "../image/profile.svg";
 const User = () => {
   const [editProfileWindow, setEditProfileWindow] = useState(false);
   const [dataSelect, setDataSelect] = useState(null);
+  const [newContactWindow, setNewContactWindow] = useState(false);
 
   return (
     <div>
@@ -29,7 +30,10 @@ const User = () => {
             </button>
           </div>
 
-          <div className="UM-new-contact">
+          <div
+            className="UM-new-contact"
+            onClick={() => setNewContactWindow(true)}
+          >
             <img src={newContactIcon} alt="newcontact-Icon"></img>
             <h4>New Contact</h4>
           </div>
@@ -88,6 +92,11 @@ const User = () => {
           isOpened={editProfileWindow}
           onClose={() => setEditProfileWindow(false)}
         />
+        <NewContact
+          data={Data}
+          isOpened={newContactWindow}
+          onClose={() => setNewContactWindow(false)}
+        />
       </div>
     </div>
   );
@@ -119,6 +128,53 @@ const EditProfile = ({ data, isOpened, onClose }) => {
             <h3>Username</h3>
             <input
               type="text"
+              placeholder={data.username}
+              value={data.username}
+            />
+            <h3>Role</h3>
+            <input type="text" placeholder={data.role} value={data.role} />
+          </div>
+
+          <button onClick={() => onClose()}>Save</button>
+        </div>
+      </div>
+    </div>,
+    document.getElementById("modal")
+  );
+};
+
+const NewContact = ({ isOpened, onClose, data }) => {
+  if (!isOpened) {
+    return null;
+  }
+
+  return createPortal(
+    <div>
+      <div className="overlay">
+        <div className="Usermanager-container">
+          <div className="Usermanager-header">
+            <img src={profile} alt={profile}></img>
+
+            <div className="Usermanager-Fname-Lname">
+              <h3>First Name</h3>
+              <input type="text" placeholder={data.Fname} value={data.Fname} />
+              <h3>Last Name</h3>
+              <input type="text" placeholder={data.Lname} value={data.Lname} />
+            </div>
+          </div>
+
+          <div className="UserManager-content">
+            <h3>Date of birth</h3>
+            <input type="text" placeholder={data.Dob} value={data.Dob} />
+            <h3>Username</h3>
+            <input
+              type="text"
+              placeholder={data.username}
+              value={data.username}
+            />
+            <h3>Password</h3>
+            <input
+              type="password"
               placeholder={data.username}
               value={data.username}
             />
