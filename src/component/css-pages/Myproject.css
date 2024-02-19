@@ -106,22 +106,20 @@
   background-color: rgb(0, 0, 0, 0.5);
 }
 
-
-.Editproject-Header{
+.Editproject-Header {
   display: flex;
   justify-content: left;
   align-items: center;
 }
 
-.Editproject-Header img{
+.Editproject-Header img {
   width: 300px;
   margin-left: 30px;
   margin-top: 30px;
   border-radius: 50px;
 }
 
-
-.director-header {
+.manager-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -131,45 +129,43 @@
   margin-bottom: 2%;
 }
 
-.director-header button {
+.manager-header button {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 80px;
   height: 40px;
-  background-color: #D42222;
+  background-color: #d42222;
   border: none;
   border-radius: 10px;
-  color: #FAFAFA;
+  color: #fafafa;
   font-weight: 800;
 }
 
-.director-main-content {
+.manager-main-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
 }
 
-.director-content {
+.manager-content {
   height: 250px;
-  background-color: #FAFAFA;
+  background-color: #fafafa;
   margin: 20px;
   margin-top: -1px;
   padding: 25px;
   border-radius: 50px;
-
 }
 
-.director-content h3{
+.manager-content h3 {
   font-weight: 400;
   font-size: 15px;
   width: 300px;
   text-align: center;
 }
 
-
-.director-main-content button{
+.manager-main-content button {
   background: none;
   color: #d42222;
   width: 100px;
@@ -177,7 +173,7 @@
   border-radius: 50px;
 }
 
-.btn-editproject{
+.btn-editproject {
   width: 250px;
   height: 50px;
   font-size: 20px;
@@ -188,26 +184,26 @@
   margin-left: 32%;
 }
 
-.Editproject-name-input{
+.Editproject-name-input {
   width: 60%;
   margin-left: 20px;
 }
 
-.Editproject-project-title{
+.Editproject-project-title {
   width: 90%;
   height: 40px;
   padding-left: 10px;
   border-radius: 20px;
-  background-color: #FAFAFA;
+  background-color: #fafafa;
   border: none;
 }
 
-.Editproject-project-Category{
+.Editproject-project-Category {
   width: 90%;
   height: 40px;
   padding-left: 10px;
   border-radius: 20px;
-  background-color: #FAFAFA;
+  background-color: #fafafa;
   border: none;
 }
 
@@ -215,10 +211,10 @@
   margin-top: 10px;
 }
 
-.Editproject-project-title:focus{
+.Editproject-project-title:focus {
   outline: none;
 }
 
-.Editproject-project-Category:focus{
+.Editproject-project-Category:focus {
   outline: none;
 }
