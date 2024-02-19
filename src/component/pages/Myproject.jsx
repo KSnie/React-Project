@@ -220,11 +220,11 @@ const NewProject = ({
   handleCategory,
 }) => {
   const DirectorData = [
-    // {
-    //   Fname: "Nueachai",
-    //   Lname: "Wijitsopon",
-    //   Username: "xxx"
-    // },
+    {
+      Fname: "Nueachai",
+      Lname: "Wijitsopon",
+      Username: "xxx",
+    },
   ];
   const [editedName, setEditedName] = useState(data.name);
   const [editedCategory, setEditedCategory] = useState(data.category);
@@ -257,20 +257,28 @@ const NewProject = ({
                 value={editedCategory}
                 onChange={(e) => setEditedCategory(e.target.value)}
               ></input>
+              <h4>Date</h4>
+              <input
+                className="Editproject-project-Category"
+                type="text"
+                placeholder={data.date}
+                value={data.date}
+                onChange={(e) => setEditedCategory(e.target.value)}
+              ></input>
             </div>
           </div>
 
-          <div className="Editproject-director">
-            <div className="director-header">
-              <p>Project Director</p>
+          <div className="Editproject-manager">
+            <div className="manager-header">
+              <p>Project Manager</p>
               <button>
                 <img src={newContactIcon} alt="newContactIcon"></img>Add
               </button>
             </div>
 
-            <div className="director-content">
+            <div className="manager-content">
               {DirectorData.map((director, index) => (
-                <div key={index} className="director-main-content">
+                <div key={index} className="manager-main-content">
                   <img src={humanIcon} alt=""></img>
                   <h3>
                     {director.Fname} {director.Lname}
