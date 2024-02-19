@@ -1,33 +1,6 @@
 [
   {
     "User_id": 1,
-    "Fname": "x",
-    "Lname": "xx",
-    "Dob": "2024-02-20",
-    "username": "x",
-    "password": "x",
-    "role": "user"
-  },
-  {
-    "User_id": 2,
-    "Fname": "z",
-    "Lname": "zz",
-    "Dob": "2024-02-20",
-    "username": "z",
-    "password": "z",
-    "role": "admin"
-  },
-  {
-    "User_id": 3,
-    "Fname": "c",
-    "Lname": "cc",
-    "Dob": "2024-02-20",
-    "username": "c",
-    "password": "c",
-    "role": "ProjectCreator"
-  },
-  {
-    "User_id": 7,
     "Fname": "KASIDIS",
     "Lname": "CHUAYPRASERT",
     "Dob": "2024-02-20",
@@ -36,7 +9,7 @@
     "role": "admin"
   },
   {
-    "User_id": 8,
+    "User_id": 2,
     "Fname": "NUEACHAI",
     "Lname": "WIJITSOPON",
     "Dob": "2024-02-20",
@@ -45,7 +18,7 @@
     "role": "user"
   },
   {
-    "User_id": 9,
+    "User_id": 3,
     "Fname": "NANTHANAT",
     "Lname": "OUNMA",
     "Dob": "2024-02-20",
@@ -54,21 +27,12 @@
     "role": "ProjectManager"
   },
   {
-    "User_id": 10,
+    "User_id": 4,
     "Fname": "BHURICHAYA",
     "Lname": "THURAPHAN",
     "Dob": "2024-02-20",
     "username": "Nanthanat",
     "password": "x",
     "role": "ProjectCreator"
-  },
-  {
-    "User_id": 5,
-    "Fname": "v",
-    "Lname": "vv",
-    "Dob": "2024-02-20",
-    "username": "v",
-    "password": "v",
-    "role": "ProjectManager"
   }
 ]
