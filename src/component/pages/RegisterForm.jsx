@@ -88,7 +88,7 @@ const RegisterForm = ({ onAuthentication , isLogin, isRegisterpc ,isRegister}) =
                 <button onClick={() => { isRegister(); handleSubmit(); }}>Register next page</button>
               </div>
               <div className="Register-Pc">
-                <button onClick={() => { isRegisterpc(); handleSubmit(); }}>Register PC</button>
+                <button onClick={() => { isRegisterpc(); handleSubmit(); }}>Register Project Creater</button>
               </div>
             </div>
 
