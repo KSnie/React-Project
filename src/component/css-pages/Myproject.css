@@ -107,10 +107,23 @@
 }
 
 
+.Newproject-Header {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
 .Editproject-Header{
   display: flex;
   justify-content: left;
   align-items: center;
+}
+
+.Newproject-Header img{
+  width: 230px;
+  margin-left: 30px;
+  margin-top: px;
+  border-radius: 50px;
 }
 
 .Editproject-Header img{
