@@ -12,26 +12,31 @@ const Myproject = () => {
     {
       name: "Conjuring",
       category: "Horror",
+      date: "2022-12-16",
       img: "/projects/conjuring.jpg",
     },
     {
       name: "Joker",
       category: "Drama",
+      date: "2022-12-16",
       img: "/projects/joker.jpg",
     },
     {
       name: "Avengers",
       category: "Action",
+      date: "2022-12-16",
       img: "/projects/avengers.jpg",
     },
     {
       name: "Peaky Blinders",
       category: "Historical",
+      date: "2022-12-16",
       img: "/projects/peakyblinders.jpg",
     },
     {
       name: "Tarzan",
       category: "Adventure",
+      date: "2022-12-16",
       img: "/projects/tarzan.jpg",
     },
   ];
@@ -154,6 +159,14 @@ const EditProject = ({
                 type="text"
                 placeholder={data.category}
                 value={editedCategory}
+                onChange={(e) => setEditedCategory(e.target.value)}
+              ></input>
+              <h4>Date</h4>
+              <input
+                className="Editproject-project-Category"
+                type="text"
+                placeholder={data.date}
+                value={data.date}
                 onChange={(e) => setEditedCategory(e.target.value)}
               ></input>
             </div>

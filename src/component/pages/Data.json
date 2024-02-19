@@ -34,5 +34,41 @@
     "username": "Nanthanat",
     "password": "x",
     "role": "ProjectCreator"
+  },
+  {
+    "User_id": 5,
+    "Fname": "z",
+    "Lname": "z",
+    "Dob": "2024-02-20",
+    "username": "z",
+    "password": "z",
+    "role": "admin"
+  },
+  {
+    "User_id": 6,
+    "Fname": "x",
+    "Lname": "x",
+    "Dob": "2024-02-20",
+    "username": "x",
+    "password": "x",
+    "role": "user"
+  },
+  {
+    "User_id": 7,
+    "Fname": "v",
+    "Lname": "v",
+    "Dob": "2024-02-20",
+    "username": "v",
+    "password": "v",
+    "role": "ProjectManager"
+  },
+  {
+    "User_id": 8,
+    "Fname": "c",
+    "Lname": "c",
+    "Dob": "2024-02-20",
+    "username": "c",
+    "password": "c",
+    "role": "ProjectCreator"
   }
 ]
