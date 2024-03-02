@@ -1,26 +1,26 @@
 import React, { useState } from "react";
 import "./App.css";
-import Header from "./component/pages/Header";
-import Home from "./component/pages/Home";
-import Myapplications from "./component/pages/Myapplications";
-import Calendar from "./component/pages/Calendar";
-import Script from "./component/pages/Script";
-import Dashboard from "./component/pages/Dashboard";
-import Slidebar from "./component/pages/Slidebar";
-import AuthPage from "./component/pages/AuthPage"; // Import the AuthPage component
+import Header from "./component/pages/A_Header";
+import Home from "./component/pages/A_Home";
+import Myapplications from "./component/pages/User_Myapplications";
+import Calendar from "./component/pages/User_Calendar";
+import Script from "./component/pages/User_Script";
+import Dashboard from "./component/pages/Admin_Dashboard";
+import Slidebar from "./component/pages/A_Slidebar";
+import AuthPage from "./component/pages/L_AuthPage"; // Import the AuthPage component
 import data from "./component/pages/Data.json";
-import PostPopup from "./component/pages/PostPopup";
-import ScriptDetail from "./component/pages/ScriptDetail";
+import PostPopup from "./component/pages/P_PostPopup";
+import ScriptDetail from "./component/pages/User_ScriptDetail";
 
-import Requests from "./component/pages/Requests";
-import User from "./component/pages/Usermanager";
+import Requests from "./component/pages/Admin_Requests";
+import User from "./component/pages/Admin_Usermanager";
 
-import Dashboardpc from "./component/pages/Dashboardpc";
-import Myproject from "./component/pages/Myproject";
-import Postpc from "./component/pages/Postpc";
+import Dashboardpc from "./component/pages/Pc_Dashboardpc";
+import Myproject from "./component/pages/Pc_Myproject";
+import Postpc from "./component/pages/Pc_Postpc";
 
-import Myproject_PM from "./component/pages/Myproject_PM";
-import ScriptManager from "./component/pages/ScriptManager";
+import Myproject_PM from "./component/pages/Pm_Myproject";
+import ScriptManager from "./component/pages/Pm_ScriptManager";
 
 const pageComponents = {
   Home: Home,
@@ -79,14 +79,14 @@ function App() {
     county,
     detaillink
   ) => {
-    console.log("Username:", username);
-    console.log("Password:", password);
-    console.log("Gender:", gender);
-    console.log("Fullname:", fullname);
-    console.log("Date of Birth:", dateofbirth);
-    console.log("Phone Number:", phonenumber);
-    console.log("County:", county);
-    console.log("Detail Link:", detaillink);
+    // console.log("Username:", username);
+    // console.log("Password:", password);
+    // console.log("Gender:", gender);
+    // console.log("Fullname:", fullname);
+    // console.log("Date of Birth:", dateofbirth);
+    // console.log("Phone Number:", phonenumber);
+    // console.log("County:", county);
+    // console.log("Detail Link:", detaillink);
 
     setIsAuthenticated(status);
 
