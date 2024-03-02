@@ -7,8 +7,8 @@ import Calendar from "./component/pages/User_Calendar";
 import Script from "./component/pages/User_Script";
 import Dashboard from "./component/pages/Admin_Dashboard";
 import Slidebar from "./component/pages/A_Slidebar";
-import AuthPage from "./component/pages/L_AuthPage"; // Import the AuthPage component
-import data from "./component/pages/Data.json";
+import AuthPage from "./component/pages/L_AuthPage";
+// import data from "./component/pages/Data.json";
 import PostPopup from "./component/pages/P_PostPopup";
 import ScriptDetail from "./component/pages/User_ScriptDetail";
 
@@ -44,7 +44,9 @@ const pageComponents = {
 function App() {
   const [currentPage, setCurrentPage] = useState("Home");
   const [currentSlide, setCurrentSlide] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(false); // Track authentication status
+  const [data , setData] = useState({});
+
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userRole, setUserRole] = useState(null);
   const [userName, setUserName] = useState(null);
 
@@ -68,48 +70,45 @@ function App() {
     setScript(script);
   };
 
-  const handleAuthentication = (
-    status,
-    username,
-    password,
-    gender,
-    fullname,
-    dateofbirth,
-    phonenumber,
-    county,
-    detaillink
-  ) => {
-    // console.log("Username:", username);
-    // console.log("Password:", password);
-    // console.log("Gender:", gender);
-    // console.log("Fullname:", fullname);
-    // console.log("Date of Birth:", dateofbirth);
-    // console.log("Phone Number:", phonenumber);
-    // console.log("County:", county);
-    // console.log("Detail Link:", detaillink);
+  // const handleAuthentication = (
+  //   status,
+  //   username,
+  //   password,
+  //   gender,
+  //   fullname,
+  //   dateofbirth,
+  //   phonenumber,
+  //   county,
+  //   detaillink
+  // ) => {
 
-    setIsAuthenticated(status);
+  //   setIsAuthenticated(status);
 
-    if (status) {
-      const foundUser = data.find(
-        (user) => user.username === username && user.password === password
-      );
+  //   if (status) {
+  //     const foundUser = data.find(
+  //       (user) => user.username === username && user.password === password
+  //     );
 
-      if (foundUser) {
-        setUserRole(foundUser.role);
-        setUserName(foundUser.username);
-      } else {
-        setUserName(username);
-        setUserRole("user");
-      }
-    }
-  };
+  //     if (foundUser) {
+  //       setUserRole(foundUser.role);
+  //       setUserName(foundUser.username);
+  //     } else {
+  //       setUserName(username);
+  //       setUserRole("user");
+  //     }
+  //   }
+  // };
+
+  const handleAuthentication = (data) => {
+    console.log(data)
+    setIsAuthenticated(true)
+  }
 
   return (
     <div className="app">
       <div className="container">
         {!isAuthenticated ? (
-          <AuthPage onAuthentication={handleAuthentication} data={data} />
+          <AuthPage onAuthentication={handleAuthentication}/>
         ) : (
           <div>
             <Header

@@ -6,19 +6,41 @@ import dateIcon from "../image/dateIcon.svg";
 import PhoneIcon from "../image/phoneIcon.svg";
 import mapIcon from "../image/mapIcon.svg";
 import profileIcon from "../image/Registerbanner.svg";
+import { useNavigate } from "react-router-dom";
 
-const Registerinfo = ({ onAuthentication, isRegisterpc }) => {
-  const [isfullname, setFullname] = useState("");
-  const [isdateofbirth, setDateofbirth] = useState("");
-  const [isphonenumber, setPhonenumber] = useState("");
-  const [iscountry, setCountry] = useState("");
+
+const Registerinfo = ({ errormessage, onSubmit }) => {
+
+  const navigate = useNavigate();
+
+  const [values, setValues] = useState({
+    F_name: '',
+    L_name: '',
+    date_of_birth: '',
+    phone_number : '',
+    role: 'user',
+    country: ''
+  });
+
+  const handleChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
+
+  const handleChangeFullName = (e) => {
+    const fullName = e.target.value;
+    const [firstName, lastName] = fullName.split(' ');
+  
+    setValues({
+      ...values,
+      F_name: firstName || '',
+      L_name: lastName || ''
+    });
+  };
 
   const handleSubmit = (e) => {
-
-    try {
-      onAuthentication("registerinfo", NaN,NaN,NaN,isfullname, isdateofbirth, isphonenumber, iscountry,NaN);
-    } catch (error) {
-      console.error("Registration failed:", error);
+    onSubmit(values);
+    if (Object.values(errormessage).every((error) => error === '')) {
+      navigate('/');
     }
   };
 
@@ -43,12 +65,14 @@ const Registerinfo = ({ onAuthentication, isRegisterpc }) => {
                   <img src={fullnameIcon} alt="user-icon" />
                   <input
                     type="text"
-                    value={isfullname}
-                    onChange={(e) => setFullname(e.target.value)}
+                    name = 'fullname'
+                    onChange={handleChangeFullName}
                     placeholder="Enter your Fullname"
                   />
                 </form>
               </div>
+              {errormessage.F_name && <p className="text-danger">{errormessage.F_name}</p>}
+              {errormessage.L_name && <p className="text-danger">{errormessage.L_name}</p>}
 
               <div className="Registerinfo-dateAndPhone-form-register">
                 <div className="Registerinfo-date-form-register">
@@ -57,10 +81,12 @@ const Registerinfo = ({ onAuthentication, isRegisterpc }) => {
                     <img src={dateIcon} alt="date-icon" />
                     <input
                       type="date"
-                      value={isdateofbirth}
-                      onChange={(e) => setDateofbirth(e.target.value)}
+                      value={values.date_of_birth}
+                      name = 'date_of_birth'
+                      onChange={handleChange}
                     />
                   </form>
+                  
                 </div>
 
                 <div className="Registerinfo-Phone-form-register">
@@ -69,28 +95,33 @@ const Registerinfo = ({ onAuthentication, isRegisterpc }) => {
                     <img src={PhoneIcon} alt="Phone-icon" />
                     <input
                       type="tel"
-                      value={isphonenumber}
-                      onChange={(e) => setPhonenumber(e.target.value)}
+                      value={values.phone_number}
+                      name = 'phone_number'
+                      onChange={handleChange}
                       placeholder="Phone number"
                     />
                   </form>
                 </div>
               </div>
+              {errormessage.date_of_birth && <p className="text-danger">{errormessage.date_of_birth}</p>}
+              {errormessage.phone_number && <p className="text-danger">{errormessage.phone_number}</p>}
 
               <div className="Registerinfo-mapIcon-form-register">
                 <h4>Country</h4>
                 <form className="Registerinfo-mapIcon-input-register">
                   <img src={mapIcon} alt="user-icon" />
 
-                    <select id="country" onChange={(e) => setCountry(e.target.value)} name="country">
+                    <select id="country" name = 'country' onChange={handleChange}>
                       <option value="Canada">Canada</option>
                       <option value="France">France</option>
                       <option value="Taiwan">Taiwan</option>
-                      <option selected="selected"value="Thailand">Thailand</option>
+                      <option value="Thailand">Thailand</option>
                       <option value="United States">United States</option>
                   </select>
                 </form>
               </div>
+              {errormessage.country && <p className="text-danger">{errormessage.country}</p>}
+
 
               <div className="Registerinfo-button">
                 <div className="Registerinfo-nextpage">
@@ -108,21 +139,6 @@ const Registerinfo = ({ onAuthentication, isRegisterpc }) => {
           </div>
         </div>
       </div>
-
-
-
-
-      {/* <form onSubmit={handleSubmit}>
-        <input type="text" onChange={(e) => setFullname(e.target.value)} placeholder="Full Name" />
-
-        <input type="date" onChange={(e) => setDateofbirth(e.target.value)} placeholder="Date of Birth" />
-
-        <input type="tel" onChange={(e) => setPhonenumber(e.target.value)} placeholder="Phone Number" />
-
-        <input type="text" onChange={(e) => setCountry(e.target.value)} placeholder="Country" />
-
-        <button type="submit">Submit</button>
-      </form> */}
     </div>
   );
 };

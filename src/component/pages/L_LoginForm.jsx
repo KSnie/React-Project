@@ -4,14 +4,23 @@ import "../css-pages/LoginForm.css";
 import userIcon from "../image/userIcon.svg";
 import passwordIcon from "../image/passwordIcon.svg";
 import hidepassIcon from "../image/hidepassIcon.svg";
+import { useNavigate } from 'react-router-dom';
 
-const LoginForm = ({ onAuthentication, handleToggleForm, errorMessage }) => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+const LoginForm = ({ errormessage, onSubmit }) => {
+
+  const navigate = useNavigate();
+
+  const [values, setValues] = useState({
+    username: '',
+    password: '',
+  });
+
+  const handleChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    onAuthentication("login",username, password);
+    onSubmit(values);
   };
 
   return (
@@ -32,12 +41,15 @@ const LoginForm = ({ onAuthentication, handleToggleForm, errorMessage }) => {
                 <img src={userIcon} alt="mail-icon" />
                 <input
                   type="text"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  name="username"
+                  value={values.username}
+                  onChange={handleChange}
                   placeholder="Enter your Username"
                 />
               </form>
             </div>
+
+            {errormessage.username && <p className="text-danger">{errormessage.username}</p>}
 
             <div className="Password-form">
               <h4>Password</h4>
@@ -45,19 +57,22 @@ const LoginForm = ({ onAuthentication, handleToggleForm, errorMessage }) => {
                 <img src={passwordIcon} alt="pass-icon" />
                 <input
                   type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  name="password"
+                  value={values.password}
+                  onChange={handleChange}
                   placeholder="Enter your Password"
                 />
                 <img src={hidepassIcon} alt="show-hide password" />
               </form>
             </div>
             
-            {errorMessage && <div className="Worng-password">{errorMessage}</div>}
+            {errormessage.password && <p className="text-danger">{errormessage.password}</p>}
 
             <div className="forget-pass">
               <button>Forgot Password?</button>
             </div>
+
+            {errormessage.notfound && <p className="text-danger">{errormessage.notfound}</p>}
 
             <div className="submit">
               <button onClick={handleSubmit}>Login</button>
@@ -65,7 +80,7 @@ const LoginForm = ({ onAuthentication, handleToggleForm, errorMessage }) => {
 
             <div className="Register">
               <h5>New User?</h5>
-              <button onClick={handleToggleForm}>Register</button>
+              <button onClick={() => navigate('/Register')}>Register</button>
             </div>
           </div>
         </div>

@@ -25,3 +25,7 @@ body {
   transform: translateX(-17%);
   width: 1880px;
 }
+
+.text-danger {
+  color: red;
+}
