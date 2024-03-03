@@ -1,45 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../css-pages/Myproject.css";
 import { createPortal } from "react-dom";
 import newContactIcon from "../image/newContactIcon.svg";
 import humanIcon from "../image/humanIcon.svg";
 import noImage from "../image/noImage.svg";
+import axios from "axios";
 
-const Myproject = () => {
+const Myproject = ({ userData }) => {
   const [NewProjectwindow, setNewProjectwindow] = useState(false);
 
-  const MyprojectData = [
-    {
-      name: "Conjuring",
-      category: "Horror",
-      date: "2022-12-16",
-      img: "/projects/conjuring.jpg",
-    },
-    {
-      name: "Joker",
-      category: "Drama",
-      date: "2022-12-16",
-      img: "/projects/joker.jpg",
-    },
-    {
-      name: "Avengers",
-      category: "Action",
-      date: "2022-12-16",
-      img: "/projects/avengers.jpg",
-    },
-    {
-      name: "Peaky Blinders",
-      category: "Historical",
-      date: "2022-12-16",
-      img: "/projects/peakyblinders.jpg",
-    },
-    {
-      name: "Tarzan",
-      category: "Adventure",
-      date: "2022-12-16",
-      img: "/projects/tarzan.jpg",
-    },
-  ];
+  const [MyprojectData, setMyprojectData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.post(
+          "http://localhost:3000/ProjectCreator/getAllProjects",
+          {
+            user_id: userData.user_id,
+          }
+        );
+        setMyprojectData(response.data);
+      } catch (error) {
+        console.error("Error fetching projects", error);
+      }
+    };
+
+    fetchData();
+  }, [userData]);
 
   return (
     <div className="projects-content">
@@ -55,7 +43,7 @@ const Myproject = () => {
       </div>
       <div className="projects-container">
         {MyprojectData.map((data) => (
-          <Project data={data} key={data.name} />
+          <Project data={data} key={data.project_title} userData={userData} />
         ))}
       </div>
       <NewProject
@@ -66,14 +54,15 @@ const Myproject = () => {
         }}
         isOpened={NewProjectwindow}
         onClose={() => setNewProjectwindow(false)}
+        userData={userData}
       />
     </div>
   );
 };
 
-const Project = ({ data }) => {
+const Project = ({ data, userData }) => {
   const [editProjectWindow, setEditProjectWindow] = useState(false);
-  const [name, setName] = useState(data.name);
+  const [name, setName] = useState(data.project_title);
   const [category, setCategory] = useState(data.category);
 
   function handleName(newName) {
@@ -106,6 +95,7 @@ const Project = ({ data }) => {
         onClose={() => setEditProjectWindow(false)}
         handleName={handleName}
         handleCategory={handleCategory}
+        userData={userData}
       />
     </>
   );
@@ -117,6 +107,7 @@ const EditProject = ({
   onClose,
   handleName,
   handleCategory,
+  userData,
 }) => {
   const managerData = [
     {
@@ -130,7 +121,7 @@ const EditProject = ({
       Username: "Nine",
     },
   ];
-  const [editedName, setEditedName] = useState(data.name);
+  const [editedName, setEditedName] = useState(data.project_title);
   const [editedCategory, setEditedCategory] = useState(data.category);
 
   if (!isOpened) {
@@ -212,13 +203,7 @@ const EditProject = ({
   );
 };
 
-const NewProject = ({
-  data,
-  isOpened,
-  onClose,
-  handleName,
-  handleCategory,
-}) => {
+const NewProject = ({ isOpened, onClose, userData }) => {
   const DirectorData = [
     {
       Fname: "Nueachai",
@@ -226,48 +211,73 @@ const NewProject = ({
       Username: "xxx",
     },
   ];
-  const [editedName, setEditedName] = useState(data.name);
-  const [editedCategory, setEditedCategory] = useState(data.category);
+
+  const [project, setProject] = useState({
+    project_title: "",
+    category: "",
+    date: "",
+  });
 
   if (!isOpened) {
     return null;
   }
+
+  const handleInput = (e) => {
+    setProject({ ...project, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/ProjectCreator/newproject",
+        {
+          project_title: project.project_title,
+          category: project.category,
+          date: project.date,
+          user_id: userData.user_id,
+        }
+      );
+
+      console.log(response);
+    } catch (error) {
+      console.error("Error fetching project", error);
+    }
+  };
 
   return createPortal(
     <div>
       <div className="overlay">
         <div className="modal">
           <div className="Newproject-Header">
-            <img src={data.img} alt="Project Banner"></img>
+            <img src={""} alt="Project Banner"></img>
 
             <div className="Editproject-name-input">
               <h4>Project Title</h4>
               <input
                 className="Editproject-project-title"
                 type="text"
-                placeholder={data.name}
-                value={editedName}
-                onChange={(e) => setEditedName(e.target.value)}
+                name="project_title"
+                value={project.project_title}
+                onChange={handleInput}
               ></input>
               <h4>Category</h4>
               <input
                 className="Editproject-project-Category"
                 type="text"
-                placeholder={data.category}
-                value={editedCategory}
-                onChange={(e) => setEditedCategory(e.target.value)}
+                name="category"
+                value={project.category}
+                onChange={handleInput}
               ></input>
               <h4>Date</h4>
               <input
                 className="Editproject-project-Category"
                 type="text"
-                placeholder={data.date}
-                value={data.date}
-                onChange={(e) => setEditedCategory(e.target.value)}
+                name="date"
+                value={project.date}
+                onChange={handleInput}
               ></input>
             </div>
           </div>
-
           <div className="Editproject-manager">
             <div className="manager-header">
               <p>Project Manager</p>
@@ -289,16 +299,16 @@ const NewProject = ({
                 </div>
               ))}
             </div>
-
-            <button
-              className="btn-editproject"
-              onClick={() => {
-                onClose();
-              }}
-            >
-              Create Project
-            </button>
           </div>
+          <button
+            className="btn-editproject"
+            onClick={() => {
+              onClose();
+              handleSubmit();
+            }}
+          >
+            Create Project
+          </button>
         </div>
       </div>
     </div>,
