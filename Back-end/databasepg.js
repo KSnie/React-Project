@@ -406,7 +406,7 @@ app.post("/ProjectCreator/getAllProjects", async (req, res) => {
 app.post("/ProjectCreator/newproject", async (req, res) => {
   try {
     const { project_title, category, date, user_id } = req.body;
-    const result = await client.query(
+    await client.query(
       "INSERT INTO project (project_title, category, date, user_id) VALUES ($1, $2, $3, $4)",
       [project_title, category, date, user_id]
     );
@@ -417,3 +417,77 @@ app.post("/ProjectCreator/newproject", async (req, res) => {
     return res.status(500).json("server_error");
   }
 });
+
+// Project Creator update a project
+
+app.post("/ProjectCreator/updateproject", async (req, res) => {
+  try {
+    const { project_title, category, date, project_id } = req.body;
+    console.log(project_title, category, date, project_id);
+    await client.query(
+      "UPDATE project SET project_title = $1, category = $2, date = $3 WHERE project_id = $4",
+      [project_title, category, date, project_id]
+    );
+
+    res.json({ message: "Project updated successfully" });
+  } catch (error) {
+    console.error("Error updating project:", error);
+    return res.status(500).json("server_error");
+  }
+});
+
+// Project creator get manager data
+
+app.post("/ProjectCreator/getmanager", async (req, res) => {
+  try {
+    const { project_id } = req.body;
+
+    const manager = await client.query(
+      `SELECT project_manager.*, users.f_name, users.l_name, users.username
+      FROM project_manager
+      JOIN users ON project_manager.user_id = users.user_id
+      WHERE project_manager.project_id = $1
+      `,
+      [project_id]
+    );
+    return res.json(manager.rows);
+  } catch (error) {
+    console.error("Error get managers", error);
+    return res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// Project creator delete manager data
+
+app.post("/ProjectCreator/deletemanager", async (req, res) => {
+  try {
+    const { manager_id } = req.body;
+
+    await client.query("DELETE FROM project_manager WHERE manager_id = $1", [
+      manager_id,
+    ]);
+
+    res.json({ message: "manager deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting manager", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// Project Creator add a manager
+
+// app.post("/ProjectCreator/addmanager", async (req, res) => {
+//   try {
+//     const data = req.body;
+
+//     await client.query(
+//       "INSERT INTO project_manager (project_id, user_id) VALUES ($1, $2)",
+//       [project_id, user_id]
+//     );
+
+//     res.json({ message: "manager added successfully" });
+//   } catch (error) {
+//     console.error("Error adding manager:", error);
+//     return res.status(500).json("server_error");
+//   }
+// });

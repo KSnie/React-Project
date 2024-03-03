@@ -43,7 +43,7 @@ const Myproject = ({ userData }) => {
       </div>
       <div className="projects-container">
         {MyprojectData.map((data) => (
-          <Project data={data} key={data.project_title} userData={userData} />
+          <Project data={data} key={data.project_id} userData={userData} />
         ))}
       </div>
       <NewProject
@@ -64,6 +64,7 @@ const Project = ({ data, userData }) => {
   const [editProjectWindow, setEditProjectWindow] = useState(false);
   const [name, setName] = useState(data.project_title);
   const [category, setCategory] = useState(data.category);
+  const [date, setDate] = useState(data.date);
 
   function handleName(newName) {
     setName(newName);
@@ -71,6 +72,10 @@ const Project = ({ data, userData }) => {
 
   function handleCategory(newCategory) {
     setCategory(newCategory);
+  }
+
+  function handleDate(newDate) {
+    setDate(newDate);
   }
 
   return (
@@ -81,7 +86,7 @@ const Project = ({ data, userData }) => {
           setEditProjectWindow(true);
         }}
       >
-        <img src={data.img} alt="img-banner"></img>
+        <img src={noImage} alt="img-banner"></img>
         <div className="project-description">
           <p>
             <strong>{name}</strong>
@@ -95,7 +100,11 @@ const Project = ({ data, userData }) => {
         onClose={() => setEditProjectWindow(false)}
         handleName={handleName}
         handleCategory={handleCategory}
+        handleDate={handleDate}
         userData={userData}
+        name={name}
+        category={category}
+        date={date}
       />
     </>
   );
@@ -107,22 +116,67 @@ const EditProject = ({
   onClose,
   handleName,
   handleCategory,
+  handleDate,
+  name,
+  category,
+  date,
   userData,
 }) => {
-  const managerData = [
-    {
-      Fname: "Nueachai",
-      Lname: "Wijitsopon",
-      Username: "xxx",
-    },
-    {
-      Fname: "Kasidis",
-      Lname: "Chuayprasert",
-      Username: "Nine",
-    },
-  ];
-  const [editedName, setEditedName] = useState(data.project_title);
-  const [editedCategory, setEditedCategory] = useState(data.category);
+  const [managerData, setManagerData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.post(
+          "http://localhost:3000/ProjectCreator/getmanager",
+          {
+            project_id: data.project_id,
+          }
+        );
+        setManagerData(response.data);
+      } catch (error) {
+        console.error("Error fetching projects", error);
+      }
+    };
+
+    fetchData();
+  }, [data]);
+
+  const handleSave = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/ProjectCreator/updateproject",
+        {
+          project_title: name,
+          category: category,
+          date: date,
+          project_id: data.project_id,
+        }
+      );
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleDeleteManager = async (managerId) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/ProjectCreator/deletemanager",
+        {
+          manager_id: managerId,
+        }
+      );
+
+      setManagerData((prevManagerData) =>
+        prevManagerData.filter((manager) => manager.manager_id !== managerId)
+      );
+
+      console.log(response);
+    } catch (error) {
+      console.error("Error deleting manager", error);
+    }
+  };
 
   if (!isOpened) {
     return null;
@@ -140,25 +194,25 @@ const EditProject = ({
               <input
                 className="Editproject-project-title"
                 type="text"
-                placeholder={data.name}
-                value={editedName}
-                onChange={(e) => setEditedName(e.target.value)}
+                placeholder={name}
+                value={name}
+                onChange={(e) => handleName(e.target.value)}
               ></input>
               <h4>Category</h4>
               <input
                 className="Editproject-project-Category"
                 type="text"
-                placeholder={data.category}
-                value={editedCategory}
-                onChange={(e) => setEditedCategory(e.target.value)}
+                placeholder={category}
+                value={category}
+                onChange={(e) => handleCategory(e.target.value)}
               ></input>
               <h4>Date</h4>
               <input
                 className="Editproject-project-Category"
                 type="text"
-                placeholder={data.date}
-                value={data.date}
-                onChange={(e) => setEditedCategory(e.target.value)}
+                placeholder={date}
+                value={date}
+                onChange={(e) => handleDate(e.target.value)}
               ></input>
             </div>
           </div>
@@ -166,8 +220,15 @@ const EditProject = ({
           <div className="Editproject-manager">
             <div className="manager-header">
               <p>Project Manager</p>
+              <input
+                type="text"
+                className="Editproject-project-Category"
+                style={{ width: 200, marginLeft: "auto", marginRight: "10px" }}
+                placeholder="manager username"
+              />
               <button>
-                <img src={newContactIcon} alt="newContactIcon"></img>Add
+                <img src={newContactIcon} alt="newContactIcon" />
+                Add
               </button>
             </div>
 
@@ -176,11 +237,15 @@ const EditProject = ({
                 <div key={index} className="manager-main-content">
                   <img src={humanIcon} alt=""></img>
                   <h3>
-                    {manager.Fname} {manager.Lname}
+                    {manager.f_name} {manager.l_name}
                   </h3>
-                  <h3>{manager.Username}</h3>
+                  <h3>{manager.username}</h3>
 
-                  <button>Remove</button>
+                  <button
+                    onClick={() => handleDeleteManager(manager.manager_id)}
+                  >
+                    Delete
+                  </button>
                 </div>
               ))}
             </div>
@@ -188,8 +253,10 @@ const EditProject = ({
             <button
               className="btn-editproject"
               onClick={() => {
-                handleName(editedName);
-                handleCategory(editedCategory);
+                handleName(name);
+                handleCategory(category);
+                handleDate(date);
+                handleSave();
                 onClose();
               }}
             >
@@ -247,7 +314,7 @@ const NewProject = ({ isOpened, onClose, userData }) => {
   return createPortal(
     <div>
       <div className="overlay">
-        <div className="modal">
+        <div className="modal" style={{ height: "500px", padding: "20px" }}>
           <div className="Newproject-Header">
             <img src={""} alt="Project Banner"></img>
 
@@ -278,27 +345,17 @@ const NewProject = ({ isOpened, onClose, userData }) => {
               ></input>
             </div>
           </div>
-          <div className="Editproject-manager">
-            <div className="manager-header">
-              <p>Project Manager</p>
-              <button>
-                <img src={newContactIcon} alt="newContactIcon"></img>Add
-              </button>
-            </div>
-
-            <div className="manager-content">
-              {DirectorData.map((director, index) => (
-                <div key={index} className="manager-main-content">
-                  <img src={humanIcon} alt=""></img>
-                  <h3>
-                    {director.Fname} {director.Lname}
-                  </h3>
-                  <h3>{director.Username}</h3>
-
-                  <button>Remove</button>
-                </div>
-              ))}
-            </div>
+          <div
+            className="Editproject-manager"
+            style={{
+              fontSize: "20px",
+              textAlign: "center",
+              marginTop: "50px",
+              marginBottom: "50px",
+              fontWeight: "bold",
+            }}
+          >
+            You can add project manager after creating project
           </div>
           <button
             className="btn-editproject"
