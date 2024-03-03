@@ -1,88 +1,95 @@
-import React, { useState } from 'react';
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import Login from "./L_LoginForm";
-import Register from "./L_RegisterForm";
+import React, { useState } from "react";
+import LoginForm from "./L_LoginForm"; // Import your LoginForm component
+import RegisterForm from "./L_RegisterForm"; // Import your RegisterForm component
+import RegisterFormPc from "./L_RegisterFormPc";
 import Registerinfo from "./L_Registerinfo";
-import RegisterPc from "./L_RegisterFormPc";
-import { validation, validation2, validation3 } from "./Validation";
-
+import Pcsent from "./L_Pcsent";
 import axios from 'axios';
 
+const AuthPage = ({ onAuthentication }) => {
+  const [isLogin, setIsLogin] = useState(true);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [isRegisterpc, setRegisterpc] = useState(true);
+  const [isRegister, setRegister] = useState(true);
+  const [isPcRequest, setPcRequest] = useState(true);
 
-function AuthPage({onAuthentication}) {
+  const [isusername, setUsername] = useState("");
+  const [ispassword, setPassword] = useState("");
+  const [isgender, setGender] = useState("");
 
-  const [error, setError] = useState({});
-//  Login
+  const handleToggleForm = () => {
+    setIsLogin((prevIsLogin) => !prevIsLogin);
+    setErrorMessage(""); // Clear error message when toggling forms
+  };
 
-  const handleAuthentication = async (e) => {
-    const validationErrors = validation(e);
+  const handleToggleFormRegisterPC = () => {
+    setRegisterpc((prevIsRegisterpc) => !prevIsRegisterpc);
+  };
 
-    if (Object.values(validationErrors).every((error) => error === "")) {
+  const handleToggleFormRegister = () => {
+    setRegister((prevIsRegister) => !prevIsRegister);
+  };
 
-      const res = await axios.post('http://localhost:3000/login', e);
-  
-      if (res.data === "error") {
-        setError({ username: '', password: '', notfound: 'Username or password is incorrect' });
-      } else {
-        onAuthentication((res.data));
-        setError({ username: '', password: '', notfound: '' });
+  const handleToggleFormisPcRequest = () => {
+    setPcRequest((prevIsRegisterRequest) => !prevIsRegisterRequest);
+  };
+
+  const handleAuthenticationLocal = async (option,username, password ,gender , fullname,dateofbirth,phonenumber,country,certificateFile) => {
+    if (option === "login") {
+
+      try {
+        const res = await axios.post('http://localhost:3000/login', {username,password});
+        onAuthentication(res.data);
+
+      } catch (error) {
+        console.error('Error during login:', error);
       }
-    } else {
-      setError(validationErrors);
+
+    } else if (option === "register") {
+      setUsername(username)
+      setPassword(password)
+      setGender(gender)
+
+    } else if (option === "registerinfo") {
+      let [f_name, l_name] = fullname.split(' ');
+      const response = await axios.post('http://localhost:3000/newuser', { isusername, ispassword, role: 'user', isgender, f_name, l_name, dateofbirth, phonenumber, country });
+      onAuthentication(response.data);
+      handleToggleForm();
+      handleToggleFormRegister();
+
+    } else if (option === "registerPc") {
+      let [f_name, l_name] = fullname.split(' ');
+      const response = await axios.post('http://localhost:3000/newuserpc', { isusername, ispassword, role: 'request', isgender, f_name, l_name, dateofbirth, phonenumber, country, certificateFile });
+      onAuthentication(response.data);
+
     }
-  }
-
-  const [registerdata, setData] = useState({})
-
-// Register_user
-
-  const Register_First = async (e) => {
-    const Register_Firsterror = validation2(e);
-
-    if (Object.values(Register_Firsterror).every((error) => error === "")) {
-        const res = await axios.post('http://localhost:3000/checkusernamer', e);
-
-        if (res.data === 'already') {
-          setError({ username: 'Username already use!!', password: '', notmatch: '' });
-        } else {
-          setData(e)
-          setError({ username: '', password: '', notmatch: '' });
-          console.log(e);
-        }
-    } else {
-      setError(Register_Firsterror);
-      console.log(error);
-    }
-  }
-
-// Register_info
-
-const RegisterSecond = async (e) => {
-  const RegisterSeconderror = validation3(e);
-
-  if (Object.values(RegisterSeconderror).every((error) => error === "")) {
-    if (registerdata) {
-      const updatedData = { ...registerdata, ...e };
-      console.log(updatedData)
-      await axios.post('http://localhost:3000/newuser', updatedData);
-    }
-  } else {
-    setError(RegisterSeconderror);
-  }
-};
-
-
+  };
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Login errormessage = {error} onSubmit = {handleAuthentication} />}></Route>
-        <Route path='/Register' element={<Register errormessage = {error} onSubmit = {Register_First}/>}></Route>
-        <Route path='/Register_info' element={<Registerinfo errormessage = {error} onSubmit = {RegisterSecond}/>}></Route>
-        <Route path='/RegisterPc' element={<RegisterPc/>}></Route>
-      </Routes>
-    </BrowserRouter>
-  )
+    <div className="auth-page">
+      {isLogin ? (
+        <LoginForm
+          onAuthentication={handleAuthenticationLocal}
+          handleToggleForm={handleToggleForm}
+          errorMessage={errorMessage}
+        />
+      ) : (
+        isRegisterpc ? (
+          isRegister ? (
+            <RegisterForm onAuthentication={handleAuthenticationLocal} isLogin={handleToggleForm} isRegisterpc={handleToggleFormRegisterPC} isRegister={handleToggleFormRegister}/>
+          ) : (
+            <Registerinfo onAuthentication={handleAuthenticationLocal} />
+          )
+        ) : (
+          isPcRequest ? (
+            <RegisterFormPc onAuthentication={handleAuthenticationLocal} isPcRequest = {handleToggleFormisPcRequest} />
+          ) : (
+            <Pcsent handleToggleForm={handleToggleForm} isRegisterpc={handleToggleFormRegisterPC} isPcRequest = {handleToggleFormisPcRequest}/>
+          )
+        )
+      )}
+    </div>
+  );
 }
 
 export default AuthPage;

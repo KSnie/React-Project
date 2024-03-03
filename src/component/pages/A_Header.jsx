@@ -7,7 +7,7 @@ import sortIcon from "../image/sortIcon.svg";
 import settingIcon from "../image/settingIcon.svg";
 import sidebarIcon from "../image/sidebarIcon.svg";
 
-function Header({ userRole , userName, statusSlide , currentPage} ) {
+function Header({ userRole , userName, statusSlide , currentPage , logout} ) {
   const [isSidebarVisible, setIsSidebarVisible] = useState(true);
 
   const toggleSidebar = () => {
@@ -45,9 +45,8 @@ function Header({ userRole , userName, statusSlide , currentPage} ) {
             <p>{userRole}</p>
           </div>
 
-          <button type="setting">
-            <img src={settingIcon} alt="settingIcon" />
-          </button>
+          <button className="button-logout" onClick={() => {logout();}}>Logout</button>
+
         </div>
       </nav>
     </div>

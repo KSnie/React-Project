@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./component/pages/A_Header";
 import Home from "./component/pages/A_Home";
@@ -7,7 +7,7 @@ import Calendar from "./component/pages/User_Calendar";
 import Script from "./component/pages/User_Script";
 import Dashboard from "./component/pages/Admin_Dashboard";
 import Slidebar from "./component/pages/A_Slidebar";
-import AuthPage from "./component/pages/L_AuthPage";
+import AuthPage from "./component/pages/L_AuthPage"; // Import the AuthPage component
 // import data from "./component/pages/Data.json";
 import PostPopup from "./component/pages/P_PostPopup";
 import ScriptDetail from "./component/pages/User_ScriptDetail";
@@ -44,8 +44,6 @@ const pageComponents = {
 function App() {
   const [currentPage, setCurrentPage] = useState("Home");
   const [currentSlide, setCurrentSlide] = useState(false);
-  const [data , setData] = useState({});
-
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userRole, setUserRole] = useState(null);
   const [userName, setUserName] = useState(null);
@@ -53,13 +51,13 @@ function App() {
   const [selectedPost, setSelectedPost] = useState(null);
   const [selectScript, setScript] = useState(null);
 
+  const [data , setData] = useState({});
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
 
   const PostChange = (post) => {
     setSelectedPost(post);
-    // console.log(post)
   };
 
   const handleSlideToggle = (option) => {
@@ -70,38 +68,24 @@ function App() {
     setScript(script);
   };
 
-  // const handleAuthentication = (
-  //   status,
-  //   username,
-  //   password,
-  //   gender,
-  //   fullname,
-  //   dateofbirth,
-  //   phonenumber,
-  //   county,
-  //   detaillink
-  // ) => {
-
-  //   setIsAuthenticated(status);
-
-  //   if (status) {
-  //     const foundUser = data.find(
-  //       (user) => user.username === username && user.password === password
-  //     );
-
-  //     if (foundUser) {
-  //       setUserRole(foundUser.role);
-  //       setUserName(foundUser.username);
-  //     } else {
-  //       setUserName(username);
-  //       setUserRole("user");
-  //     }
-  //   }
-  // };
-
   const handleAuthentication = (data) => {
-    console.log(data)
-    setIsAuthenticated(true)
+    setData(data);
+    console.log(data);
+  }
+
+  useEffect(() => {
+    if (data) {
+      if (data.username && data.role !== "request") {
+        setUserName(data.username);
+        setUserRole(data.role);
+        setIsAuthenticated(true);
+      }
+    }
+  }, [data]);
+
+  const logout = () => {
+    setIsAuthenticated(false)
+    setData(null)
   }
 
   return (
@@ -116,6 +100,7 @@ function App() {
               userName={userName}
               statusSlide={handleSlideToggle}
               currentPage={currentPage}
+              logout = {logout}
             />
             <div className="Main">
               <Slidebar

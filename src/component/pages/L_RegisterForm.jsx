@@ -1,140 +1,22 @@
-// import React, { useState } from "react";
-// import "../css-pages/RegisterForm.css";
-// import logoIcon from "../image/logo.svg";
-// import userIcon from "../image/userIcon.svg";
-// import banner from "../image/Registerbanner.svg";
-// import passwordIcon from "../image/passwordIcon.svg";
-
-// const RegisterForm = ({ onAuthentication , isLogin, isRegisterpc ,isRegister}) => {
-//   const [username, setUsername] = useState("");
-//   const [password, setPassword] = useState("");
-//   const [gender, setGender] = useState("");
-//   const [Secondpassword, setSecondPassword] = useState();
-
-//   const handleSubmit = (e) => {
-
-//     try {
-//       onAuthentication("register", username, password, gender);
-//     } catch (error) {
-//       console.error("Registration failed:", error);
-//     }
-//   };
-
-//   return (
-//     <div>
-//       <div className="RegisterF-container">
-//         <div className="Login-header">
-//           <img src={logoIcon} alt="logo-icon" />
-//         </div>
-
-//         <div className="RegisterF-main-content">
-//           <div className="RegisterF-container-left">
-//             <div className="content-text-top">
-//               <h3>Sign Up</h3>
-//               <p>If you already have an account register</p>
-//               <h4 onClick={() => { isLogin();}} >Login here</h4>
-//             </div>
-
-//             <div className="Username-form-register">
-//               <h4>Username</h4>
-//               <form className="Username-input-register">
-//                 <img src={userIcon} alt="user-icon" />
-//                 <input
-//                   type="text"
-//                   value={username}
-//                   onChange={(e) => setUsername(e.target.value)}
-//                   placeholder="Enter your Username"
-//                 />
-//               </form>
-//             </div>
-
-//             <div className="Password-form-register">
-//               <h4>Password</h4>
-//               <form className="Password-input-register">
-//                 <img src={passwordIcon} alt="user-icon" />
-//                 <input
-//                   type="password"
-//                   value={password}
-//                   onChange={(e) => setPassword(e.target.value)}
-//                   placeholder="Enter your Password"
-//                 />
-//               </form>
-//             </div>
-
-//             <div className="Second-Password-form-register">
-//               <h4>Confirm Password</h4>
-//               <form className="Second-Password-input-register">
-//                 <img src={passwordIcon} alt="user-icon" />
-//                 <input
-//                   type="password"
-//                   value={Secondpassword}
-//                   onChange={(e) => setSecondPassword(e.target.value)}
-//                   placeholder="Enter your Password"
-//                 />
-//               </form>
-//             </div>
-
-//             <div className="Gender-form-register">
-//               <h4>Gender :</h4>
-
-//               <input type='radio' value ="Male" id='male' name='radio' onChange={(e) => setGender(e.target.value)} />
-//               <label for='male'>Male</label>
-//               <input type='radio' value ="Female" id='female' name='radio' onChange={(e) => setGender(e.target.value)}/>
-//               <label for='female'>Female</label>
-//             </div>
-
-//             <div className="Registerf-button">
-//               <div className="Register-nextpage">
-//                 <button onClick={() => { isRegister(); handleSubmit(); }}>Register next page</button>
-//               </div>
-//               <div className="Register-Pc">
-//                 <button onClick={() => { isRegisterpc(); handleSubmit(); }}>Register Project Creater</button>
-//               </div>
-//             </div>
-
-//           </div>
-
-//           <div className="RegisterF-container-Right">
-//             <img src={banner} alt="banner" />
-//             <h4>Join us now</h4>
-//             <p>And start your dream acting careers!</p>
-//           </div>
-//         </div>
-//       </div>
-
-//     </div>
-//   );
-// };
-
-// export default RegisterForm;
-
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import "../css-pages/RegisterForm.css";
 import logoIcon from "../image/logo.svg";
 import userIcon from "../image/userIcon.svg";
 import banner from "../image/Registerbanner.svg";
 import passwordIcon from "../image/passwordIcon.svg";
-import "../css-pages/RegisterForm.css";
 
-function RegisterForm({errormessage, onSubmit}) {
-  const navigate = useNavigate();
-
-  const [values, setValues] = useState({
-    username: '',
-    password: '',
-    Secondpassword: '',
-    gender: ''
-  });
-
-  const handleChange = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
-  };
+const RegisterForm = ({ onAuthentication , isLogin, isRegisterpc ,isRegister}) => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [gender, setGender] = useState("");
+  const [Secondpassword, setSecondPassword] = useState();
 
   const handleSubmit = (e) => {
-    onSubmit(values);
 
-    if (Object.values(errormessage).every((error) => error === '')) {
-      navigate('/Register_info');
+    try {
+      onAuthentication("register", username, password, gender);
+    } catch (error) {
+      console.error("Registration failed:", error);
     }
   };
 
@@ -150,13 +32,7 @@ function RegisterForm({errormessage, onSubmit}) {
             <div className="content-text-top">
               <h3>Sign Up</h3>
               <p>If you already have an account register</p>
-              <h4
-                onClick={() => {
-                  navigate('/')
-                }}
-              >
-                Login here
-              </h4>
+              <h4 onClick={() => { isLogin();}} >Login here</h4>
             </div>
 
             <div className="Username-form-register">
@@ -165,15 +41,12 @@ function RegisterForm({errormessage, onSubmit}) {
                 <img src={userIcon} alt="user-icon" />
                 <input
                   type="text"
-                  value={values.username}
-                  name="username"
-                  onChange={handleChange}
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
                   placeholder="Enter your Username"
                 />
               </form>
             </div>
-
-            {errormessage.username && <p className="text-danger">{errormessage.username}</p>}
 
             <div className="Password-form-register">
               <h4>Password</h4>
@@ -181,15 +54,12 @@ function RegisterForm({errormessage, onSubmit}) {
                 <img src={passwordIcon} alt="user-icon" />
                 <input
                   type="password"
-                  value={values.password}
-                  name="password"
-                  onChange={handleChange}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter your Password"
                 />
               </form>
             </div>
-
-            {errormessage.password && <p className="text-danger">{errormessage.password}</p>}
 
             <div className="Second-Password-form-register">
               <h4>Confirm Password</h4>
@@ -197,57 +67,31 @@ function RegisterForm({errormessage, onSubmit}) {
                 <img src={passwordIcon} alt="user-icon" />
                 <input
                   type="password"
-                  value={values.Secondpassword}
-                  name="Secondpassword"
-                  onChange={handleChange}
+                  value={Secondpassword}
+                  onChange={(e) => setSecondPassword(e.target.value)}
                   placeholder="Enter your Password"
                 />
               </form>
             </div>
-
-            {errormessage.notmatch && <p className="text-danger">{errormessage.notmatch}</p>}
-
+            
             <div className="Gender-form-register">
               <h4>Gender :</h4>
 
-              <input
-                type="radio"
-                value="Male"
-                id="male"
-                name="gender"
-                onChange={handleChange}
-              />
-              <label for="male">Male</label>
-              <input
-                type="radio"
-                value="Female"
-                id="female"
-                name="gender"
-                onChange={handleChange}
-              />
-              <label for="female">Female</label>
+              <input type='radio' value ="Male" id='male' name='radio' onChange={(e) => setGender(e.target.value)} />
+              <label for='male'>Male</label>
+              <input type='radio' value ="Female" id='female' name='radio' onChange={(e) => setGender(e.target.value)}/>
+              <label for='female'>Female</label>
             </div>
 
             <div className="Registerf-button">
               <div className="Register-nextpage">
-                <button
-                  onClick={() => {
-                    handleSubmit();
-                  }}
-                >
-                  Register next page
-                </button>
+                <button onClick={() => { isRegister(); handleSubmit(); }}>Register next page</button>
               </div>
               <div className="Register-Pc">
-                <button
-                  onClick={() => {
-                    handleSubmit();
-                  }}
-                >
-                  Register Project Creater
-                </button>
+                <button onClick={() => { isRegisterpc(); handleSubmit(); }}>Register Project Creater</button>
               </div>
             </div>
+
           </div>
 
           <div className="RegisterF-container-Right">
@@ -257,8 +101,9 @@ function RegisterForm({errormessage, onSubmit}) {
           </div>
         </div>
       </div>
+
     </div>
   );
-}
+};
 
 export default RegisterForm;
