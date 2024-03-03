@@ -1,101 +1,39 @@
-import React from "react";
+import React, {useState , useEffect} from "react";
 import profile from "../image/profile.svg";
 import profile2 from "../image/profile2.svg";
 import "../css-pages/cp-post.css";
 import optionIcon from "../image/optionIcon.svg"
+import axios from "axios";
 
 const Post = ({ onPageChange, onChangePost}) => {
+  const [postsData, setPostsData] = useState([]);
 
-  const PostDetail = [
-    {
-      Post_id: 1,
-      Studio_name: "Marvel Studios",
-      Category: "Horror",
-      userProfile_id: profile,
-      Post_Movie_name: "Infinity War",
-      Post_Detail:
-        <div>
-          <h2>Requirement</h2>
-          <ul>
-            <p>- XXXXX</p>
-            <p>- XXXXX</p>
-            <p>- XXXXX</p>
-          </ul>
-
-          <h2>Detail</h2>
-          <p>Text Test</p>
-        </div>,
-      Date_casting: "27/12/2023",
-      Time_casting: "09.00 - 14.00",
-
-      Post_character : ["First","Second","Third"]
-    },
-
-    {
-      Post_id: 2,
-      Studio_name: "DC Studios",
-      Category: "LoveStory",
-      userProfile_id: profile2,
-      Post_Movie_name: "Last Love",
-      Post_Detail:"TEST SHORT TEXT",
-      Date_casting: "27/12/2023",
-      Time_casting: "09.00 - 14.00",
-
-      Post_character : ["First","Second","Third"]
-    },
-
-    {
-      Post_id: 3,
-      Studio_name: "Nine Studios",
-      Category: "LoveStory",
-      userProfile_id: profile2,
-      Post_Movie_name: "Last Love",
-      Post_Detail:"TEST SHORT TEXT",
-      Date_casting: "27/12/2023",
-      Time_casting: "09.00 - 14.00",
-
-      Post_character : ["First","Second","Third"]
-    },
-
-    {
-      Post_id: 4,
-      Studio_name: "Nine Studios",
-      Category: "LoveStory",
-      userProfile_id: profile2,
-      Post_Movie_name: "Last Love",
-      Post_Detail:"TEST SHORT TEXT",
-      Date_casting: "27/12/2023",
-      Time_casting: "09.00 - 14.00",
-
-      Post_character : ["First","Second","Third"]
-    },
-
-    {
-      Post_id: 5,
-      Studio_name: "Nine Studios",
-      Category: "LoveStory",
-      userProfile_id: profile2,
-      Post_Movie_name: "Last Love",
-      Post_Detail:"TEST SHORT TEXT",
-      Date_casting: "27/12/2023",
-      Time_casting: "09.00 - 14.00",
-
-      Post_character : ["First","Second","Third"]
-    },
-  ];
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.post("http://localhost:3000/post/getpost");
+        setPostsData(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error fetching posts", error);
+      }
+    };
+  
+    fetchData();
+  }, []);
 
   return (
     <div>
-      {PostDetail.map((post) => (
+      {postsData.map((post) => (
 
         <div key={post.Post_id} className="Header-post">
             
             <div className="post-top">
               <div className="user-info-post">
-                  <img src={post.userProfile_id} alt="profile"/>
+                  <img src={profile2} alt="profile"/>
                   <div className="Name-post">
-                    <h1>{post.Studio_name}</h1>
-                    <p>Category {post.Category}</p>
+                    <h1>{post.f_name} {post.l_name}</h1>
+                    <p>Category {post.category}</p>
                   </div>
               </div>
               
@@ -108,7 +46,7 @@ const Post = ({ onPageChange, onChangePost}) => {
 
             <div className="post-detail">
               <div className="Post-text">
-                <p>{post.Post_Detail}</p>
+                <p>{post.post_details}</p>
               </div>
             </div>
             <div className="bottom-post">

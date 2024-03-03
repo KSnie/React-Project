@@ -123,6 +123,7 @@ function App() {
                       onChangePost: PostChange,
                       onChangeScript: ScriptChange,
                       scriptDetails: selectScript,
+                      userData: data
                     })}
                 </div>
               </div>

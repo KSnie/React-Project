@@ -242,8 +242,6 @@ app.post('/admin/getusers', async(err , res) => {
 app.post('/admin/updateuser', async (req, res) => {
     try {
       const  editdata  = req.body;
-        
-      console.log(editdata)
 
       await client.query(
         'UPDATE users SET f_name = $1, l_name = $2, date_of_birth = $3, username = $4, password = $5, role = $6, gender = $7, phone_number = $8, country = $9 WHERE user_id = $10',
@@ -266,4 +264,90 @@ app.post('/admin/updateuser', async (req, res) => {
       console.error('Error updating user', error);
       res.status(500).json({ error: 'Internal Server Error' });
     }
+});
+
+// Admin Delete user
+
+app.post('/admin/DeleteUser', async (req, res) => {
+  try {
+    const  deleteUser  = req.body;
+
+    await client.query('DELETE FROM users WHERE user_id = $1', [deleteUser.user_id]);
+
+    res.json({ message: 'User Delete successfully' });
+  } catch (error) {
+    console.error('Error updating user', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
+
+// Admin - Add new user
+
+app.post('/admin/newuser', async (req, res) => {
+
+  try {
+      const dataUser  = req.body;
+      console.log(dataUser)
+      const result = await client.query(
+          'INSERT INTO users (username, password, role, gender, f_name, l_name, date_of_birth, phone_number, country) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)',
+          [dataUser.username, dataUser.password, dataUser.role, dataUser.gender, dataUser.F_name, dataUser.L_name, dataUser.date_of_birth, dataUser.phone_number, dataUser.country]
+      );
+
+      res.json({ message: 'User Insert successfully' });
+  } catch (error) {
+      console.error('Error creating new user:', error);
+      return res.status(500).json('server_error');
+  }
+});
+
+// Select all post
+
+app.post('/post/getpost', async (req, res) => {
+  try {
+    const query = `
+      SELECT 
+        post.*, 
+        project.project_title, 
+        project.category, 
+        project.date, 
+        project.user_id,
+        users.f_name,
+        users.l_name
+      FROM 
+        post 
+      JOIN 
+        project ON post.project_id = project.project_id
+      JOIN
+        users ON project.user_id = users.user_id
+    `;
+    const result = await client.query(query);
+    console.log(result)
+    return res.json(result.rows);
+
+
+  } catch (error) {
+    console.error('Error getting posts', error);
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+// Send request actor post
+
+app.post('/post/submitpost', async (req, res) => {
+  try {
+    const { project_id, user_id, status } = req.body;
+
+    const result = await client.query(
+      'INSERT INTO post_request (project_id, user_id, status) VALUES ($1, $2, $3) RETURNING *',
+      [project_id, user_id, status]
+    );
+
+    return res.status(200).json({message: 'Post submitted successfully',});
+
+  } catch (error) {
+    console.error('Error submitting post:', error);
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
 });

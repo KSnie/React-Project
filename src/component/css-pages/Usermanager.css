@@ -249,11 +249,11 @@
 
 .Usermanager-containerx {
   position: fixed;
-  top: 50%;
+  top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 550px;
-  height: 675px;
+  height: 833px;
   z-index: 3;
   border-radius: 50px;
   background-color: white;
@@ -261,7 +261,7 @@
 
 .Usermanager-containerx button{
   margin-left: 25%;
-  margin-top: 12%;
+  margin-top: 3%;
   width: 300px;
   height: 50px;
   font-size: 20px;

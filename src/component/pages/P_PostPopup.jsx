@@ -1,48 +1,47 @@
 import React, { useState } from "react";
 import attachIcon from "../image/attachIcon.svg";
 import "../css-pages/PostPopup.css";
+import profile from "../image/profile.svg";
+import axios from "axios";
 
-const PostPopup = ({ onPageChange , dataPost }) => {
+const PostPopup = ({ onPageChange , dataPost , userData }) => {
 
-  const [currentCharacter, setCurrentCharacter] = useState("");
-
-  const onRegister = (data) => {
-    console.log(data.Post_id)
-    console.log(currentCharacter)
+  const onRegister = async (e) => {
+    console.log(e.project_id);
+    console.log(userData.user_id);
+    try {
+      const res = await axios.post('http://localhost:3000/post/submitpost', {
+        project_id: e.project_id,
+        user_id: userData.user_id,
+        status: "pending",
+      });
+      console.log(res.data);
+    } catch (error) {
+      console.error('Error during registration:', error);
+    }
   }
-  
+
   return (
     <div>
       <div className="containter">
         <div className="Post-header">
-          <img src={dataPost.userProfile_id} alt="profile" />
+          <img src={profile} alt="profile" />
           <div className="Post-header-name">
-            <h3>{dataPost.Studio_name}</h3>
-            <p>Category {dataPost.Category}</p>
+            <h3>{dataPost.f_name} {dataPost.l_name}</h3>
+            <p>Category {dataPost.category}</p>
           </div>
         </div>
 
         <div className="Post-content-container">
           <div className="Post-left-content">
-            {dataPost.Post_Detail}
+            {dataPost.post_details}
           </div>
 
           <div className="Post-right-content">
             <div className="Post-right-main-content">
               <div className="Post-right-top-content">
                 <div className="Post-right-moviename">
-                  <h4>{dataPost.Post_Movie_name}</h4>
-                </div>
-
-                <div className="Post-character">
-                  <h4>Character</h4>
-                  <select id="postCharacter" name="postCharacter" onChange={(e) => setCurrentCharacter(e.target.value)}>
-                    {dataPost.Post_character.map((character, index) => (
-                      <option key={index} value={character}>
-                        {character}
-                      </option>
-                    ))}
-                  </select>
+                  <h4>{dataPost.project_title}</h4>
                 </div>
 
                 <div className="Post-Attach-container">
@@ -57,12 +56,7 @@ const PostPopup = ({ onPageChange , dataPost }) => {
               <div className="Post-right-date-time">
                 <div className="Post-right-date">
                   <h4>Date Casting</h4>
-                  <p>{dataPost.Date_casting}</p>
-                </div>
-
-                <div className="Post-right-date">
-                  <h4>Time Casting</h4>
-                  <p>{dataPost.Time_casting}</p>
+                  <p>{dataPost.date}</p>
                 </div>
 
               </div>
