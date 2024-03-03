@@ -36,7 +36,7 @@
 
 .post {
   display: flex;
-  justify-content: left;
+  justify-content: space-between;
   align-items: center;
   background-color: white;
   padding: 15px 20px;
@@ -123,6 +123,7 @@
   border-radius: 10px;
   transition: 0.3s;
   font-weight: bold;
+  margin-right: 50px;
 }
 
 .btn-edit:hover {
@@ -139,7 +140,7 @@ button:hover {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 900px;
-  height: 600px;
+  height: 497px;
   z-index: 3;
   background-color: white;
   border-radius: 25px;
@@ -199,7 +200,7 @@ button:hover {
 .New-edit-2-1 {
   width: 50%;
 }
-.New-edit-2-1 input{
+.New-edit-2-1 select{
   width: 80%;
   height: 40px;
   background-color: #FAFAFA;

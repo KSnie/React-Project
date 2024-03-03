@@ -1,40 +1,54 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../css-pages/Postpc.css";
 import { createPortal } from "react-dom";
+import axios from "axios";
 
-
-const Postpc = () => {
-  const postData = [
-    {
-      name: "Conjuring",
-      category: "Horror",
-      project: "Conjuring",
-      views: 69,
-      Date_cast: "27/12/2023  9.00 - 12.00",
-      application: 69,
-      PostID: 1,
-    },
-    {
-      name: "Romeo and Juliet",
-      category: "Romantic",
-      project: "Romeo",
-      views: 96,
-      Date_cast: "27/12/2023  9.00 - 12.00",
-      application: 96,
-      PostID: 2,
-    },
-    {
-      name: "Luang Pee Jas 5G",
-      category: "Comedy",
-      project: "Luang",
-      views: 555,
-      Date_cast: "27/12/2023  9.00 - 12.00",
-      application: 123,
-      PostID: 3,
-    },
-  ];
+const Postpc = ({ userData }) => {
 
   const [EditNewPostwindow, setEditNewPostwindow] = useState(false);
+  const [postData, setpostData] = useState([]);
+
+  const updatePostdata = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/ProjectCreator/getpostdata",
+        {
+          user_id: userData.user_id,
+        }
+      );
+
+      if (Array.isArray(response.data.data)) {
+        setpostData(response.data.data);
+      } else {
+        console.error("Invalid data format received", response.data);
+      }
+    } catch (error) {
+      console.error("Error fetching projects", error);
+    }
+  }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.post(
+          "http://localhost:3000/ProjectCreator/getpostdata",
+          {
+            user_id: userData.user_id,
+          }
+        );
+
+        if (Array.isArray(response.data.data)) {
+          setpostData(response.data.data);
+        } else {
+          console.error("Invalid data format received", response.data);
+        }
+      } catch (error) {
+        console.error("Error fetching projects", error);
+      }
+    };
+  
+    fetchData();
+  }, [userData]);
 
   return (
     <div className="post-main">
@@ -43,53 +57,92 @@ const Postpc = () => {
         <button onClick={() => {setEditNewPostwindow(true);}}>New Post</button>
       </div>
       <div className="posts-container">
+
         {postData.map((post) => (
-          <Post post={post} key={post.PostID} />
+          <Post post={post} key={post.post_id} userData={userData} updatePostdata = {updatePostdata()}/>
         ))}
+
       </div>
-      <NewEditPost Data={    {
-      name: "",
-      category: "",
-      project: "",
-      views: 0,
-      application: 0,
-      PostID: 2,
-    }} isOpened={EditNewPostwindow} onClose={() => {setEditNewPostwindow(false);}}></NewEditPost>
+      <NewEditPost isOpened={EditNewPostwindow} onClose={() => {setEditNewPostwindow(false);}} userData ={userData} updatePostdata = {updatePostdata()}></NewEditPost>
     </div>
   );
 };
 
-const Post = ({ post }) => {
+const Post = ({ post, updatePostdata }) => {
 
-  const [EditNewPostwindow, setEditNewPostwindow] = useState(false);
+  const deletePost = async (postId) => {
+    try {
+      const response = await axios.post("http://localhost:3000/ProjectCreator/deletepost", {
+        post_id: postId,
+      });
+  
+      console.log("Post deleted successfully");
 
+      updatePostdata();
+    } catch (error) {
+      console.error("Error deleting post", error);
+    }
+  };
 
   return (
     <div className="post">
       <div className="detail">
-        <p className="detail-name">{post.name}</p>
+        <p className="detail-name">{post.project_title}</p>
         <span className="detail-category">{post.category}</span>
       </div>
-      <div className="views">
-        <p>Views</p>
-        <span className="views-count">{post.views}</span>
-      </div>
-      <div className="applications">
-        <p>Applications</p>
-        <span className="applications-count">{post.application}</span>
-      </div>
       <div className="buttons">
-        <button className="btn-view">View</button>
-        <button className="btn-edit" onClick={() => {setEditNewPostwindow(true);}}>Edit</button>
+        <button className="btn-edit" onClick={() => {deletePost(post.post_id)}}>Delete</button>
       </div>
-      <NewEditPost Data={post} isOpened={EditNewPostwindow} onClose={() => {setEditNewPostwindow(false);}}></NewEditPost>
     </div>
   );
 };
 
 export default Postpc;
 
-const NewEditPost = ({ Data, isOpened, onClose }) => {
+const NewEditPost = ({ data, isOpened, onClose, userData ,updatePostdata}) => {
+  const [MyprojectData, setMyprojectData] = useState([]);
+
+  const [selectedProject, setSelectedProject] = useState("");
+
+  const [detailPost, setDetailPost] = useState("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.post(
+          "http://localhost:3000/ProjectCreator/getAllProjects",
+          {
+            user_id: userData.user_id,
+          }
+        );
+        setMyprojectData(response.data);
+      } catch (error) {
+        console.error("Error fetching projects", error);
+      }
+    };
+
+    fetchData();
+  }, [userData]);
+
+
+  const AddnewPost = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/ProjectCreator/newpost",
+        {
+          project_id: selectedProject,
+          detail: detailPost
+        }
+      );
+      setMyprojectData(response.data);
+
+      updatePostdata();
+    } catch (error) {
+      console.error("Error fetching projects", error);
+    }
+  }
+
+
   if (!isOpened) {
     return null;
   }
@@ -98,33 +151,32 @@ const NewEditPost = ({ Data, isOpened, onClose }) => {
     <div className="overlay">
       <div className="New-Edit-conatainer">
         <div className="New-edit-main-contant">
-
-          <div className="New-edit-1">
-            <div className="New-edit-1-1">
-              <h3>Topic</h3>
-              <input type="text" placeholder="Enter topic" value={Data.name}></input>
-            </div>
-          </div>
           
           <div className="New-edit-2">
             <div className="New-edit-2-1">
               <h3>Project</h3>
-              <input type="text" placeholder="Select Project" value={Data.name}></input>
+              <select
+                value={selectedProject}
+                onChange={(e) => setSelectedProject(e.target.value)}
+              >
+                <option value="">Select Project</option>
+                {MyprojectData.map((project) => (
+                  <option key={project.project_id} value={project.project_id}>
+                    {project.project_title}
+                  </option>
+                ))}
+              </select>
             </div>
 
-            <div className="New-edit-2-2">
-              <h3>Date & Time</h3>
-              <input type="Text" placeholder="Enter Date and Time" value={Data.Date_cast}></input>
-            </div>
           </div>
         
           <div className="New-edit-3">
             <h3>Details</h3>
-            <input type="text" placeholder="" value=""></input>
+            <input type="text" placeholder="" value={detailPost}onChange={(e) => {setDetailPost(e.target.value);}}></input>
           </div>
         </div>
 
-        <button onClick={onClose}>Publish</button>
+        <button onClick={() => {onClose(); AddnewPost();}} >Publish</button>
       </div>
     </div>,
     document.getElementById("modal")

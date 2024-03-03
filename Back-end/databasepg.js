@@ -402,3 +402,173 @@ app.post('/application/delete', async (req, res) => {
     return res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
+// Project Creator get all projects
+
+app.post("/ProjectCreator/getAllProjects", async (req, res) => {
+  try {
+    const { user_id } = req.body;
+
+    const project = await client.query(
+      "SELECT * FROM project WHERE user_ID = $1",
+      [user_id]
+    );
+    return res.json(project.rows);
+  } catch (error) {
+    console.error("Error get projects", error);
+    return res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// Project Creator create a project
+
+app.post("/ProjectCreator/newproject", async (req, res) => {
+  try {
+    const { project_title, category, date, user_id } = req.body;
+    await client.query(
+      "INSERT INTO project (project_title, category, date, user_id) VALUES ($1, $2, $3, $4)",
+      [project_title, category, date, user_id]
+    );
+
+    res.json({ message: "Project Insert successfully" });
+  } catch (error) {
+    console.error("Error creating new project:", error);
+    return res.status(500).json("server_error");
+  }
+});
+
+// Project Creator update a project
+
+app.post("/ProjectCreator/updateproject", async (req, res) => {
+  try {
+    const { project_title, category, date, project_id } = req.body;
+    console.log(project_title, category, date, project_id);
+    await client.query(
+      "UPDATE project SET project_title = $1, category = $2, date = $3 WHERE project_id = $4",
+      [project_title, category, date, project_id]
+    );
+
+    res.json({ message: "Project updated successfully" });
+  } catch (error) {
+    console.error("Error updating project:", error);
+    return res.status(500).json("server_error");
+  }
+});
+
+// Project creator get manager data
+
+app.post("/ProjectCreator/getmanager", async (req, res) => {
+  try {
+    const { project_id } = req.body;
+
+    const manager = await client.query(
+      `SELECT project_manager.*, users.f_name, users.l_name, users.username
+      FROM project_manager
+      JOIN users ON project_manager.user_id = users.user_id
+      WHERE project_manager.project_id = $1
+      `,
+      [project_id]
+    );
+    return res.json(manager.rows);
+  } catch (error) {
+    console.error("Error get managers", error);
+    return res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// Project creator delete manager data
+
+app.post("/ProjectCreator/deletemanager", async (req, res) => {
+  try {
+    const { manager_id } = req.body;
+
+    await client.query("DELETE FROM project_manager WHERE manager_id = $1", [
+      manager_id,
+    ]);
+
+    res.json({ message: "manager deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting manager", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// Project creator add projectmanager
+
+app.post("/ProjectCreator/addManager", async (req, res) => {
+  try {
+    const { project_id, userName} = req.body;
+
+    const result = await client.query("SELECT user_id FROM users WHERE username = $1", [userName]);
+    const user_id = result.rows[0].user_id;
+
+    console.log(user_id)
+
+    await client.query("UPDATE users SET role = 'ProjectManager' WHERE user_id = $1", [user_id]);
+
+    await client.query("INSERT INTO project_manager (project_id, user_id) VALUES ($1, $2)", [project_id, user_id]);
+
+    res.json({ message: "manager add successfully" });
+  } catch (error) {
+    console.error("Error add manager", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// Project creator add post
+
+app.post("/ProjectCreator/newpost", async (req, res) => {
+  try {
+    const { project_id, detail} = req.body;
+
+    await client.query("INSERT INTO post (project_id, post_details) VALUES ($1, $2)", [project_id, detail]);
+    
+    res.json({ message: "new post successfully" });
+  } catch (error) {
+    console.error("Error new post", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+
+// Project creator get post data
+
+app.post("/ProjectCreator/getpostdata", async (req, res) => {
+  try {
+    const { user_id } = req.body;
+
+    const postdata = await client.query(
+      `SELECT post.*, project.project_title, category
+      FROM 
+        post
+      JOIN 
+        project ON post.project_id = project.project_id
+
+      WHERE 
+        project.user_id = $1
+      `, [user_id]);
+
+    res.json({
+      message: "New post retrieved successfully",
+      data: postdata.rows
+    });
+  } catch (error) {
+    console.error("Error retrieving post data", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// Project creator delete post
+
+app.post("/ProjectCreator/deletepost", async (req, res) => {
+  try {
+    const { post_id } = req.body;
+
+    await client.query("DELETE FROM post WHERE post_id = $1", [post_id]);
+
+    res.json({ message: "post deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting post", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
