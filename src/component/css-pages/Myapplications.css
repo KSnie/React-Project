@@ -90,12 +90,25 @@
 
 .status.Pending h4{
     color: #F5B100;
+    
 }
 
 .status.Declined h4{
     color: #FF0000;
+    margin-right: 50px;
 }
 
 .status.Accepted h4{
     color: #25B800;
+    margin-right: 50px;
+}
+
+.delete-button-application {
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 20px;
+    border: 1px solid #FF0000;
+    background: none;
+    color: #FF0000;
+    margin-left: -30px;
 }

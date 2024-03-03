@@ -351,3 +351,54 @@ app.post('/post/submitpost', async (req, res) => {
     return res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
+// My application
+
+app.post('/application/getData', async (req, res) => {
+  const { user_id } = req.body; // Destructure user_id directly
+
+  try {
+    const query = `
+      SELECT 
+        post_request.*, 
+        project.project_title, 
+        project.category, 
+        project.user_id,
+        users.f_name,
+        users.l_name
+      FROM 
+        post_request
+      JOIN 
+        project ON post_request.project_id = project.project_id
+      JOIN
+        users ON project.user_id = users.user_id
+      WHERE
+        post_request.user_id = $1
+    `;
+    const result = await client.query(query, [user_id]);
+    return res.json(result.rows);
+
+  } catch (error) {
+    console.error('Error getting application', error);
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
+// My application delete
+
+app.post('/application/delete', async (req, res) => {
+  const { e } = req.body;
+
+  try {
+    console.log(e);
+
+    const result = await client.query('DELETE FROM post_request WHERE request_id = $1', [e]);
+
+    return res.json(result.rows);
+
+  } catch (error) {
+    console.error('Error delete application', error);
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
+});

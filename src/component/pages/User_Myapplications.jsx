@@ -1,34 +1,35 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import profile from "../image/profile.svg";
 import "../css-pages/Myapplications.css";
+import axios from "axios";
 
-const Myapplications = () => {
-  const progessDetail = [
-    {
-      namestudio: "Marvel Studio",
-      category: "Hornor",
-      Status:"Pending",
-      PostID:1234,
-    },
-    {
-      namestudio: "Marvel Studio",
-      category: "Hornor",
-      Status:"Declined",
-      PostID:15,
-    },
-    {
-      namestudio: "Marvel Studio",
-      category: "Hornor",
-      Status:"Accepted",
-      PostID:16,
-    },
-    {
-      namestudio: "DC Studio",
-      category: "Hornor",
-      Status:"Declined",
-      PostID:16,
+const Myapplications = ({ userData }) => {
+  const [applications, setApplications] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.post("http://localhost:3000/application/getData", { user_id: userData.user_id });
+        setApplications(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error fetching data", error);
+      }
+    };
+
+    fetchData();
+  }, [userData.user_id]);
+
+  const DeleteRequest = async (e) => {
+    try {
+      await axios.post("http://localhost:3000/application/delete", { e });
+
+      setApplications(prevApplications => prevApplications.filter(app => app.request_id !== e));
+    } catch (error) {
+      console.error("Error fetching data", error);
     }
-  ]
+  }
+  
   return (
     <div>
       <div className="progress-header">
@@ -40,22 +41,31 @@ const Myapplications = () => {
           <h3>Studio & Projects</h3>
           <h4>Status</h4>
         </div>
-        {progessDetail.map((progess) => (
-          <div className="progress-content">
-            <img src={profile} alt="profile" className="profile"/>
+        {applications.map((progess) => (
+          <div className="progress-content" key={progess.PostID}>
+            <img src={profile} alt="profile" className="profile" />
 
             <div className="studio-info">
-              <h3>{progess.namestudio}</h3>
+              <h3>
+                {progess.f_name} {progess.l_name}
+              </h3>
               <p>Category {progess.category}</p>
             </div>
 
-            <div className={`status ${progess.Status}`}>
-              <h4>{progess.Status}</h4>
+            <div className={`status ${progess.status}`}>
+              <h4>{progess.status}</h4>
             </div>
 
-            <button className="view-button" onClick={() => {console.log(progess.PostID)}}>
-              View
-            </button>
+            {progess.status === "Pending" && (
+              <button
+                className="delete-button-application"
+                onClick={() => {
+                  DeleteRequest(progess.request_id);
+                }}
+              >
+                Delete
+              </button>
+            )}
           </div>
         ))}
       </div>
