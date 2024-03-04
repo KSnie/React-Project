@@ -123,12 +123,13 @@ app.post("/newuserpc", async (req, res) => {
     dateofbirth,
     phonenumber,
     country,
+    profile,
   } = req.body;
 
   try {
     // Step 1: Add user to the 'users' table
     const userResult = await client.query(
-      "INSERT INTO users (username, password, role, gender, f_name, l_name, date_of_birth, phone_number, country) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING user_id",
+      "INSERT INTO users (username, password, role, gender, f_name, l_name, date_of_birth, phone_number, country, profile) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING user_id",
       [
         isusername,
         ispassword,
@@ -139,6 +140,7 @@ app.post("/newuserpc", async (req, res) => {
         dateofbirth,
         phonenumber,
         country,
+        profile,
       ]
     );
 
@@ -346,7 +348,8 @@ app.post("/post/getpost", async (req, res) => {
         project.date, 
         project.user_id,
         users.f_name,
-        users.l_name
+        users.l_name,
+        users.profile
       FROM 
         post 
       JOIN 

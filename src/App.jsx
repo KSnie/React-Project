@@ -98,6 +98,7 @@ function App() {
             <Header
               userRole={userRole}
               userName={userName}
+              profile={data.profile}
               statusSlide={handleSlideToggle}
               currentPage={currentPage}
               logout={logout}

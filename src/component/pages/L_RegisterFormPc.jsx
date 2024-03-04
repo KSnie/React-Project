@@ -29,7 +29,8 @@ const RegisterFormPc = ({ onAuthentication, isPcRequest }) => {
         isfullname,
         isdateofbirth,
         isphonenumber,
-        iscountry
+        iscountry,
+        profile,
       );
     } catch (error) {
       console.error("Registration failed:", error);

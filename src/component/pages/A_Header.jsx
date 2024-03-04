@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "../css-pages/Header.css";
 import logo from "../image/logo.svg";
-import axios from "axios";
-import profile from "../image/profile.svg";
 import sidebarIcon from "../image/sidebarIcon.svg";
 import { createPortal } from "react-dom";
 
 function Header({
   userRole,
   userName,
+  profile,
   statusSlide,
   currentPage,
   logout,

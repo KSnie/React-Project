@@ -17,6 +17,8 @@ const Registerinfo = ({ onAuthentication, isRegisterpc }) => {
 
   const handleSubmit = (e) => {
     try {
+      console.log(profile)
+
       onAuthentication(
         "registerinfo",
         NaN,
@@ -26,8 +28,7 @@ const Registerinfo = ({ onAuthentication, isRegisterpc }) => {
         isdateofbirth,
         isphonenumber,
         iscountry,
-        NaN,
-        profile
+        profile,
       );
     } catch (error) {
       console.error("Registration failed:", error);

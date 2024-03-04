@@ -19,7 +19,7 @@ const AuthPage = ({ onAuthentication }) => {
 
   const handleToggleForm = () => {
     setIsLogin((prevIsLogin) => !prevIsLogin);
-    setErrorMessage(""); // Clear error message when toggling forms
+    setErrorMessage("");
   };
 
   const handleToggleFormRegisterPC = () => {
@@ -88,6 +88,7 @@ const AuthPage = ({ onAuthentication }) => {
         dateofbirth,
         phonenumber,
         country,
+        profile
       });
       onAuthentication(response.data);
     }

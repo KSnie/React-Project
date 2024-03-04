@@ -30,7 +30,7 @@ const Post = ({ onPageChange, onChangePost}) => {
             
             <div className="post-top">
               <div className="user-info-post">
-                  <img src={profile2} alt="profile"/>
+                  <img src={post.profile} alt="profile"/>
                   <div className="Name-post">
                     <h1>{post.f_name} {post.l_name}</h1>
                     <p>Category {post.category}</p>
