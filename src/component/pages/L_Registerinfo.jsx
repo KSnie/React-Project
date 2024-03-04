@@ -26,8 +26,8 @@ const Registerinfo = ({ onAuthentication, isRegisterpc }) => {
         isdateofbirth,
         isphonenumber,
         iscountry,
-        NaN
-        //profile
+        NaN,
+        profile
       );
     } catch (error) {
       console.error("Registration failed:", error);

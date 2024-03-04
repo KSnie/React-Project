@@ -42,7 +42,8 @@ const AuthPage = ({ onAuthentication }) => {
     fullname,
     dateofbirth,
     phonenumber,
-    country
+    country,
+    profile
   ) => {
     if (option === "login") {
       try {
@@ -70,6 +71,7 @@ const AuthPage = ({ onAuthentication }) => {
         dateofbirth,
         phonenumber,
         country,
+        profile,
       });
       onAuthentication(response.data);
       handleToggleForm();

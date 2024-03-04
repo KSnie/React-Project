@@ -59,14 +59,6 @@ const User = () => {
             <p>Account Manager</p>
           </div>
 
-          <div className="UM-app-search">
-            <img src={searchIcon} alt="searchIcon" />
-            <input type="text" placeholder="Search here" name="search" />
-            <button type="select">
-              <img src={sortIcon} alt="sortIcon" />
-            </button>
-          </div>
-
           <div
             className="UM-new-contact"
             onClick={() => setNewContactWindow(true)}
@@ -289,17 +281,16 @@ const EditProfile = ({ data, isOpened, onClose, updateData }) => {
 };
 
 const NewContact = ({ isOpened, onClose, updateData }) => {
-
   const [values, setValues] = useState({
-    username : '',
-    password : '',
-    F_name: '',
-    L_name: '',
-    date_of_birth: '',
-    phone_number : '',
-    role: '',
-    country: '',
-    gender: '',
+    username: "",
+    password: "",
+    F_name: "",
+    L_name: "",
+    date_of_birth: "",
+    phone_number: "",
+    role: "",
+    country: "",
+    gender: "",
   });
 
   if (!isOpened) {
@@ -335,14 +326,14 @@ const NewContact = ({ isOpened, onClose, updateData }) => {
               <h3>First Name</h3>
               <input
                 type="text"
-                name = "F_name"
+                name="F_name"
                 value={values.F_name}
                 onChange={handleChange}
               />
               <h3>Last Name</h3>
               <input
                 type="text"
-                name = "L_name"
+                name="L_name"
                 value={values.L_name}
                 onChange={handleChange}
               />
@@ -353,14 +344,14 @@ const NewContact = ({ isOpened, onClose, updateData }) => {
             <h3>Date of birth</h3>
             <input
               type="text"
-              name = "date_of_birth"
+              name="date_of_birth"
               value={values.date_of_birth}
               onChange={handleChange}
             />
             <h3>Username</h3>
             <input
               type="text"
-              name = "username"
+              name="username"
               value={values.username}
               onChange={handleChange}
             />
@@ -412,7 +403,14 @@ const NewContact = ({ isOpened, onClose, updateData }) => {
             </select>
           </div>
 
-          <button onClick={() => {onClose(); handleSubmit();}}>Create</button>
+          <button
+            onClick={() => {
+              onClose();
+              handleSubmit();
+            }}
+          >
+            Create
+          </button>
         </div>
       </div>
     </div>,

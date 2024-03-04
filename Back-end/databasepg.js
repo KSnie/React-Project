@@ -83,11 +83,12 @@ app.post("/newuser", async (req, res) => {
     dateofbirth,
     phonenumber,
     country,
+    profile,
   } = req.body;
 
   try {
     const result = await client.query(
-      "INSERT INTO users (username, password, role, gender, f_name, l_name, date_of_birth, phone_number, country) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)",
+      "INSERT INTO users (username, password, role, gender, f_name, l_name, date_of_birth, phone_number, country, profile) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)",
       [
         isusername,
         ispassword,
@@ -98,6 +99,7 @@ app.post("/newuser", async (req, res) => {
         dateofbirth,
         phonenumber,
         country,
+        profile,
       ]
     );
 
