@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import attachIcon from "../image/attachIcon.svg";
 import "../css-pages/PostPopup.css";
 import profile from "../image/profile.svg";

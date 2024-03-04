@@ -572,3 +572,108 @@ app.post("/ProjectCreator/deletepost", async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
+
+// project manager getmyproject
+
+app.post("/ProjectManager/getmanagermyproject", async (req, res) => {
+  try {
+    const { user_id } = req.body;
+
+    const postdata = await client.query(
+      `SELECT project_manager.*, project.project_title, category
+      FROM 
+        project_manager
+      JOIN 
+        project ON project_manager.project_id = project.project_id
+      WHERE 
+        project_manager.user_id = $1
+      `, [user_id]);
+
+      return res.json(postdata.rows);
+  } catch (error) {
+    console.error("Error retrieving data", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+
+// project manager get project request user
+
+app.post("/ProjectManager/getrequest", async (req, res) => {
+  try {
+    const { project_id } = req.body;
+
+    const postdata = await client.query(
+      `SELECT post_request.*, users.f_name, users.l_name
+      FROM 
+        post_request
+      JOIN 
+        users ON post_request.user_id = users.user_id
+      WHERE 
+        post_request.project_id = $1
+      `, [project_id]);
+
+      return res.json(postdata.rows);
+  } catch (error) {
+    console.error("Error retrieving data", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// Project manager update status request
+
+app.post("/ProjectManager/updateStatus", async (req, res) => {
+  try {
+    const { request_id, status} = req.body;
+
+    const postdata = await client.query(
+      `UPDATE post_request SET status = $1 WHERE request_id = $2`, [status,request_id]);
+
+      return res.json(postdata.rows);
+  } catch (error) {
+    console.error("Error retrieving data", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+
+// Project manager sent script
+
+app.post("/ProjectManager/sentScript", async (req, res) => {
+  try {
+    const { project_id, manager_id,user_id,topic,url_file} = req.body;
+
+    await client.query("INSERT INTO script (project_id, manager_id,user_id,topic,url_file) VALUES ($1, $2, $3, $4, $5)", [project_id, manager_id,user_id,topic,url_file]);
+    
+    res.json({ message: "script sent successfully" });
+  } catch (error) {
+    console.error("Error script sent", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+
+// user get script data
+
+app.post("/user/getscript", async (req, res) => {
+  try {
+    const { user_id } = req.body;
+
+    const postdata = await client.query(
+      `SELECT script.*, users.f_name, users.l_name, project.date
+        FROM 
+        script
+        JOIN 
+          users ON script.manager_id = users.user_id
+        JOIN 
+          project ON script.project_id = project.project_id
+        WHERE 
+          script.user_id = $1
+      `, [user_id]);
+
+    return res.json(postdata.rows);
+  } catch (error) {
+    console.error("Error retrieving data", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});

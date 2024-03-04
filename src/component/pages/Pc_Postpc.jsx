@@ -72,7 +72,7 @@ const Post = ({ post, updatePostdata }) => {
 
   const deletePost = async (postId) => {
     try {
-      const response = await axios.post("http://localhost:3000/ProjectCreator/deletepost", {
+      await axios.post("http://localhost:3000/ProjectCreator/deletepost", {
         post_id: postId,
       });
   

@@ -7,8 +7,8 @@ const ScriptDetail = ({scriptDetails}) => {
         <div>
             <div className="containter">
                 <div className="ScriptDetail-header">
-                    <h4>{scriptDetails.name}</h4>
-                    <p>{scriptDetails.sent_from}</p>
+                    <h4>{scriptDetails.topic}</h4>
+                    <p>{scriptDetails.f_name} {scriptDetails.l_name}</p>
                 </div>
 
                 <div className="ScriptDetail-img">

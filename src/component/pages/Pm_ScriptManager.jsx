@@ -1,36 +1,30 @@
 import "../css-pages/ScriptManager.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import humanIcon from "../image/humanIcon.svg";
+import axios from "axios";
+import noImage from "../image/noImage.svg";
 
-const ScriptManager = () => {
-  const MyprojectData = [
-    {
-      name: "Conjuring",
-      category: "Horror",
-      img: "/projects/conjuring.jpg",
-    },
-    {
-      name: "Joker",
-      category: "Drama",
-      img: "/projects/joker.jpg",
-    },
-    {
-      name: "Avengers",
-      category: "Action",
-      img: "/projects/avengers.jpg",
-    },
-    {
-      name: "Peaky Blinders",
-      category: "Historical",
-      img: "/projects/peakyblinders.jpg",
-    },
-    {
-      name: "Tarzan",
-      category: "Adventure",
-      img: "/projects/tarzan.jpg",
-    },
-  ];
+const ScriptManager = ({ userData }) => {
+  const [managerMyprojectData, setmanagerMyprojectData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.post(
+          "http://localhost:3000/ProjectManager/getmanagermyproject",
+          {
+            user_id: userData.user_id,
+          }
+        );
+        setmanagerMyprojectData(response.data);
+      } catch (error) {
+        console.error("Error fetching projects", error);
+      }
+    };
+
+    fetchData();
+  }, [userData]);
 
   return (
     <div className="projects-content">
@@ -38,15 +32,15 @@ const ScriptManager = () => {
         <h2>Script Manager</h2>
       </div>
       <div className="projects-container">
-        {MyprojectData.map((data) => (
-          <Project data={data} key={data.name} />
+        {managerMyprojectData.map((data) => (
+          <Project data={data} key={data.name} userData = {userData}/>
         ))}
       </div>
     </div>
   );
 };
 
-const Project = ({ data }) => {
+const Project = ({ data, userData }) => {
   const [viewProjectWindow, setViewProjectWindow] = useState(false);
   return (
     <>
@@ -56,10 +50,10 @@ const Project = ({ data }) => {
           setViewProjectWindow(true);
         }}
       >
-        <img src={data.img} alt="img-banner"></img>
+        <img src={noImage} alt="img-banner"></img>
         <div className="project-description">
           <p>
-            <strong>{data.name}</strong>
+            <strong>{data.project_title}</strong>
           </p>
           <span>{data.category}</span>
         </div>
@@ -68,26 +62,37 @@ const Project = ({ data }) => {
         data={data}
         isOpened={viewProjectWindow}
         onClose={() => setViewProjectWindow(false)}
+        userData = {userData}
       />
     </>
   );
 };
 
-const ViewProject = ({ data, isOpened, onClose }) => {
+const ViewProject = ({ data, isOpened, onClose, userData }) => {
   const [sendScriptWindow, setSendScriptWindow] = useState(false);
+  const [sendScriptData, setSendScriptData] = useState([])
 
-  const requestData = [
-    {
-      Fname: "Nanthanat",
-      Lname: "Ounma",
-      project: "Avengers",
-    },
-    {
-      Fname: "Bhurichaya",
-      Lname: "Thuraphan",
-      project: "John Wick",
-    },
-  ];
+  const [requestData, setRequestData] = useState([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.post(
+          "http://localhost:3000/ProjectManager/getrequest",
+          {
+            project_id: data.project_id,
+          }
+        );
+        console.log(data.project_id)
+
+        setRequestData(response.data);
+      } catch (error) {
+        console.error("Error fetching projects", error);
+      }
+    };
+
+    fetchData();
+  }, [data]);
 
   if (!isOpened) {
     return null;
@@ -99,10 +104,10 @@ const ViewProject = ({ data, isOpened, onClose }) => {
         <div className="overlay">
           <div className="modal">
             <div className="viewproject-Header">
-              <img src={data.img} alt="Project Banner"></img>
+              <img src={noImage} alt="Project Banner"></img>
 
               <div className="viewproject-detail">
-                <p className="name">{data.name}</p>
+                <p className="name">{data.project_title}</p>
                 <p className="category">{data.category}</p>
               </div>
             </div>
@@ -113,17 +118,18 @@ const ViewProject = ({ data, isOpened, onClose }) => {
               </div>
 
               <div className="request-content">
-                {requestData.map((request, index) => (
+                {requestData.filter(request => request.status === "Accepted").map((request, index) => (
                   <div key={index} className="request-main-content">
                     <img src={humanIcon} alt=""></img>
                     <h3>
-                      {request.Fname} {request.Lname}
+                      {request.f_name} {request.l_name}
                     </h3>
                     <h3>{request.project}</h3>
                     <button
                       className="btn"
                       onClick={() => {
                         setSendScriptWindow(true);
+                        setSendScriptData(request);
                       }}
                     >
                       Send Script
@@ -145,16 +151,38 @@ const ViewProject = ({ data, isOpened, onClose }) => {
         </div>
       </div>
       <SendScript
-        data={data}
+        data={sendScriptData}
         isOpened={sendScriptWindow}
         onClose={() => setSendScriptWindow(false)}
+        userData = {userData}
       />
     </>,
     document.getElementById("modal")
   );
 };
 
-const SendScript = ({ isOpened, onClose, requestData }) => {
+const SendScript = ({ data, isOpened, onClose , userData }) => {
+
+  const [topic ,setTopic] = useState([])
+
+  const sentScript = async () => {
+    try {
+      await axios.post(
+        "http://localhost:3000/ProjectManager/sentScript",
+        {
+          project_id: data.project_id,
+          manager_id: userData.user_id,
+          user_id: data.user_id,
+          topic: topic,
+          url_file: "https://"
+        }
+      );
+    } catch (error) {
+      console.error("Error fetching projects", error);
+    }
+
+  }
+
   if (!isOpened) {
     return null;
   }
@@ -164,11 +192,11 @@ const SendScript = ({ isOpened, onClose, requestData }) => {
         <p>Send Script</p>
         <div className="script-topic">
           <p>Topic</p>
-          <input type="text" placeholder="Enter topic..." />
+          <input type="text" placeholder="Enter topic..." onChange={(e) => {setTopic(e.target.value)}}/>
         </div>
         <button className="script-attach">Attach File</button>
       </div>
-      <button onClick={onClose} className="script-send">
+      <button onClick={() => {onClose(); sentScript();}} className="script-send">
         Send
       </button>
     </div>,

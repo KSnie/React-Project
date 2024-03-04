@@ -317,13 +317,6 @@ const EditProject = ({
 };
 
 const NewProject = ({ isOpened, onClose, userData , updatedata}) => {
-  const DirectorData = [
-    {
-      Fname: "Nueachai",
-      Lname: "Wijitsopon",
-      Username: "xxx",
-    },
-  ];
 
   const [project, setProject] = useState({
     project_title: "",

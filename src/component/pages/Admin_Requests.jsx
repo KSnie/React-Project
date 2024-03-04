@@ -59,7 +59,7 @@ const Requests = () => {
                   </div>
 
                   <div className="btn-request">
-                    <button className="btn-request-view">View</button>
+                    {/* <button className="btn-request-view">View</button> */}
                     <button className="btn-request-Accept" onClick={() => accept_projectcreater(request)}>Accept</button>
                     <button className="btn-request-Reject" onClick={() => reject_projectcreater(request)}>Reject</button>
                   </div>

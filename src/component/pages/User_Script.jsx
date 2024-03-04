@@ -1,28 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ProfileIcon from "../image/profile.svg";
 import "../css-pages/Script.css";
+import axios from "axios";
 
-const Script = ({onPageChange, onChangeScript}) => {
-  const scriptDetail = [
-    {
-      name: "Snow White Part #1",
-      sent_from: "Sent from Wichita, Kansas.",
-      character: "Wicked Queen",
-      Casting_Date: "2024-2-15"
-    },
-    {
-      name: "Snow White Part #2",
-      sent_from: "Sent from Wichita, Kansas.",
-      character: "Wicked Queen",
-      Casting_Date: "2024-2-16"
-    },
-    {
-      name: "Snow White Part #3",
-      sent_from: "Sent from Wichita, Kansas.",
-      character: "Wicked Queen",
-      Casting_Date: "2024-2-20"
-    },
-  ];
+const Script = ({onPageChange, onChangeScript, userData }) => {
+
+  const [scriptData, setScriptData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+
+        const response = await axios.post(
+          "http://localhost:3000/user/getscript",
+          {
+            user_id: userData.user_id,
+          }
+        );
+
+        setScriptData(response.data);
+      } catch (error) {
+        console.error("Error fetching projects", error);
+      }
+    };
+
+    fetchData();
+  }, [userData]);
 
   const calculateDaysDifference = (castingDate) => {
     const currentDate = new Date();
@@ -43,30 +46,26 @@ const Script = ({onPageChange, onChangeScript}) => {
         <div className="Script-main-content">
 
           <div className="Script-main-name">
-            {scriptDetail.map((script, index) => (
+            {scriptData.map((script, index) => (
               <div key={index} className="Script-main-container">
                 <img src={ProfileIcon} alt="profileIcon" />
 
                 <div className="Script-content-name">
-                  <h5>{script.name}</h5>
-                  <p>Sent from {script.sent_from}</p>
-                </div>
-                
-                <div className="Script-content-character">
-                  <h5>Character</h5>
-                  <p>{script.character}</p>
+                  <h5>{script.topic}</h5>
+                  <p>Sent from {script.f_name} {script.l_name}</p>
                 </div>
 
                 <div className="Script-content-date">
                   <h5>Casting Date</h5>
-                  <p>{script.Casting_Date}</p>
+                  <p>{script.date}</p>
                 </div>
+                {console.log(calculateDaysDifference(script.date))}
 
-                {calculateDaysDifference(script.Casting_Date) === 2 ? (
+                {calculateDaysDifference(script.date) === 1 ? (
                   <div className="Date-Tomorrow">
                     <h4>Tomorrow</h4>
                   </div>
-                ) : calculateDaysDifference(script.Casting_Date) === 1 ? (
+                ) : calculateDaysDifference(script.date) === 0 ? (
                   <div className="Date-Today">
                     <h4>Today</h4>
                   </div>

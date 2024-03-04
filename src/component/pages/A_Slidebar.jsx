@@ -32,7 +32,7 @@ const Slidebar = ({ userRole, currentPage, onPageChange, currentSlide }) => {
 
             <button>Home</button>
           </div>
-          <div
+          {/* <div
             className={`page dashboard-page ${
               currentPage === "Dashboard" ? "active" : ""
             }`}
@@ -56,7 +56,7 @@ const Slidebar = ({ userRole, currentPage, onPageChange, currentSlide }) => {
             </svg>
 
             <button>Dashboard</button>
-          </div>
+          </div> */}
           <div
             className={`page dashboard-page ${
               currentPage === "User" ? "active" : ""
@@ -159,7 +159,7 @@ const Slidebar = ({ userRole, currentPage, onPageChange, currentSlide }) => {
             <button>My Applications</button>
           </div>
           {/* Calendar Page */}
-          <div
+          {/* <div
             className={`page Calendar-page ${
               currentPage === "Calendar" ? "active" : ""
             }`}
@@ -182,7 +182,7 @@ const Slidebar = ({ userRole, currentPage, onPageChange, currentSlide }) => {
             </svg>
 
             <button>Calendar</button>
-          </div>
+          </div> */}
           {/* Script Page */}
           <div
             className={`page Script-page ${
@@ -239,7 +239,7 @@ const Slidebar = ({ userRole, currentPage, onPageChange, currentSlide }) => {
             <button>Home</button>
           </div>
 
-          <div
+          {/* <div
             className={`page dashboard-page ${
               currentPage === "Dashboardpc" ? "active" : ""
             }`}
@@ -263,7 +263,7 @@ const Slidebar = ({ userRole, currentPage, onPageChange, currentSlide }) => {
             </svg>
 
             <button>Dashboard</button>
-          </div>
+          </div> */}
 
           <div
             className={`page home-page ${
