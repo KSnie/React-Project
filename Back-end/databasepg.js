@@ -690,17 +690,19 @@ app.post("/ProjectManager/updateStatus", async (req, res) => {
 
 app.post("/ProjectManager/sentScript", async (req, res) => {
   try {
-    const { project_id, manager_id,user_id,topic,url_file} = req.body;
+    const { project_id, manager_id, user_id, topic, url_file } = req.body;
 
-    await client.query("INSERT INTO script (project_id, manager_id,user_id,topic,url_file) VALUES ($1, $2, $3, $4, $5)", [project_id, manager_id,user_id,topic,url_file]);
-    
+    await client.query(
+      "INSERT INTO script (project_id, manager_id,user_id,topic,url_file) VALUES ($1, $2, $3, $4, $5)",
+      [project_id, manager_id, user_id, topic, url_file]
+    );
+
     res.json({ message: "script sent successfully" });
   } catch (error) {
     console.error("Error script sent", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
-
 
 // user get script data
 
@@ -725,12 +727,11 @@ app.post("/user/getscript", async (req, res) => {
       WHERE 
         script.user_id = $1;
       
-      `, [user_id]);
+      `,
+      [user_id]
+    );
 
     return res.json(postdata.rows);
-
-    
-
   } catch (error) {
     console.error("Error retrieving data", error);
     res.status(500).json({ error: "Internal Server Error" });

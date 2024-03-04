@@ -1,41 +1,43 @@
 import React from "react";
 import attachIcon from "../image/attachIcon.svg";
 import "../css-pages/PostPopup.css";
-import profile from "../image/profile.svg";
 import axios from "axios";
 
-const PostPopup = ({ onPageChange , dataPost , userData }) => {
-
+const PostPopup = ({ onPageChange, dataPost, userData }) => {
   const onRegister = async (e) => {
     console.log(e.project_id);
     console.log(userData.user_id);
     try {
-      const res = await axios.post('http://localhost:3000/post/submitpost', {
+      const res = await axios.post("http://localhost:3000/post/submitpost", {
         project_id: e.project_id,
         user_id: userData.user_id,
         status: "Pending",
       });
       console.log(res.data);
     } catch (error) {
-      console.error('Error during registration:', error);
+      console.error("Error during registration:", error);
     }
-  }
+  };
 
   return (
     <div>
       <div className="containter">
         <div className="Post-header">
-          <img src={profile} alt="profile" />
+          <img
+            src={dataPost.profile}
+            alt="profile"
+            style={{ width: "80px", objectFit: "cover" }}
+          />
           <div className="Post-header-name">
-            <h3>{dataPost.f_name} {dataPost.l_name}</h3>
+            <h3>
+              {dataPost.f_name} {dataPost.l_name}
+            </h3>
             <p>Category {dataPost.category}</p>
           </div>
         </div>
 
         <div className="Post-content-container">
-          <div className="Post-left-content">
-            {dataPost.post_details}
-          </div>
+          <div className="Post-left-content">{dataPost.post_details}</div>
 
           <div className="Post-right-content">
             <div className="Post-right-main-content">
@@ -43,7 +45,6 @@ const PostPopup = ({ onPageChange , dataPost , userData }) => {
                 <div className="Post-right-moviename">
                   <h4>{dataPost.project_title}</h4>
                 </div>
-
               </div>
 
               <div className="Post-right-date-time">
@@ -51,10 +52,10 @@ const PostPopup = ({ onPageChange , dataPost , userData }) => {
                   <h4>Date Casting</h4>
                   <p>{dataPost.date}</p>
                 </div>
-
               </div>
               <div className="Post-submit-button">
-                  <button onClick={() => { 
+                <button
+                  onClick={() => {
                     if (userData.role !== "user") {
                       alert("You can't apply (Only for user)");
                       return null;
@@ -62,10 +63,12 @@ const PostPopup = ({ onPageChange , dataPost , userData }) => {
                       onPageChange("Home");
                       onRegister(dataPost);
                     }
-                  }} >Register</button>
+                  }}
+                >
+                  Register
+                </button>
               </div>
             </div>
-            
           </div>
         </div>
       </div>
