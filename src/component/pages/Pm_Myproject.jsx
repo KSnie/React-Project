@@ -6,7 +6,6 @@ import axios from "axios";
 import noImage from "../image/noImage.svg";
 
 const Myproject_PM = ({ userData }) => {
-
   const [managerMyprojectData, setmanagerMyprojectData] = useState([]);
 
   useEffect(() => {
@@ -53,7 +52,7 @@ const Project = ({ data }) => {
           setviewProjectWindow(true);
         }}
       >
-        <img src={noImage} alt="img-banner"></img>
+        <img src={data.img} alt="img-banner"></img>
         <div className="project-description">
           <p>
             <strong>{data.project_title}</strong>
@@ -71,10 +70,9 @@ const Project = ({ data }) => {
 };
 
 const ViewProject = ({ data, isOpened, onClose }) => {
+  const [requestData, setRequestData] = useState([]);
 
-  const [requestData, setRequestData] = useState([])
-
-  const updateData = async() => {
+  const updateData = async () => {
     try {
       const response = await axios.post(
         "http://localhost:3000/ProjectManager/getrequest",
@@ -82,14 +80,13 @@ const ViewProject = ({ data, isOpened, onClose }) => {
           project_id: data.project_id,
         }
       );
-      console.log(data.project_id)
+      console.log(data.project_id);
 
       setRequestData(response.data);
     } catch (error) {
       console.error("Error fetching projects", error);
     }
-  }
-
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -100,7 +97,7 @@ const ViewProject = ({ data, isOpened, onClose }) => {
             project_id: data.project_id,
           }
         );
-        console.log(data.project_id)
+        console.log(data.project_id);
 
         setRequestData(response.data);
       } catch (error) {
@@ -111,37 +108,31 @@ const ViewProject = ({ data, isOpened, onClose }) => {
     fetchData();
   }, [data]);
 
-  console.log(requestData)
+  console.log(requestData);
 
   const accept = async (e) => {
     try {
-      await axios.post(
-        "http://localhost:3000/ProjectManager/updateStatus",
-        {
-          request_id: e.request_id,
-          status: "Accepted"
-        }
-      );
+      await axios.post("http://localhost:3000/ProjectManager/updateStatus", {
+        request_id: e.request_id,
+        status: "Accepted",
+      });
       updateData();
     } catch (error) {
       console.error("Error fetching projects", error);
     }
-  }
+  };
 
-  const reject = async(e) => {
+  const reject = async (e) => {
     try {
-      await axios.post(
-        "http://localhost:3000/ProjectManager/updateStatus",
-        {
-          request_id: e.request_id,
-          status: "Declined"
-        }
-      );
+      await axios.post("http://localhost:3000/ProjectManager/updateStatus", {
+        request_id: e.request_id,
+        status: "Declined",
+      });
       updateData();
     } catch (error) {
       console.error("Error fetching projects", error);
     }
-  }
+  };
 
   if (!isOpened) {
     return null;
@@ -152,7 +143,7 @@ const ViewProject = ({ data, isOpened, onClose }) => {
       <div className="overlay">
         <div className="modal">
           <div className="viewproject-Header">
-            <img src={noImage} alt="Project Banner"></img>
+            <img src={data.img} alt="Project Banner"></img>
 
             <div className="viewproject-detail">
               <p className="name">{data.project_title}</p>
@@ -167,7 +158,7 @@ const ViewProject = ({ data, isOpened, onClose }) => {
 
             <div className="request-content">
               {requestData
-                .filter(request => request.status === "Pending")
+                .filter((request) => request.status === "Pending")
                 .map((request, index) => (
                   <div key={index} className="request-main-content">
                     <img src={humanIcon} alt="" />
@@ -175,8 +166,18 @@ const ViewProject = ({ data, isOpened, onClose }) => {
                       {request.f_name} {request.l_name}
                     </h3>
                     <h3>{request.project}</h3>
-                    <button className="btn-accept" onClick={() => accept(request)}>Accept</button>
-                    <button className="btn-reject" onClick={() => reject(request)}>Reject</button>
+                    <button
+                      className="btn-accept"
+                      onClick={() => accept(request)}
+                    >
+                      Accept
+                    </button>
+                    <button
+                      className="btn-reject"
+                      onClick={() => reject(request)}
+                    >
+                      Reject
+                    </button>
                   </div>
                 ))}
             </div>

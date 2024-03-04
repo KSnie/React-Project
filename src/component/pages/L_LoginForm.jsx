@@ -11,7 +11,7 @@ const LoginForm = ({ onAuthentication, handleToggleForm, errorMessage }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAuthentication("login",username, password);
+    onAuthentication("login", username, password);
   };
 
   return (
@@ -52,12 +52,10 @@ const LoginForm = ({ onAuthentication, handleToggleForm, errorMessage }) => {
                 <img src={hidepassIcon} alt="show-hide password" />
               </form>
             </div>
-            
-            {errorMessage && <div className="Worng-password">{errorMessage}</div>}
 
-            <div className="forget-pass">
-              <button>Forgot Password?</button>
-            </div>
+            {errorMessage && (
+              <div className="Worng-password">{errorMessage}</div>
+            )}
 
             <div className="submit">
               <button onClick={handleSubmit}>Login</button>

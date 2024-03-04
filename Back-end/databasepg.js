@@ -121,7 +121,6 @@ app.post("/newuserpc", async (req, res) => {
     dateofbirth,
     phonenumber,
     country,
-    certificateFile,
   } = req.body;
 
   try {
@@ -145,8 +144,8 @@ app.post("/newuserpc", async (req, res) => {
 
     // Step 2: Add project creator request to the 'request_project_creator' table
     await client.query(
-      "INSERT INTO request_project_creator (user_id, certificate_file) VALUES ($1, $2)",
-      [userId, certificateFile]
+      "INSERT INTO request_project_creator (user_id) VALUES ($1)",
+      [userId]
     );
 
     return res.json({
@@ -171,7 +170,6 @@ app.post("/admin/getAllRequestDataWithUser", async (req, res) => {
             SELECT
               rc.creator_id,
               rc.user_id,
-              rc.certificate_file,
               rc.register_date,
               u.username,
               u.role,
@@ -622,13 +620,13 @@ app.post("/ProjectManager/getmanagermyproject", async (req, res) => {
     const { user_id } = req.body;
 
     const postdata = await client.query(
-      `SELECT project_manager.*, project.project_title, category
+      `SELECT project_manager.*, project.project_title, project.category, project.img
       FROM 
-        project_manager
+          project_manager
       JOIN 
-        project ON project_manager.project_id = project.project_id
+          project ON project_manager.project_id = project.project_id
       WHERE 
-        project_manager.user_id = $1
+          project_manager.user_id = $1;
       `,
       [user_id]
     );

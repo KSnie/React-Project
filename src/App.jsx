@@ -51,7 +51,7 @@ function App() {
   const [selectedPost, setSelectedPost] = useState(null);
   const [selectScript, setScript] = useState(null);
 
-  const [data , setData] = useState({});
+  const [data, setData] = useState({});
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
@@ -71,7 +71,7 @@ function App() {
   const handleAuthentication = (data) => {
     setData(data);
     console.log(data);
-  }
+  };
 
   useEffect(() => {
     if (data) {
@@ -84,15 +84,15 @@ function App() {
   }, [data]);
 
   const logout = () => {
-    setIsAuthenticated(false)
-    setData(null)
-  }
+    setIsAuthenticated(false);
+    setData(null);
+  };
 
   return (
     <div className="app">
       <div className="container">
         {!isAuthenticated ? (
-          <AuthPage onAuthentication={handleAuthentication}/>
+          <AuthPage onAuthentication={handleAuthentication} />
         ) : (
           <div>
             <Header
@@ -100,7 +100,7 @@ function App() {
               userName={userName}
               statusSlide={handleSlideToggle}
               currentPage={currentPage}
-              logout = {logout}
+              logout={logout}
             />
             <div className="Main">
               <Slidebar
@@ -123,7 +123,7 @@ function App() {
                       onChangePost: PostChange,
                       onChangeScript: ScriptChange,
                       scriptDetails: selectScript,
-                      userData: data
+                      userData: data,
                     })}
                 </div>
               </div>

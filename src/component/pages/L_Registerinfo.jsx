@@ -6,27 +6,44 @@ import dateIcon from "../image/dateIcon.svg";
 import PhoneIcon from "../image/phoneIcon.svg";
 import mapIcon from "../image/mapIcon.svg";
 import profileIcon from "../image/Registerbanner.svg";
+import noImage from "../image/noImage.svg";
 
 const Registerinfo = ({ onAuthentication, isRegisterpc }) => {
   const [isfullname, setFullname] = useState("");
   const [isdateofbirth, setDateofbirth] = useState("");
   const [isphonenumber, setPhonenumber] = useState("");
   const [iscountry, setCountry] = useState("");
+  const [profile, setProfile] = useState("");
 
   const handleSubmit = (e) => {
-
     try {
-      onAuthentication("registerinfo", NaN,NaN,NaN,isfullname, isdateofbirth, isphonenumber, iscountry,NaN);
+      onAuthentication(
+        "registerinfo",
+        NaN,
+        NaN,
+        NaN,
+        isfullname,
+        isdateofbirth,
+        isphonenumber,
+        iscountry,
+        NaN
+        //profile
+      );
     } catch (error) {
       console.error("Registration failed:", error);
     }
+  };
+
+  const handleProfileUpload = (e) => {
+    const file = e.target.files[0].name;
+    setProfile(file);
   };
 
   return (
     <div>
       <div className="Registerinfo-container">
         <div className="Login-header">
-          <img src={logoIcon} alt = "logo-icon" />
+          <img src={logoIcon} alt="logo-icon" />
         </div>
 
         <div className="Registerinfo-content-container">
@@ -36,7 +53,6 @@ const Registerinfo = ({ onAuthentication, isRegisterpc }) => {
 
           <div className="Registerinfo-main-content">
             <div className="Registerinfo-left-content">
-
               <div className="Registerinfo-fullname-form-register">
                 <h4>Name</h4>
                 <form className="Registerinfo-fullname-input-register">
@@ -82,33 +98,55 @@ const Registerinfo = ({ onAuthentication, isRegisterpc }) => {
                 <form className="Registerinfo-mapIcon-input-register">
                   <img src={mapIcon} alt="user-icon" />
 
-                    <select id="country" onChange={(e) => setCountry(e.target.value)} name="country">
-                      <option value="Canada">Canada</option>
-                      <option value="France">France</option>
-                      <option value="Taiwan">Taiwan</option>
-                      <option value="Thailand">Thailand</option>
-                      <option value="United States">United States</option>
+                  <select
+                    id="country"
+                    onChange={(e) => setCountry(e.target.value)}
+                    name="country"
+                  >
+                    <option value="Canada">Canada</option>
+                    <option value="France">France</option>
+                    <option value="Taiwan">Taiwan</option>
+                    <option value="Thailand">Thailand</option>
+                    <option value="United States">United States</option>
                   </select>
                 </form>
               </div>
 
               <div className="Registerinfo-button">
                 <div className="Registerinfo-nextpage">
-                  <button onClick={() => { handleSubmit(); }}>Submit</button>
+                  <button
+                    onClick={() => {
+                      handleSubmit();
+                    }}
+                  >
+                    Submit
+                  </button>
                 </div>
               </div>
-
             </div>
 
             <div className="Registerinfo-Right-content">
-              <img src={profileIcon} alt="profileIcon" />
-              <h4>Select Image</h4>
+              <img
+                src={profile || "nopfp.jpg"}
+                alt="profile img"
+                onClick={() => document.getElementById("imageUpload").click()}
+                style={{
+                  height: "300px",
+                  width: "300px",
+                  objectFit: "cover",
+                }}
+              ></img>
+              <input
+                id="imageUpload"
+                type="file"
+                accept="image/*"
+                onChange={(e) => handleProfileUpload(e)}
+                style={{ display: "none" }}
+              />
             </div>
-            
           </div>
         </div>
       </div>
-
     </div>
   );
 };

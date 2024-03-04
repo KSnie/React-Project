@@ -1,118 +1,140 @@
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&display=swap");
 
 :root {
-    --main-background-color: #FFFFFF;
-    --search-background-color: #FAFAFA;
+  --main-background-color: #ffffff;
+  --search-background-color: #fafafa;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    font-family: 'Cairo', sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: "Cairo", sans-serif;
 }
 
 .app nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--main-background-color);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--main-background-color);
 }
 
 .app-nav-logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .app-logo-img {
-    width: 250px;
-    padding: 5px;
+  width: 250px;
+  padding: 5px;
 }
 
 .app-nav-logo button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-    padding-top: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  padding-top: 20px;
 }
 
 .app-profile {
-    display: flex;
-    align-items: center;
-    border-left: 1px solid #F6F6F6;
-    padding-left: 20px;
-    padding-right: 40px;
+  display: flex;
+  align-items: center;
+  border-left: 1px solid #f6f6f6;
+  padding-left: 20px;
+  padding-right: 40px;
 }
 
 .app-profile-img {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
-    border-radius: 14px;
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  border-radius: 14px;
 }
 
 .app-profile button {
-    background: none;
-    border: 1px solid red;
-    border-radius: 20px;
-    padding-right: 15px;
-    cursor: pointer;
-    padding-left: 15px;
-    margin-left: 20px;
+  background: none;
+  border: 1px solid red;
+  border-radius: 20px;
+  padding-right: 15px;
+  cursor: pointer;
+  padding-left: 15px;
+  margin-left: 20px;
 }
 
 .app-profile-info {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 .app-profile h3,
 .app-profile p {
-    margin: -8px;
-    padding-left: 10px;
+  margin: -8px;
+  padding-left: 10px;
 }
 
 .app-search {
-    background-color: var(--search-background-color);
-    padding: 10px;
-    border-radius: 46px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 500px; /* Adjust based on your design */
-    margin: 0 auto; /* Center the search bar */
+  background-color: var(--search-background-color);
+  padding: 10px;
+  border-radius: 46px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 500px; /* Adjust based on your design */
+  margin: 0 auto; /* Center the search bar */
 }
 
 .app-search input {
-    background-color: var(--search-background-color);
-    width: 100%;
-    max-width: 400px; /* Adjust based on your design */
-    font-size: 16px;
-    border: none;
+  background-color: var(--search-background-color);
+  width: 100%;
+  max-width: 400px; /* Adjust based on your design */
+  font-size: 16px;
+  border: none;
 }
 
 .app-search input:focus {
-    outline: none;
+  outline: none;
 }
 
 .app-search img {
-    padding-left: 10px;
-    width: 25px;
+  padding-left: 10px;
+  width: 25px;
 }
 
 .app-search button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding-right: 10px;
-    padding-top: 7px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding-right: 10px;
+  padding-top: 7px;
 }
 
 .app-search button img {
-    width: 25px;
+  width: 25px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  background-color: rgb(0, 0, 0, 0.5);
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  height: 700px;
+  z-index: 3;
+  background-color: white;
+  border-radius: 25px;
 }
