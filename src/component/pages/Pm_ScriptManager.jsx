@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import humanIcon from "../image/humanIcon.svg";
 import axios from "axios";
-import noImage from "../image/noImage.svg";
 
 const ScriptManager = ({ userData }) => {
   const [managerMyprojectData, setmanagerMyprojectData] = useState([]);
@@ -50,7 +49,7 @@ const Project = ({ data, userData, managerMyprojectData }) => {
           setViewProjectWindow(true);
         }}
       >
-        <img src={noImage} alt="img-banner"></img>
+        <img src={data.img} alt="img-banner"></img>
         <div className="project-description">
           <p>
             <strong>{data.project_title}</strong>
@@ -105,7 +104,7 @@ const ViewProject = ({ data, isOpened, onClose, userData, managerMyprojectData }
         <div className="overlay">
           <div className="modal">
             <div className="viewproject-Header">
-              <img src={noImage} alt="Project Banner"></img>
+              <img src={data.img} alt="Project Banner"></img>
 
               <div className="viewproject-detail">
                 <p className="name">{data.project_title}</p>

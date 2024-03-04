@@ -44,13 +44,6 @@ const PostPopup = ({ onPageChange , dataPost , userData }) => {
                   <h4>{dataPost.project_title}</h4>
                 </div>
 
-                <div className="Post-Attach-container">
-                  <h4>Portfolio (PDF file)</h4>
-                  <button className="Post-right-Attach">
-                    <img src={attachIcon} alt="Attach Icon"></img>
-                    <h5>Attach File</h5>
-                  </button>
-                </div>
               </div>
 
               <div className="Post-right-date-time">
@@ -61,7 +54,15 @@ const PostPopup = ({ onPageChange , dataPost , userData }) => {
 
               </div>
               <div className="Post-submit-button">
-                  <button onClick={() => { onPageChange("Home"); onRegister(dataPost);}} >Register</button>
+                  <button onClick={() => { 
+                    if (userData.role !== "user") {
+                      alert("You can't apply (Only for user)");
+                      return null;
+                    } else {
+                      onPageChange("Home");
+                      onRegister(dataPost);
+                    }
+                  }} >Register</button>
               </div>
             </div>
             

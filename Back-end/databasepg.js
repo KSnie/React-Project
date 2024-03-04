@@ -709,18 +709,28 @@ app.post("/user/getscript", async (req, res) => {
     const { user_id } = req.body;
 
     const postdata = await client.query(
-      `SELECT script.*, users.f_name, users.l_name, project.date
-        FROM 
+      `SELECT 
+        script.*, 
+        manager.f_name, 
+        manager.l_name, 
+        project.date
+      FROM 
         script
-        JOIN 
-          users ON script.manager_id = users.user_id
-        JOIN 
-          project ON script.project_id = project.project_id
-        WHERE 
-          script.user_id = $1
+      JOIN 
+        project_manager ON script.manager_id = project_manager.manager_id
+      JOIN
+        users AS manager ON project_manager.user_id = manager.user_id
+      JOIN
+        project ON script.project_id = project.project_id
+      WHERE 
+        script.user_id = $1;
+      
       `, [user_id]);
 
     return res.json(postdata.rows);
+
+    
+
   } catch (error) {
     console.error("Error retrieving data", error);
     res.status(500).json({ error: "Internal Server Error" });

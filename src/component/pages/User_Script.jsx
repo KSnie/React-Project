@@ -7,6 +7,8 @@ const Script = ({onPageChange, onChangeScript, userData }) => {
 
   const [scriptData, setScriptData] = useState([]);
 
+  console.log(scriptData)
+
   useEffect(() => {
     const fetchData = async () => {
       try {
