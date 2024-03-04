@@ -33,14 +33,14 @@ const ScriptManager = ({ userData }) => {
       </div>
       <div className="projects-container">
         {managerMyprojectData.map((data) => (
-          <Project data={data} key={data.name} userData={userData} />
+          <Project data={data} key={data.name} userData = {userData} managerMyprojectData ={managerMyprojectData}/>
         ))}
       </div>
     </div>
   );
 };
 
-const Project = ({ data, userData }) => {
+const Project = ({ data, userData, managerMyprojectData }) => {
   const [viewProjectWindow, setViewProjectWindow] = useState(false);
   return (
     <>
@@ -50,7 +50,7 @@ const Project = ({ data, userData }) => {
           setViewProjectWindow(true);
         }}
       >
-        <img src={data.img} alt="img-banner"></img>
+        <img src={noImage} alt="img-banner"></img>
         <div className="project-description">
           <p>
             <strong>{data.project_title}</strong>
@@ -62,17 +62,18 @@ const Project = ({ data, userData }) => {
         data={data}
         isOpened={viewProjectWindow}
         onClose={() => setViewProjectWindow(false)}
-        userData={userData}
+        userData = {userData}
+        managerMyprojectData = {managerMyprojectData}
       />
     </>
   );
 };
 
-const ViewProject = ({ data, isOpened, onClose, userData }) => {
+const ViewProject = ({ data, isOpened, onClose, userData, managerMyprojectData }) => {
   const [sendScriptWindow, setSendScriptWindow] = useState(false);
-  const [sendScriptData, setSendScriptData] = useState([]);
+  const [sendScriptData, setSendScriptData] = useState([])
 
-  const [requestData, setRequestData] = useState([]);
+  const [requestData, setRequestData] = useState([])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -83,7 +84,7 @@ const ViewProject = ({ data, isOpened, onClose, userData }) => {
             project_id: data.project_id,
           }
         );
-        console.log(data.project_id);
+        console.log(data.project_id)
 
         setRequestData(response.data);
       } catch (error) {
@@ -104,7 +105,7 @@ const ViewProject = ({ data, isOpened, onClose, userData }) => {
         <div className="overlay">
           <div className="modal">
             <div className="viewproject-Header">
-              <img src={data.img} alt="Project Banner"></img>
+              <img src={noImage} alt="Project Banner"></img>
 
               <div className="viewproject-detail">
                 <p className="name">{data.project_title}</p>
@@ -118,26 +119,24 @@ const ViewProject = ({ data, isOpened, onClose, userData }) => {
               </div>
 
               <div className="request-content">
-                {requestData
-                  .filter((request) => request.status === "Accepted")
-                  .map((request, index) => (
-                    <div key={index} className="request-main-content">
-                      <img src={humanIcon} alt=""></img>
-                      <h3>
-                        {request.f_name} {request.l_name}
-                      </h3>
-                      <h3>{request.project}</h3>
-                      <button
-                        className="btn"
-                        onClick={() => {
-                          setSendScriptWindow(true);
-                          setSendScriptData(request);
-                        }}
-                      >
-                        Send Script
-                      </button>
-                    </div>
-                  ))}
+                {requestData.filter(request => request.status === "Accepted").map((request, index) => (
+                  <div key={index} className="request-main-content">
+                    <img src={humanIcon} alt=""></img>
+                    <h3>
+                      {request.f_name} {request.l_name}
+                    </h3>
+                    <h3>{request.project}</h3>
+                    <button
+                      className="btn"
+                      onClick={() => {
+                        setSendScriptWindow(true);
+                        setSendScriptData(request);
+                      }}
+                    >
+                      Send Script
+                    </button>
+                  </div>
+                ))}
               </div>
 
               <button
@@ -156,29 +155,35 @@ const ViewProject = ({ data, isOpened, onClose, userData }) => {
         data={sendScriptData}
         isOpened={sendScriptWindow}
         onClose={() => setSendScriptWindow(false)}
-        userData={userData}
+        userData = {userData}
+        managerMyprojectData = {managerMyprojectData}
       />
     </>,
     document.getElementById("modal")
   );
 };
 
-const SendScript = ({ data, isOpened, onClose, userData }) => {
-  const [topic, setTopic] = useState([]);
+const SendScript = ({ data, isOpened, onClose , userData , managerMyprojectData}) => {
+
+  const [topic ,setTopic] = useState([])
 
   const sentScript = async () => {
     try {
-      await axios.post("http://localhost:3000/ProjectManager/sentScript", {
-        project_id: data.project_id,
-        manager_id: userData.user_id,
-        user_id: data.user_id,
-        topic: topic,
-        url_file: "https://",
-      });
+      await axios.post(
+        "http://localhost:3000/ProjectManager/sentScript",
+        {
+          project_id: data.project_id,
+          manager_id: managerMyprojectData[0].manager_id,
+          user_id: data.user_id,
+          topic: topic,
+          url_file: "https://"
+        }
+      );
     } catch (error) {
       console.error("Error fetching projects", error);
     }
-  };
+
+  }
 
   if (!isOpened) {
     return null;
@@ -189,23 +194,11 @@ const SendScript = ({ data, isOpened, onClose, userData }) => {
         <p>Send Script</p>
         <div className="script-topic">
           <p>Topic</p>
-          <input
-            type="text"
-            placeholder="Enter topic..."
-            onChange={(e) => {
-              setTopic(e.target.value);
-            }}
-          />
+          <input type="text" placeholder="Enter topic..." onChange={(e) => {setTopic(e.target.value)}}/>
         </div>
         <button className="script-attach">Attach File</button>
       </div>
-      <button
-        onClick={() => {
-          onClose();
-          sentScript();
-        }}
-        className="script-send"
-      >
+      <button onClick={() => {onClose(); sentScript();}} className="script-send">
         Send
       </button>
     </div>,
