@@ -231,3 +231,13 @@
 .Editproject-project-Category:focus {
   outline: none;
 }
+
+.Editproject-Header img:hover {
+  filter: brightness(50%);
+  transition: 0.3s;
+}
+
+.Newproject-Header img:hover {
+  filter: brightness(80%);
+  transition: 0.3s;
+}

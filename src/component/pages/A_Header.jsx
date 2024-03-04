@@ -7,7 +7,7 @@ import sortIcon from "../image/sortIcon.svg";
 import settingIcon from "../image/settingIcon.svg";
 import sidebarIcon from "../image/sidebarIcon.svg";
 
-function Header({ userRole , userName, statusSlide , currentPage , logout} ) {
+function Header({ userRole, userName, statusSlide, currentPage, logout }) {
   const [isSidebarVisible, setIsSidebarVisible] = useState(true);
 
   const toggleSidebar = () => {
@@ -25,19 +25,6 @@ function Header({ userRole , userName, statusSlide , currentPage , logout} ) {
           </button>
         </div>
 
-        {currentPage === "Home" ? (
-          <div className="app-search">
-            <img src={searchIcon} alt="searchIcon" />
-            <input type="text" placeholder="Search here" name="search" />
-            <button type="select">
-              <img src={sortIcon} alt="sortIcon" />
-            </button>
-          </div>
-        ) : (
-          <div></div>
-        )}
-
-
         <div className="app-profile">
           <img className="app-profile-img" src={profile} alt="Profile" />
           <div className="app-profile-info">
@@ -45,8 +32,14 @@ function Header({ userRole , userName, statusSlide , currentPage , logout} ) {
             <p>{userRole}</p>
           </div>
 
-          <button className="button-logout" onClick={() => {logout();}}>Logout</button>
-
+          <button
+            className="button-logout"
+            onClick={() => {
+              logout();
+            }}
+          >
+            Logout
+          </button>
         </div>
       </nav>
     </div>

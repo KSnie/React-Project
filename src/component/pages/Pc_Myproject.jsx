@@ -57,7 +57,7 @@ const Myproject = ({ userData }) => {
         data={{
           name: "",
           category: "",
-          img: noImage,
+          img: "",
         }}
         isOpened={NewProjectwindow}
         onClose={() => setNewProjectwindow(false)}
@@ -73,6 +73,7 @@ const Project = ({ data, userData }) => {
   const [name, setName] = useState(data.project_title);
   const [category, setCategory] = useState(data.category);
   const [date, setDate] = useState(data.date);
+  const [img, setImg] = useState(data.img);
 
   function handleName(newName) {
     setName(newName);
@@ -86,6 +87,10 @@ const Project = ({ data, userData }) => {
     setDate(newDate);
   }
 
+  function handleImg(newImg) {
+    setImg(newImg);
+  }
+
   return (
     <>
       <div
@@ -94,7 +99,7 @@ const Project = ({ data, userData }) => {
           setEditProjectWindow(true);
         }}
       >
-        <img src={noImage} alt="img-banner"></img>
+        <img src={img || noImage} alt="img-banner"></img>
         <div className="project-description">
           <p>
             <strong>{name}</strong>
@@ -109,10 +114,12 @@ const Project = ({ data, userData }) => {
         handleName={handleName}
         handleCategory={handleCategory}
         handleDate={handleDate}
+        handleImg={handleImg}
         userData={userData}
         name={name}
         category={category}
         date={date}
+        img={img}
       />
     </>
   );
@@ -125,9 +132,11 @@ const EditProject = ({
   handleName,
   handleCategory,
   handleDate,
+  handleImg,
   name,
   category,
   date,
+  img,
   userData,
 }) => {
   const [managerData, setManagerData] = useState([]);
@@ -141,7 +150,7 @@ const EditProject = ({
         }
       );
       setManagerData(response.data);
-      console.log(response.data)
+      console.log(response.data);
     } catch (error) {
       console.error("Error fetching projects", error);
     }
@@ -157,7 +166,7 @@ const EditProject = ({
           }
         );
         setManagerData(response.data);
-        console.log(response.data)
+        console.log(response.data);
       } catch (error) {
         console.error("Error fetching projects", error);
       }
@@ -175,6 +184,7 @@ const EditProject = ({
           category: category,
           date: date,
           project_id: data.project_id,
+          img: img,
         }
       );
       console.log(response);
@@ -202,34 +212,55 @@ const EditProject = ({
     }
   };
 
-  const [managerUsername, setManagerUsername] = useState('')
+  const [managerUsername, setManagerUsername] = useState("");
 
-  const Addmanager = async(e) => {
+  const Addmanager = async (e) => {
     try {
       const response = await axios.post(
         "http://localhost:3000/ProjectCreator/addManager",
         {
           project_id: data.project_id,
-          userName: e
+          userName: e,
         }
       );
       console.log(response);
     } catch (error) {
       console.error(error);
     }
-  }
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0].name;
+    handleImg(file);
+  };
 
   if (!isOpened) {
     return null;
   }
-
 
   return createPortal(
     <div>
       <div className="overlay">
         <div className="modal">
           <div className="Editproject-Header">
-            <img src={data.img} alt="Project Banner"></img>
+            <img
+              src={img || noImage}
+              alt="Project Banner"
+              style={{
+                cursor: "pointer",
+                height: "200px",
+                width: "300px",
+                objectFit: "cover",
+              }}
+              onClick={() => document.getElementById("imageInput").click()}
+            ></img>
+            <input
+              id="imageInput"
+              type="file"
+              accept="image/*"
+              style={{ display: "none" }}
+              onChange={handleImageChange}
+            />
 
             <div className="Editproject-name-input">
               <h4>Project Title</h4>
@@ -269,10 +300,12 @@ const EditProject = ({
                 placeholder="manager username"
                 onChange={(e) => setManagerUsername(e.target.value)}
               />
-              <button onClick={async () => {
-                await Addmanager(managerUsername);
-                dataChangeUpdate_manager();
-              }}>
+              <button
+                onClick={async () => {
+                  await Addmanager(managerUsername);
+                  dataChangeUpdate_manager();
+                }}
+              >
                 <img src={newContactIcon} alt="newContactIcon" />
                 Add
               </button>
@@ -299,11 +332,15 @@ const EditProject = ({
             <button
               className="btn-editproject"
               onClick={() => {
-                handleName(name);
-                handleCategory(category);
-                handleDate(date);
-                handleSave();
-                onClose();
+                if (!name || !category || !date) {
+                  alert("Please fill in all the required fields.");
+                } else {
+                  handleName(name);
+                  handleCategory(category);
+                  handleDate(date);
+                  handleSave();
+                  onClose();
+                }
               }}
             >
               SAVE
@@ -316,13 +353,14 @@ const EditProject = ({
   );
 };
 
-const NewProject = ({ isOpened, onClose, userData , updatedata}) => {
-
+const NewProject = ({ isOpened, onClose, userData, updatedata }) => {
   const [project, setProject] = useState({
     project_title: "",
     category: "",
     date: "",
   });
+
+  const [img, setImg] = useState("");
 
   if (!isOpened) {
     return null;
@@ -341,21 +379,59 @@ const NewProject = ({ isOpened, onClose, userData , updatedata}) => {
           category: project.category,
           date: project.date,
           user_id: userData.user_id,
+          img: img,
         }
       );
       updatedata();
+      setImg("");
       console.log(response);
     } catch (error) {
       console.error("Error fetching project", error);
     }
   };
 
+  const handleImageChange = (e) => {
+    const file = e.target.files[0].name;
+    setImg(file);
+  };
+
   return createPortal(
     <div>
       <div className="overlay">
         <div className="modal" style={{ height: "500px", padding: "20px" }}>
+          <p
+            style={{
+              marginLeft: "650px",
+              fontWeight: "bolder",
+              cursor: "pointer",
+              color: "gray",
+            }}
+            onClick={() => {
+              onClose();
+              setImg("");
+            }}
+          >
+            Close
+          </p>
           <div className="Newproject-Header">
-            <img src={""} alt="Project Banner"></img>
+            <img
+              src={img || noImage}
+              alt="Project Banner"
+              style={{
+                cursor: "pointer",
+                height: "200px",
+                width: "300px",
+                objectFit: "cover",
+              }}
+              onClick={() => document.getElementById("imageInput").click()}
+            ></img>
+            <input
+              id="imageInput"
+              type="file"
+              accept="image/*"
+              style={{ display: "none" }}
+              onChange={handleImageChange}
+            />
 
             <div className="Editproject-name-input">
               <h4>Project Title</h4>
@@ -399,8 +475,16 @@ const NewProject = ({ isOpened, onClose, userData , updatedata}) => {
           <button
             className="btn-editproject"
             onClick={() => {
-              onClose();
-              handleSubmit();
+              if (
+                !project.project_title ||
+                !project.category ||
+                !project.date
+              ) {
+                alert("Please fill in all the required fields.");
+              } else {
+                onClose();
+                handleSubmit();
+              }
             }}
           >
             Create Project
