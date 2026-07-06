@@ -13,7 +13,7 @@ const Myproject = ({ userData }) => {
   const dataChangeUpdate = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/ProjectCreator/getAllProjects",
+        "/api/ProjectCreator/getAllProjects",
         {
           user_id: userData.user_id,
         }
@@ -28,7 +28,7 @@ const Myproject = ({ userData }) => {
     const fetchData = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:3000/ProjectCreator/getAllProjects",
+          "/api/ProjectCreator/getAllProjects",
           {
             user_id: userData.user_id,
           }
@@ -144,7 +144,7 @@ const EditProject = ({
   const dataChangeUpdate_manager = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/ProjectCreator/getmanager",
+        "/api/ProjectCreator/getmanager",
         {
           project_id: data.project_id,
         }
@@ -160,7 +160,7 @@ const EditProject = ({
     const fetchData = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:3000/ProjectCreator/getmanager",
+          "/api/ProjectCreator/getmanager",
           {
             project_id: data.project_id,
           }
@@ -178,7 +178,7 @@ const EditProject = ({
   const handleSave = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/ProjectCreator/updateproject",
+        "/api/ProjectCreator/updateproject",
         {
           project_title: name,
           category: category,
@@ -196,7 +196,7 @@ const EditProject = ({
   const handleDeleteManager = async (managerId) => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/ProjectCreator/deletemanager",
+        "/api/ProjectCreator/deletemanager",
         {
           manager_id: managerId,
         }
@@ -217,7 +217,7 @@ const EditProject = ({
   const Addmanager = async (e) => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/ProjectCreator/addManager",
+        "/api/ProjectCreator/addManager",
         {
           project_id: data.project_id,
           userName: e,
@@ -373,7 +373,7 @@ const NewProject = ({ isOpened, onClose, userData, updatedata }) => {
   const handleSubmit = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/ProjectCreator/newproject",
+        "/api/ProjectCreator/newproject",
         {
           project_title: project.project_title,
           category: project.category,

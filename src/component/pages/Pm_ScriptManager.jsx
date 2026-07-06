@@ -11,7 +11,7 @@ const ScriptManager = ({ userData }) => {
     const fetchData = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:3000/ProjectManager/getmanagermyproject",
+          "/api/ProjectManager/getmanagermyproject",
           {
             user_id: userData.user_id,
           }
@@ -78,7 +78,7 @@ const ViewProject = ({ data, isOpened, onClose, userData, managerMyprojectData }
     const fetchData = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:3000/ProjectManager/getrequest",
+          "/api/ProjectManager/getrequest",
           {
             project_id: data.project_id,
           }
@@ -169,7 +169,7 @@ const SendScript = ({ data, isOpened, onClose , userData , managerMyprojectData}
   const sentScript = async () => {
     try {
       await axios.post(
-        "http://localhost:3000/ProjectManager/sentScript",
+        "/api/ProjectManager/sentScript",
         {
           project_id: data.project_id,
           manager_id: managerMyprojectData[0].manager_id,

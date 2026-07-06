@@ -9,7 +9,7 @@ const Myapplications = ({ userData }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.post("http://localhost:3000/application/getData", { user_id: userData.user_id });
+        const response = await axios.post("/api/application/getData", { user_id: userData.user_id });
         setApplications(response.data);
         console.log(response.data);
       } catch (error) {
@@ -22,7 +22,7 @@ const Myapplications = ({ userData }) => {
 
   const DeleteRequest = async (e) => {
     try {
-      await axios.post("http://localhost:3000/application/delete", { e });
+      await axios.post("/api/application/delete", { e });
 
       setApplications(prevApplications => prevApplications.filter(app => app.request_id !== e));
     } catch (error) {

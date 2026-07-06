@@ -14,7 +14,7 @@ const Script = ({onPageChange, onChangeScript, userData }) => {
       try {
 
         const response = await axios.post(
-          "http://localhost:3000/user/getscript",
+          "/api/user/getscript",
           {
             user_id: userData.user_id,
           }

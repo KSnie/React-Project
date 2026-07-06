@@ -47,7 +47,7 @@ const AuthPage = ({ onAuthentication }) => {
   ) => {
     if (option === "login") {
       try {
-        const res = await axios.post("http://localhost:3000/login", {
+        const res = await axios.post("/api/login", {
           username,
           password,
         });
@@ -61,7 +61,7 @@ const AuthPage = ({ onAuthentication }) => {
       setGender(gender);
     } else if (option === "registerinfo") {
       let [f_name, l_name] = fullname.split(" ");
-      const response = await axios.post("http://localhost:3000/newuser", {
+      const response = await axios.post("/api/newuser", {
         isusername,
         ispassword,
         role: "user",
@@ -78,7 +78,7 @@ const AuthPage = ({ onAuthentication }) => {
       handleToggleFormRegister();
     } else if (option === "registerPc") {
       let [f_name, l_name] = fullname.split(" ");
-      const response = await axios.post("http://localhost:3000/newuserpc", {
+      const response = await axios.post("/api/newuserpc", {
         isusername,
         ispassword,
         role: "request",

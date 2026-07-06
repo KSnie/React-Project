@@ -9,7 +9,7 @@ const Requests = () => {
   const fetchData = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/admin/getAllRequestDataWithUser"
+        "/api/admin/getAllRequestDataWithUser"
       );
       setRequestData(response.data);
     } catch (error) {
@@ -23,7 +23,7 @@ const Requests = () => {
 
   const accept_projectcreater = async (user) => {
     try {
-      await axios.post("http://localhost:3000/admin/acceptProjectCreator", {
+      await axios.post("/api/admin/acceptProjectCreator", {
         user,
       });
       fetchData();
@@ -34,7 +34,7 @@ const Requests = () => {
 
   const reject_projectcreater = async (user) => {
     try {
-      await axios.post("http://localhost:3000/admin/rejectProjectCreator", {
+      await axios.post("/api/admin/rejectProjectCreator", {
         user,
       });
       fetchData();

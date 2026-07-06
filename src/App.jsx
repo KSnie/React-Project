@@ -22,6 +22,9 @@ import Postpc from "./component/pages/Pc_Postpc";
 import Myproject_PM from "./component/pages/Pm_Myproject";
 import ScriptManager from "./component/pages/Pm_ScriptManager";
 
+// keep last so its responsive overrides win over the page stylesheets
+import "./responsive.css";
+
 const pageComponents = {
   Home: Home,
   Myapplications: Myapplications,

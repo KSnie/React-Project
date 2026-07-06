@@ -1,0 +1,143 @@
+/* Responsive overrides — imported LAST in App.jsx so these rules win over the
+   fixed-width layout in the page stylesheets. */
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+/* --- fluid main layout (was: .Box-content width 1560px / 1880px hacks) --- */
+.Box-content {
+  width: auto !important;
+  max-width: 100%;
+}
+
+.content {
+  padding-left: 335px;
+  padding-right: 20px;
+}
+
+.content.hide-content {
+  padding-left: 20px;
+}
+
+.content.hide-content .Box-content,
+.content.show-content .Box-content {
+  transform: none !important;
+  width: auto !important;
+}
+
+/* --- modals: never wider than the screen --- */
+.modal {
+  width: min(700px, 94vw) !important;
+  height: auto !important;
+  max-height: 92vh;
+  overflow-y: auto;
+}
+
+.New-Edit-conatainer {
+  width: min(900px, 94vw) !important;
+  max-height: 92vh;
+  overflow-y: auto;
+}
+
+/* --- home banner text --- */
+.Text-join {
+  width: min(1100px, 82%) !important;
+}
+
+/* --- login / register --- */
+.Main-Login-container {
+  width: min(400px, calc(100vw - 40px)) !important;
+  height: auto !important;
+  min-height: 500px;
+}
+
+.RegisterForm-content-container,
+.RegisterFormPc-content-container,
+.Registerinfo-content-container {
+  width: min(1000px, calc(100vw - 40px)) !important;
+}
+
+/* --- images should never overflow their card --- */
+.Box-content img,
+.modal img {
+  max-width: 100%;
+}
+
+/* ================= tablets and below ================= */
+@media (max-width: 1100px) {
+  /* sidebar becomes an overlay drawer instead of reserving 335px */
+  .content,
+  .content.show-content {
+    padding-left: 20px;
+  }
+
+  .slidebar {
+    z-index: 1100;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
+  }
+
+  .Post {
+    padding: 20px !important;
+  }
+
+  /* post popup: stack the two 700px columns */
+  .Post-left-content,
+  .Post-right-content {
+    width: 100% !important;
+    margin-left: 0 !important;
+    height: auto !important;
+  }
+
+  .studio-info {
+    width: 100% !important;
+  }
+}
+
+/* ================= phones ================= */
+@media (max-width: 640px) {
+  .app-logo-img {
+    width: 150px !important;
+  }
+
+  .app-search {
+    display: none !important;
+  }
+
+  .app-profile {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
+  .app-profile h3,
+  .app-profile p {
+    font-size: 13px;
+  }
+
+  .Header img {
+    border-radius: 20px !important;
+  }
+
+  .Text-join {
+    font-size: 12px !important;
+  }
+
+  .text button {
+    font-size: 13px !important;
+  }
+
+  .Main-Login-container {
+    padding: 20px !important;
+    padding-top: 40px !important;
+  }
+
+  .slidebar {
+    width: min(320px, 84vw) !important;
+  }
+
+  /* wide tables (user manager, requests) scroll instead of overflowing */
+  .Box-content {
+    overflow-x: auto;
+  }
+}

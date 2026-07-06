@@ -12,7 +12,7 @@ const Myproject_PM = ({ userData }) => {
     const fetchData = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:3000/ProjectManager/getmanagermyproject",
+          "/api/ProjectManager/getmanagermyproject",
           {
             user_id: userData.user_id,
           }
@@ -75,7 +75,7 @@ const ViewProject = ({ data, isOpened, onClose }) => {
   const updateData = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/ProjectManager/getrequest",
+        "/api/ProjectManager/getrequest",
         {
           project_id: data.project_id,
         }
@@ -92,7 +92,7 @@ const ViewProject = ({ data, isOpened, onClose }) => {
     const fetchData = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:3000/ProjectManager/getrequest",
+          "/api/ProjectManager/getrequest",
           {
             project_id: data.project_id,
           }
@@ -112,7 +112,7 @@ const ViewProject = ({ data, isOpened, onClose }) => {
 
   const accept = async (e) => {
     try {
-      await axios.post("http://localhost:3000/ProjectManager/updateStatus", {
+      await axios.post("/api/ProjectManager/updateStatus", {
         request_id: e.request_id,
         status: "Accepted",
       });
@@ -124,7 +124,7 @@ const ViewProject = ({ data, isOpened, onClose }) => {
 
   const reject = async (e) => {
     try {
-      await axios.post("http://localhost:3000/ProjectManager/updateStatus", {
+      await axios.post("/api/ProjectManager/updateStatus", {
         request_id: e.request_id,
         status: "Declined",
       });

@@ -11,7 +11,7 @@ const Post = ({ onPageChange, onChangePost}) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.post("http://localhost:3000/post/getpost");
+        const response = await axios.post("/api/post/getpost");
         setPostsData(response.data);
         console.log(response.data);
       } catch (error) {

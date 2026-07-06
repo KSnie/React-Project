@@ -11,7 +11,7 @@ const Postpc = ({ userData }) => {
   const updatePostdata = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/ProjectCreator/getpostdata",
+        "/api/ProjectCreator/getpostdata",
         {
           user_id: userData.user_id,
         }
@@ -31,7 +31,7 @@ const Postpc = ({ userData }) => {
     const fetchData = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:3000/ProjectCreator/getpostdata",
+          "/api/ProjectCreator/getpostdata",
           {
             user_id: userData.user_id,
           }
@@ -72,7 +72,7 @@ const Post = ({ post, updatePostdata }) => {
 
   const deletePost = async (postId) => {
     try {
-      await axios.post("http://localhost:3000/ProjectCreator/deletepost", {
+      await axios.post("/api/ProjectCreator/deletepost", {
         post_id: postId,
       });
   
@@ -110,7 +110,7 @@ const NewEditPost = ({ data, isOpened, onClose, userData ,updatePostdata}) => {
     const fetchData = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:3000/ProjectCreator/getAllProjects",
+          "/api/ProjectCreator/getAllProjects",
           {
             user_id: userData.user_id,
           }
@@ -128,7 +128,7 @@ const NewEditPost = ({ data, isOpened, onClose, userData ,updatePostdata}) => {
   const AddnewPost = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/ProjectCreator/newpost",
+        "/api/ProjectCreator/newpost",
         {
           project_id: selectedProject,
           detail: detailPost

@@ -8,7 +8,7 @@ const PostPopup = ({ onPageChange, dataPost, userData }) => {
     console.log(e.project_id);
     console.log(userData.user_id);
     try {
-      const res = await axios.post("http://localhost:3000/post/submitpost", {
+      const res = await axios.post("/api/post/submitpost", {
         project_id: e.project_id,
         user_id: userData.user_id,
         status: "Pending",

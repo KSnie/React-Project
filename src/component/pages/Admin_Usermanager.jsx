@@ -16,7 +16,7 @@ const User = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.post("http://localhost:3000/admin/getusers");
+      const response = await axios.post("/api/admin/getusers");
       setUsersData(response.data);
     } catch (error) {
       console.error("Error fetching users", error);
@@ -29,7 +29,7 @@ const User = () => {
 
   const updateData = async () => {
     try {
-      const response = await axios.post("http://localhost:3000/admin/getusers");
+      const response = await axios.post("/api/admin/getusers");
       setUsersData(response.data);
       fetchData();
     } catch (error) {
@@ -40,7 +40,7 @@ const User = () => {
   const DeleteUser = async (e) => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/admin/DeleteUser",
+        "/api/admin/DeleteUser",
         e
       );
       console.log(response.data);
@@ -159,7 +159,7 @@ const EditProfile = ({ data, isOpened, onClose, updateData }) => {
   const handlesave = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/admin/updateuser",
+        "/api/admin/updateuser",
         editdata
       );
       console.log(response);
@@ -304,7 +304,7 @@ const NewContact = ({ isOpened, onClose, updateData }) => {
   const handleSubmit = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/admin/newuser",
+        "/api/admin/newuser",
         values
       );
 
